@@ -1,7 +1,7 @@
 {
-  "name": "react-recaptcha-v3-v2-dev-development",
+  "name": "react-recaptcha-v3-v2-demo",
   "version": "1.0.0",
-  "description": "dev example of a React component for Google's reCAPTCHA v3 with v2 fallback",
+  "description": "demo of using the React component for Google's reCAPTCHA v3 with v2 fallback",
   "private": true,
   "scripts": {
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
@@ -32,7 +32,8 @@
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.2",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-recaptcha-v3-v2": "./node_modules/react-recaptcha-v3-v2"
   },
   "babel": {
     "presets": [

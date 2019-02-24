@@ -21,7 +21,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, './'),
     compress: true,
-    port: 9000,
+    port: 9001,
     https: false,
     open: false,
     historyApiFallback: true,
@@ -62,7 +62,7 @@ module.exports = {
       DEBUG: false
     }),
     new HtmlWebpackPlugin({
-      title: 'React reCAPTCHA v3 v2 development example',
+      title: 'React reCAPTCHA v3 v2 demo',
       minify: false,
       inject: false,
       template: HtmlWebpackTemplatePlugin,
