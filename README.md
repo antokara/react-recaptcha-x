@@ -2,13 +2,27 @@
 
 a React reCAPTCHA version 3 with version 2 fallback component
 
-# development environment
+## usage
 
-## prerequisites
+### usage installation
+
+1. `$npm install react-recaptcha-v3-v2 --save`
+
+### use in typescript
+
+@todo
+
+### use in javascript
+
+@todo
+
+## development environment
+
+### development prerequisites
 
 1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
 
-## setup
+### development setup
 
 1. `$cd src/module`
 1. `$npm install`
@@ -17,9 +31,13 @@ a React reCAPTCHA version 3 with version 2 fallback component
 1. `$npm run`
 1. open browser to `http://locahost:9000`
 
-# demo
+## demo
 
-## setup
+### demo prerequisites
+
+1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
+
+### demo setup
 
 1. `$cd src/module`
 1. `$npm install`
