@@ -1,0 +1,5 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-react", "tslint-microsoft-contrib"],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"]
+}
