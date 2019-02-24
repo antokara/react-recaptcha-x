@@ -2,7 +2,7 @@
   "name": "react-recaptcha-v3-v2",
   "version": "1.0.0",
   "description": "a React component for Google's reCAPTCHA v3 with v2 fallback",
-  "main": "index.js",
+  "main": "ReactReCaptchaV3V2.tsx",
   "scripts": {
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "babel src/index.tsx --out-file dist/index.js"
