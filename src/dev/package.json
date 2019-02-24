@@ -7,18 +7,6 @@
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "babel src/index.tsx --out-file dist/index.js"
   },
-  "keywords": [
-    "react",
-    "react",
-    "recaptcha",
-    "recaptcha",
-    "v3",
-    "recaptcha",
-    "v2",
-    "react",
-    "recaptcha",
-    "v3"
-  ],
   "author": "Antonios Karagiannis",
   "license": "MIT",
   "devDependencies": {
