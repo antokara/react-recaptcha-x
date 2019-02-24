@@ -1,6 +1,6 @@
-import * as React from "react";
-import { render } from "react-dom";
-import { ReactReCaptchaV2V3 } from "../module/ReactReCaptchaV3V2";
+import * as React from 'react';
+import { render } from 'react-dom';
+import { ReactReCaptchaV2V3 } from '../module/ReactReCaptchaV3V2';
 
 class App extends React.Component {
   render() {
@@ -8,4 +8,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));

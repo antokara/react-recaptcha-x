@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 /**
  * a React reCAPTCHA version 3 with version 2 fallback component
