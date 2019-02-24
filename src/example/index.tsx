@@ -1,6 +1,6 @@
-import React from "react";
+import * as React from "react";
 import { render } from "react-dom";
-import { ReactReCaptchaV2V3 } from "../src/ReactReCaptchaV2V3";
+import { ReactReCaptchaV2V3 } from "../module/ReactReCaptchaV2V3";
 
 class App extends React.Component {
   render() {

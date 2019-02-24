@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackTemplatePlugin = require("html-webpack-template");
 
 module.exports = {
-  entry: "./example/index.tsx",
+  entry: "./index.tsx",
   resolve: {
     extensions: [".js", ".ts", ".tsx"]
   },
@@ -16,7 +16,7 @@ module.exports = {
   },
   // @see https://webpack.js.org/configuration/dev-server
   devServer: {
-    contentBase: path.join(__dirname, "./example"),
+    contentBase: path.join(__dirname, "./"),
     compress: true,
     port: 9000,
     https: false,
