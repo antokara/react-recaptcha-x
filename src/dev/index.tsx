@@ -1,6 +1,6 @@
+import { ReactReCaptchaV3V2 } from 'module/ReactReCaptchaV3V2';
 import * as React from 'react';
 import { render } from 'react-dom';
-import { ReactReCaptchaV3V2 } from '../module/ReactReCaptchaV3V2';
 
 /**
  * the main Application component
