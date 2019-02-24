@@ -1,3 +1,7 @@
+# react-recaptcha-v3-v2
+
+a React reCAPTCHA version 3 with version 2 fallback component
+
 # development environment
 
 ## prerequisites
