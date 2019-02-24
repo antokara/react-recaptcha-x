@@ -37,6 +37,7 @@
     "typescript": "^3.3.3333"
   },
   "dependencies": {
+    "@types/react": "^16.8.4",
     "react": "^16.8.3"
   },
   "babel": {

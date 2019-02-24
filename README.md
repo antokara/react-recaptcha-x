@@ -8,7 +8,7 @@
 
 1. `cd src/module`
 1. `npm install`
-1. `cd ../example`
+1. `cd ../dev`
 1. `npm install`
 1. `npm run`
 1. open browser to `http://locahost:9000`
