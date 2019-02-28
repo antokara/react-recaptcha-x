@@ -6,6 +6,13 @@
     // @see https://github.com/palantir/tslint/issues/3364
     "no-submodule-imports": [true, "module"],
     // @see https://github.com/palantir/tslint-react/issues/120
-    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"]
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    // @see https://github.com/Microsoft/tslint-microsoft-contrib/issues/435
+    "no-relative-imports": [true, "allow-siblings"]
   }
 }

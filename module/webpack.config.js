@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, 'ReactReCaptchaV3V2.tsx'),
+  entry: path.resolve(__dirname, 'index.ts'),
   resolve: {
     extensions: ['.js', '.ts', '.tsx']
   },

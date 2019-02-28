@@ -8,6 +8,8 @@
     "jsx": "react",
     "target": "es2015",
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "./dist",
     "baseUrl": "."
   }
 }
