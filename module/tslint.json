@@ -4,7 +4,7 @@
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     // @see https://github.com/Microsoft/tslint-microsoft-contrib#readme
-    "export-name": [true, "ReactReCaptchaV3V2"],
+    "export-name": false,
     // @see https://github.com/Microsoft/tslint-microsoft-contrib/issues/435
     "no-relative-imports": [true, "allow-siblings"]
   }

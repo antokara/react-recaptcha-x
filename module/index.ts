@@ -1,3 +1,3 @@
-import { ReactReCaptchaV3V2 } from './ReactReCaptchaV3V2';
+import { Provider } from './Provider';
 
-export { ReactReCaptchaV3V2 };
+export { Provider as ReCaptcaProvider };
