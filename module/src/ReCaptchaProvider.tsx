@@ -4,10 +4,10 @@ import * as React from 'react';
  * a Provider which must be used once per applcation,
  * to include the Google reCAPTCHA JS API
  */
-class Provider extends React.Component {
+class ReCaptchaProvider extends React.Component {
   public render(): React.ReactNode {
-    return <div>Provider</div>;
+    return <div>ReCaptchaProvider</div>;
   }
 }
 
-export { Provider };
+export { ReCaptchaProvider };
