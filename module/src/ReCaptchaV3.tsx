@@ -1,22 +1,19 @@
 import * as React from 'react';
-import { Context } from './provider/Context';
 import { IContext } from './provider/IContext';
 import { withContext } from './provider/withContext';
-// import { Context } from './provider/ContextConsumer';
-// import { ContextType } from './provider/ContextType';
+
+type Props = {
+  providerContext: IContext;
+};
 
 /**
  * a React reCAPTCHA version 3 component
  */
-class ReCaptchaV3 extends React.Component {
+class ReCaptchaV extends React.Component<Props> {
   public render(): React.ReactNode {
-    return (
-      <Context.Consumer>
-        {(context: IContext): React.ReactNode =>
-          context && <div>{context.siteKeyV3} ReCaptchaV3</div>
-        }
-      </Context.Consumer>
-    );
+    const { providerContext } = this.props;
+
+    return <div>{providerContext.siteKeyV3} ReCaptchaV3</div>;
   }
 
   // private getTokenV3(): Promise<string> {
@@ -43,5 +40,5 @@ class ReCaptchaV3 extends React.Component {
   //   return Promise.reject();
   // }
 }
-
-export { withContext(ReCaptchaV3) };
+const ReCaptchaV3: React.FunctionComponent = withContext(ReCaptchaV);
+export { ReCaptchaV3 };
