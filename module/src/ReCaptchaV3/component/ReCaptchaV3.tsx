@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IContext } from './provider/IContext';
-import { withContext } from './provider/withContext';
+import { IContext } from 'src/provider/IContext';
 
 type Props = {
   providerContext: IContext;
@@ -9,7 +8,7 @@ type Props = {
 /**
  * a React reCAPTCHA version 3 component
  */
-class ReCaptchaV extends React.Component<Props> {
+class ReCaptchaV3 extends React.Component<Props> {
   public render(): React.ReactNode {
     const { providerContext } = this.props;
 
@@ -40,5 +39,5 @@ class ReCaptchaV extends React.Component<Props> {
   //   return Promise.reject();
   // }
 }
-const ReCaptchaV3: React.FunctionComponent = withContext(ReCaptchaV);
+
 export { ReCaptchaV3 };

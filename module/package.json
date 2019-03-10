@@ -4,7 +4,6 @@
   "description": "a React component for Google's reCAPTCHA v3 with v2 fallback",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress"

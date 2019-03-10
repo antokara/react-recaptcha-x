@@ -4,6 +4,10 @@ import { IContext } from './IContext';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
+/**
+ * a HOC which passes down the Provider Context
+ * as the "providerContext" prop object
+ */
 export function withContext<
   P extends { providerContext?: IContext },
   R = Omit<P, 'providerContext'>

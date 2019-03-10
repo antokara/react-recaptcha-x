@@ -3,7 +3,10 @@ module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, 'index.ts'),
   resolve: {
-    extensions: ['.js', '.ts', '.tsx']
+    extensions: ['.js', '.ts', '.tsx'],
+    alias: {
+      src: path.resolve(__dirname, './src')
+    }
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

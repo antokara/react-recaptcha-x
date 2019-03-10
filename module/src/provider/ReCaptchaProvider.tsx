@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Context } from './Context';
 import { IContext } from './IContext';
-// import { ContextType } from './ContextType';
-// import { ContextProvider } from './ContextProvider';
 
 declare global {
   // tslint:disable-next-line:interface-name (@see https://github.com/Microsoft/TypeScript/issues/19816)
