@@ -1,14 +1,15 @@
-// Type definitions for Google Recaptcha 2.0
+// Type definitions for Google Recaptcha 3.0
 // Project: https://www.google.com/recaptcha
 // Definitions by: Kristof Mattei <http://kristofmattei.be>
 //                 Martin Costello <https://martincostello.com/>
 //                 Ruslan Arkhipau <https://github.com/DethAriel>
 //                 Rafael Tavares <https://github.com/rafaeltavares>
+//                 Antonios Karagiannis <https://github.com/antokara>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare var grecaptcha: ReCaptchaV2.ReCaptcha;
+declare var grecaptcha: ReCaptchaV3.ReCaptcha;
 
-declare namespace ReCaptchaV2 {
+declare namespace ReCaptchaV3 {
   interface ReCaptcha {
     /**
      * Renders the container as a reCAPTCHA widget and returns the ID of the newly created widget.
