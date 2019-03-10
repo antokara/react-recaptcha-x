@@ -1,4 +1,4 @@
-import { ReCaptchaProvider } from './src/ReCaptchaProvider';
+import { ReCaptchaProvider } from './src/provider/ReCaptchaProvider';
 import { ReCaptchaV2 } from './src/ReCaptchaV2';
 import { ReCaptchaV3 } from './src/ReCaptchaV3';
 

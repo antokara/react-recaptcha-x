@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { Context } from './Context';
+import { IContext } from './IContext';
+// import { ContextType } from './ContextType';
+// import { ContextProvider } from './ContextProvider';
 
 declare global {
   // tslint:disable-next-line:interface-name (@see https://github.com/Microsoft/TypeScript/issues/19816)
@@ -9,13 +13,17 @@ declare global {
 
 type Props = {
   siteKeyV3: string;
+  children: React.ReactNode | React.ReactNodeArray;
+};
+type State = {
+  loaded: boolean;
 };
 
 /**
  * a Provider which must be used once per application,
  * to include the Google reCAPTCHA JS API
  */
-class ReCaptchaProvider extends React.Component<Props> {
+class ReCaptchaProvider extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -40,7 +48,14 @@ class ReCaptchaProvider extends React.Component<Props> {
   }
 
   public render(): React.ReactNode {
-    return <div>ReCaptchaProvider</div>;
+    const { children, siteKeyV3 } = this.props;
+    const { loaded } = this.state;
+    const contextValue: IContext = {
+      siteKeyV3,
+      loaded
+    };
+
+    return <Context.Provider value={contextValue}>{children}</Context.Provider>;
   }
 
   /**
