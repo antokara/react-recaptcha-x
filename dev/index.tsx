@@ -1,4 +1,4 @@
-import { ReactReCaptchaV3V2 } from 'module/ReactReCaptchaV3V2';
+import { ReCaptchaProvider, ReCaptchaV2, ReCaptchaV3 } from 'module/index';
 import * as React from 'react';
 import { render } from 'react-dom';
 
@@ -8,7 +8,12 @@ import { render } from 'react-dom';
  */
 class App extends React.PureComponent {
   public render(): React.ReactNode {
-    return <ReactReCaptchaV3V2 />;
+    return (
+      <ReCaptchaProvider siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}>
+        <ReCaptchaV2 />
+        <ReCaptchaV3 />
+      </ReCaptchaProvider>
+    );
   }
 }
 
