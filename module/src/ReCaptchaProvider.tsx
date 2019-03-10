@@ -12,7 +12,8 @@ class ReCaptchaProvider extends React.Component<Props> {
   public componentDidMount(): void {
     const { siteKeyV3 } = this.props;
     // avoid loading again if previously loaded...
-    if (typeof grecaptcha === undefined) {
+    // tslint:disable-next-line:no-typeof-undefined (@see https://github.com/Microsoft/tslint-microsoft-contrib/issues/415)
+    if (typeof grecaptcha === 'undefined') {
       // load the Google reCAPTCHA JS API script tag.
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
