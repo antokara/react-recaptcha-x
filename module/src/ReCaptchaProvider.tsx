@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+declare global {
+  // tslint:disable-next-line:interface-name (@see https://github.com/Microsoft/TypeScript/issues/19816)
+  interface Window {
+    GoogleReCaptcha_onload: Function;
+  }
+}
+
 type Props = {
   siteKeyV3: string;
 };
@@ -9,6 +16,12 @@ type Props = {
  * to include the Google reCAPTCHA JS API
  */
 class ReCaptchaProvider extends React.Component<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.onLoadHandler = this.onLoadHandler.bind(this);
+    window.GoogleReCaptcha_onload = this.onLoadHandler;
+  }
+
   public componentDidMount(): void {
     const { siteKeyV3 } = this.props;
     // avoid loading again if previously loaded...
@@ -18,13 +31,25 @@ class ReCaptchaProvider extends React.Component<Props> {
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptchaV3_onload`;
+      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload`;
       document.body.appendChild(script);
     }
   }
 
   public render(): React.ReactNode {
     return <div>ReCaptchaProvider</div>;
+  }
+
+  /**
+   * invoked when Google reCAPTCHA is loaded
+   * @see componentDidMount
+   */
+  private onLoadHandler(): void {
+    delete window.GoogleReCaptcha_onload;
+    this.setState({ loaded: true });
+    grecaptcha.ready(() => {
+      this.setState({ ready: true });
+    });
   }
 }
 
