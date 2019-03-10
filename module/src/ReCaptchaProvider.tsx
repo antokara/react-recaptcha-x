@@ -18,6 +18,9 @@ type Props = {
 class ReCaptchaProvider extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      loaded: false
+    };
     this.onLoadHandler = this.onLoadHandler.bind(this);
     window.GoogleReCaptcha_onload = this.onLoadHandler;
   }
@@ -41,15 +44,12 @@ class ReCaptchaProvider extends React.Component<Props> {
   }
 
   /**
-   * invoked when Google reCAPTCHA is loaded
+   * invoked when the Google reCAPTCHA JS API is loaded
    * @see componentDidMount
    */
   private onLoadHandler(): void {
     delete window.GoogleReCaptcha_onload;
     this.setState({ loaded: true });
-    grecaptcha.ready(() => {
-      this.setState({ ready: true });
-    });
   }
 }
 
