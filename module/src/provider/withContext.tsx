@@ -8,12 +8,12 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
  * a HOC which passes down the Provider Context
  * as the "providerContext" prop object
  */
-export function withContext<
+const withContext = <
   P extends { providerContext?: IContext },
   R = Omit<P, 'providerContext'>
 >(
   Component: React.ComponentClass<P> | React.FunctionComponent<P>
-): React.FunctionComponent<R> {
+): React.FunctionComponent<R> => {
   return (props: R): React.FunctionComponent<R> => {
     return (
       <Context.Consumer>
@@ -21,4 +21,6 @@ export function withContext<
       </Context.Consumer>
     );
   };
-}
+};
+
+export { withContext };
