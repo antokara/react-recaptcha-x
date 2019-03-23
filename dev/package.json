@@ -11,9 +11,9 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/dotenv": "^6.1.0",
@@ -26,16 +26,16 @@
     "tslint": "^5.14.0",
     "tslint-microsoft-contrib": "^6.1.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.3.3333",
+    "typescript": "^3.3.4000",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
     "@types/react": "^16.8.8",
-    "@types/react-dom": "^16.8.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "@types/react-dom": "^16.8.3",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   },
   "babel": {
     "presets": [
