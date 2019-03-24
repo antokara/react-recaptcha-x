@@ -20,13 +20,11 @@ const withContext: WithContext = <
 >(
   Component: React.ComponentClass<P> | React.FunctionComponent<P>
 ): React.FunctionComponent<R> => {
-  return (props: R): React.FunctionComponent<R> => {
-    return (
-      <Context.Consumer>
-        {value => <Component {...props} providerContext={value} />}
-      </Context.Consumer>
-    );
-  };
+  return (props: R): React.FunctionComponent<R> => (
+    <Context.Consumer>
+      {value => <Component {...props} providerContext={value} />}
+    </Context.Consumer>
+  );
 };
 
 export { withContext };
