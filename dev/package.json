@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/dotenv": "^6.1.0",
+    "@types/dotenv": "^6.1.1",
     "babel-loader": "^8.0.5",
     "babel-preset-minify": "^0.5.0",
     "dotenv": "^7.0.0",
@@ -25,17 +25,17 @@
     "html-webpack-template": "^6.2.0",
     "tslint": "^5.14.0",
     "tslint-microsoft-contrib": "^6.1.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "^3.3.4000",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.0"
   },
   "dependencies": {
-    "@types/react": "^16.8.8",
+    "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "babel": {
     "presets": [
