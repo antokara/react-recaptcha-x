@@ -10,9 +10,9 @@ type TWithContext = <P extends IConsumer>(
 
 type TConsumerChild = (value: IContext) => React.ReactElement;
 
-type TConsumerChildGenerator = <P extends IConsumer>(
-  Component: React.ComponentType<P>,
-  props: P
+type TConsumerChildGenerator = <T extends IConsumer>(
+  Component: React.ComponentType<T>,
+  props: T
 ) => TConsumerChild;
 
 /**
@@ -22,9 +22,9 @@ type TConsumerChildGenerator = <P extends IConsumer>(
  *  - ownProps of the Component
  *  - providerContext prop
  */
-const ConsumerChildGenerator: TConsumerChildGenerator = <P extends IConsumer>(
-  Component: React.ComponentType<P>,
-  props: P
+const ConsumerChildGenerator: TConsumerChildGenerator = <T extends IConsumer>(
+  Component: React.ComponentType<T>,
+  props: T
 ): TConsumerChild => (value: IContext): React.ReactElement => (
   <Component {...props} providerContext={value} />
 );
@@ -32,10 +32,10 @@ const ConsumerChildGenerator: TConsumerChildGenerator = <P extends IConsumer>(
 /**
  * wraps and injects the context to the component provided
  */
-const withContext: TWithContext = <P extends IConsumer>(
-  Component: React.ComponentType<P>
-): React.ComponentType<P> =>
-  class WithContext extends React.Component<P> {
+const withContext: TWithContext = <T extends IConsumer>(
+  Component: React.ComponentType<T>
+): React.ComponentType<T> =>
+  class WithContext extends React.Component<T> {
     public render(): React.ReactNode {
       return (
         <Context.Consumer>
