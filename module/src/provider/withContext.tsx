@@ -1,30 +1,48 @@
 import * as React from 'react';
 import { Context } from './Context';
+import { IConsumer } from './IConsumer';
 import { IContext } from './IContext';
 
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-type WithContext = <
-  P extends { providerContext?: IContext },
-  R = Omit<P, 'providerContext'>
->(
-  Component: React.ComponentClass<P> | React.FunctionComponent<P>
-) => React.FunctionComponent<R>;
+// our HOC
+type TWithContext = <P extends IConsumer>(
+  Component: React.ComponentType<P>
+) => React.ComponentType<P>;
+
+type TConsumerChild = (value: IContext) => React.ReactElement;
+
+type TConsumerChildGenerator = <P extends IConsumer>(
+  Component: React.ComponentType<P>,
+  props: P
+) => TConsumerChild;
 
 /**
- * a HOC which passes down the Provider Context
- * as the "providerContext" prop object
+ * - gets the component to wrap and the props of the HOC.
+ * - returns a function that accepts the Context value
+ * - finally, returns the Component with both
+ *  - ownProps of the Component
+ *  - providerContext prop
  */
-const withContext: WithContext = <
-  P extends { providerContext?: IContext },
-  R = Omit<P, 'providerContext'>
->(
-  Component: React.ComponentClass<P> | React.FunctionComponent<P>
-): React.FunctionComponent<R> => {
-  return (props: R): React.FunctionComponent<R> => (
-    <Context.Consumer>
-      {value => <Component {...props} providerContext={value} />}
-    </Context.Consumer>
-  );
-};
+const ConsumerChildGenerator: TConsumerChildGenerator = <P extends IConsumer>(
+  Component: React.ComponentType<P>,
+  props: P
+): TConsumerChild => (value: IContext): React.ReactElement => (
+  <Component {...props} providerContext={value} />
+);
+
+/**
+ * wraps and injects the context to the component provided
+ */
+const withContext: TWithContext = <P extends IConsumer>(
+  Component: React.ComponentType<P>
+): React.ComponentType<P> =>
+  class WithContext extends React.Component<P> {
+    public render(): React.ReactNode {
+      return (
+        <Context.Consumer>
+          {ConsumerChildGenerator(Component, this.props)}
+        </Context.Consumer>
+      );
+    }
+  };
 
 export { withContext };

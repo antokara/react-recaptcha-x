@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { IContext } from 'src/provider/IContext';
-
-type Props = {
-  providerContext: IContext;
-};
+import { IConsumer } from 'src/provider/IConsumer';
 
 /**
  * a React reCAPTCHA version 3 component
  */
-class ReCaptchaV3 extends React.Component<Props> {
+class ReCaptchaV3 extends React.Component<IConsumer> {
   public render(): React.ReactNode {
     const { providerContext } = this.props;
 

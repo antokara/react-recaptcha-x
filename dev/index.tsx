@@ -11,7 +11,7 @@ class App extends React.PureComponent {
     return (
       <ReCaptchaProvider siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}>
         <ReCaptchaV2 />
-        <ReCaptchaV3 />
+        <ReCaptchaV3 test="testing own props" providerContext={false} />
         <div>my demo app</div>
       </ReCaptchaProvider>
     );
