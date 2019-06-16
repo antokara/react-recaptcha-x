@@ -4,6 +4,7 @@
   "description": "dev example of a React component for Google's reCAPTCHA v3 with v2 fallback",
   "private": true,
   "scripts": {
+    "prettier": "prettier --check '*.ts?(x)'",
     "lint": "tslint '*.ts?(x)' -c tslint.json -e 'node_modules/**'",
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "babel src/index.tsx --out-file dist/index.js"
