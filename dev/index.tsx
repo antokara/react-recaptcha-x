@@ -44,7 +44,7 @@ class App extends React.PureComponent<{}, IState> {
   }
 
   private v3Callback(token: string | void): TReCaptchaV3Callback {
-    if (token) {
+    if (typeof token === 'string') {
       // retrieved
       this.setState({
         v3Token: token,
