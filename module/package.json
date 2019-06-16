@@ -4,6 +4,8 @@
   "description": "a React component for Google's reCAPTCHA v3 with v2 fallback",
   "main": "./dist/index.js",
   "scripts": {
+    "prettier": "prettier --check '*.ts?(x)'",
+    "lint": "tslint 'src/**/*.ts?(x)' -c tslint.json -e 'src/provider/grecaptcha.d.ts'",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress"

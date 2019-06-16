@@ -9,6 +9,8 @@
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     "quotemark": [true, "single", "jsx-double"],
+    // @see https://github.com/prettier/prettier/issues/1565
+    "newline-per-chained-call": false,
     // @see https://github.com/palantir/tslint/issues/3364
     "no-submodule-imports": [true, "module"],
     // @see https://github.com/palantir/tslint-react/issues/120
