@@ -43,6 +43,9 @@ declare namespace ReCaptchaV2 {
      * @param opt_widget_id Optional widget ID, defaults to the first widget created if unspecified.
      */
     execute(opt_widget_id?: number, options?: options): void;
+
+    // v3
+    execute(siteKey: string, options?: options): Promise<string>;
   }
 
   type Theme = 'light' | 'dark';

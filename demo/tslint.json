@@ -14,11 +14,19 @@
     // @see https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/naming-convention.md
     "naming-convention": [
       true,
-      // type alias names must start with "T".
-      // enforce PascalCase for classes, interfaces, enums, etc. Remember, there are still no underscores allowed.
+      // type alias names must start with "T"
+      // enforce PascalCase for classes, interfaces, enums, etc. Remember, there are still no underscores allowed
       { "type": "type", "format": "PascalCase", "prefix": "T" },
       // do not require class names to have prefix
-      { "type": "class", "prefix": null }
+      { "type": "class", "prefix": null },
+      // inferface names must start with "I"
+      { "type": "interface", "format": "PascalCase", "prefix": "I" },
+      // exclude the Window interface name to have to start with "I"
+      {
+        "type": "interface",
+        "filter": "^Window$",
+        "prefix": null
+      }
     ]
   }
 }

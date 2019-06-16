@@ -4,9 +4,9 @@ import { IConsumer } from './IConsumer';
 import { IContext } from './IContext';
 
 // our HOC
-type TWithContext = <P extends IConsumer>(
-  Component: React.ComponentType<P>
-) => React.ComponentType<P>;
+type TWithContext = <T extends IConsumer>(
+  Component: React.ComponentType<T>
+) => React.ComponentType<T>;
 
 type TConsumerChild = (value: IContext) => React.ReactElement;
 

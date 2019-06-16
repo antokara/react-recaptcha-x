@@ -9,11 +9,11 @@ declare global {
   }
 }
 
-type Props = {
+type TProps = {
   siteKeyV3: string;
   children: React.ReactNode | React.ReactNodeArray;
 };
-type State = {
+type TState = {
   loaded: boolean;
 };
 
@@ -21,8 +21,8 @@ type State = {
  * a Provider which must be used once per application,
  * to include the Google reCAPTCHA JS API
  */
-class ReCaptchaProvider extends React.Component<Props, State> {
-  constructor(props: Props) {
+class ReCaptchaProvider extends React.Component<TProps, TState> {
+  constructor(props: TProps) {
     super(props);
     this.state = {
       loaded: false
