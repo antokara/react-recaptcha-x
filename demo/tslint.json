@@ -8,6 +8,7 @@
   ],
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
+    "quotemark": [true, "single", "jsx-double"],
     // because we perform a `$npm link react-recaptcha-v3-v2`,
     // this package will NOT be listed in the dependencies of package.json
     "no-implicit-dependencies": [true, ["react-recaptcha-v3-v2"]],
