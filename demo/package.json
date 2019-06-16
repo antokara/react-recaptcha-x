@@ -4,6 +4,8 @@
   "description": "demo of using the React component for Google's reCAPTCHA v3 with v2 fallback",
   "private": true,
   "scripts": {
+    "prettier": "npx prettier --check 'index.tsx'",
+    "lint": "tslint 'index.tsx' -c tslint.json",
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "babel src/index.tsx --out-file dist/index.js"
   },
@@ -20,6 +22,7 @@
     "babel-preset-minify": "^0.5.0",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
+    "prettier": "^1.18.2",
     "tslint": "^5.16.0",
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-microsoft-contrib": "^6.2.0",
