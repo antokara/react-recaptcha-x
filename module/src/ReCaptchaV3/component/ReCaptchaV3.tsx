@@ -40,16 +40,14 @@ class ReCaptchaV3 extends React.Component<IProps, IState> {
       // invoke callback without args, to signify retrieving in progress
       callback();
 
-      grecaptcha.execute(siteKeyV3, { action }).then(
-        (token: string): void => {
-          this.setState({
-            token,
-            retrieving: false
-          });
-          // invoke callback with token, to signify success and pass the token
-          callback(token);
-        }
-      );
+      grecaptcha.execute(siteKeyV3, { action }).then((token: string): void => {
+        this.setState({
+          token,
+          retrieving: false
+        });
+        // invoke callback with token, to signify success and pass the token
+        callback(token);
+      });
     }
   }
 }
