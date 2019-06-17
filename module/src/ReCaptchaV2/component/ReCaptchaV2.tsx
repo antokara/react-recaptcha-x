@@ -3,32 +3,36 @@ import { IProps } from './IProps';
 import { IState } from './IState';
 
 /**
- * a React reCAPTCHA version 3 component
+ * a React reCAPTCHA version 2 component
  */
-class ReCaptchaV3 extends React.Component<IProps, IState> {
+class ReCaptchaV2 extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
     this.state = {
+      ref: React.createRef<HTMLDivElement>(),
       token: undefined,
       retrieving: false
     };
     this.getToken = this.getToken.bind(this);
-    this.getToken();
   }
 
   public componentDidUpdate(prevProps: IProps): void {
+    const { ref } = this.state;
     const { loaded } = this.props.providerContext;
-    if (prevProps.providerContext.loaded !== loaded && loaded) {
-      this.getToken();
+    if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
+      grecaptcha.render(ref.current);
     }
   }
 
-  public render(): false {
-    return false;
+  public render(): JSX.Element {
+    const { siteKeyV2 } = this.props.providerContext;
+    const { ref } = this.state;
+
+    return <div ref={ref} data-sitekey={siteKeyV2} />;
   }
 
   private getToken(): void {
-    const { loaded, siteKeyV3 } = this.props.providerContext;
+    const { loaded, siteKeyV2 } = this.props.providerContext;
     const { retrieving } = this.state;
     const { action, callback } = this.props;
     if (loaded && !retrieving) {
@@ -40,7 +44,7 @@ class ReCaptchaV3 extends React.Component<IProps, IState> {
       // invoke callback without args, to signify retrieving in progress
       callback();
 
-      grecaptcha.execute(siteKeyV3, { action }).then((token: string): void => {
+      grecaptcha.execute(siteKeyV2, { action }).then((token: string): void => {
         this.setState({
           token,
           retrieving: false
@@ -52,4 +56,4 @@ class ReCaptchaV3 extends React.Component<IProps, IState> {
   }
 }
 
-export { ReCaptchaV3, IProps };
+export { ReCaptchaV2, IProps };

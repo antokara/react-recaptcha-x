@@ -10,6 +10,7 @@ declare global {
 }
 
 type TProps = {
+  siteKeyV2: string;
   siteKeyV3: string;
   children: React.ReactNode | React.ReactNodeArray;
 };
@@ -46,9 +47,10 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
   }
 
   public render(): React.ReactNode {
-    const { children, siteKeyV3 } = this.props;
+    const { children, siteKeyV3, siteKeyV2 } = this.props;
     const { loaded } = this.state;
     const contextValue: IContext = {
+      siteKeyV2,
       siteKeyV3,
       loaded
     };

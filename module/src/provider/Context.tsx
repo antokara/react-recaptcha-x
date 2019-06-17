@@ -6,6 +6,7 @@ import { IContext } from './IContext';
  * with default values
  */
 const Context: React.Context<IContext> = React.createContext<IContext>({
+  siteKeyV2: '',
   siteKeyV3: '',
   loaded: false
 });

@@ -7,6 +7,7 @@ import {
 import * as React from 'react';
 import { render } from 'react-dom';
 
+// app state
 interface IState {
   v3TokenA: string | undefined;
   v3TokenB: string | undefined;
@@ -35,20 +36,29 @@ class App extends React.PureComponent<{}, IState> {
     const { v3TokenA, v3TokenB, v3RetrievingA, v3RetrievingB } = this.state;
 
     return (
-      <ReCaptchaProvider siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}>
-        <ReCaptchaV2 />
-        <ReCaptchaV3 action="actionA" callback={this.v3CallbackA} />
-        <ReCaptchaV3 action="actionB" callback={this.v3CallbackB} />
-        <h1>my demo app</h1>
+      <ReCaptchaProvider
+        siteKeyV2={process.env.RE_CAPTCHA_V2_SITE_KEY}
+        siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}
+      >
+        <div data-test="dummy wrapper to demonstrate react context">
+          <h1>my demo app</h1>
 
-        <hr />
-        <h2>ReCaptcha V3 - ActionA</h2>
-        <h3>Retrieving: {v3RetrievingA ? 'yes' : 'no'}</h3>
-        <h6>Token: {v3TokenA}</h6>
-        <hr />
-        <h2>ReCaptcha V3 - ActionB</h2>
-        <h3>Retrieving: {v3RetrievingB ? 'yes' : 'no'}</h3>
-        <h6>Token: {v3TokenB}</h6>
+          <hr />
+          <h2>ReCaptcha V2</h2>
+          <ReCaptchaV2 />
+
+          <hr />
+          <h2>ReCaptcha V3 - ActionA</h2>
+          <ReCaptchaV3 action="actionA" callback={this.v3CallbackA} />
+          <h3>Retrieving: {v3RetrievingA ? 'yes' : 'no'}</h3>
+          <h6>Token: {v3TokenA}</h6>
+
+          <hr />
+          <h2>ReCaptcha V3 - ActionB</h2>
+          <ReCaptchaV3 action="actionB" callback={this.v3CallbackB} />
+          <h3>Retrieving: {v3RetrievingB ? 'yes' : 'no'}</h3>
+          <h6>Token: {v3TokenB}</h6>
+        </div>
       </ReCaptchaProvider>
     );
   }
