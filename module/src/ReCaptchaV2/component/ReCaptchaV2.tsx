@@ -13,7 +13,7 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
       widgetId: undefined,
       token: undefined
     };
-    this.getToken = this.getToken.bind(this);
+    this.successCallback = this.successCallback.bind(this);
   }
 
   /**
@@ -25,16 +25,12 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     const { loaded, siteKeyV2 } = this.props.providerContext;
     if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
       // render the widget and store the returned widget id in the state
-      this.setState(
-        {
-          widgetId: grecaptcha.render(ref.current, {
-            sitekey: siteKeyV2
-          })
-        },
-        () => {
-          this.getToken();
-        }
-      );
+      this.setState({
+        widgetId: grecaptcha.render(ref.current, {
+          sitekey: siteKeyV2,
+          callback: this.successCallback
+        })
+      });
     }
   }
 
@@ -44,23 +40,21 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     return <div ref={ref} />;
   }
 
-  private getToken(): void {
-    const { loaded } = this.props.providerContext;
-    const { widgetId } = this.state;
+  /**
+   * invoked by the widget when the user submits a successful response.
+   * The g-recaptcha-response token is provided.
+   */
+  private successCallback(token: string): void {
     const { callback } = this.props;
-    if (loaded && widgetId !== undefined) {
-      // get synchronously, the token
-      const token: string = grecaptcha.getResponse(widgetId);
-      this.setState(
-        {
-          token
-        },
-        () => {
-          // invoke callback with token, to signify success and pass the token
-          callback(token);
-        }
-      );
-    }
+    this.setState(
+      {
+        token
+      },
+      () => {
+        // invoke callback with token, to signify success and pass the token
+        callback(token);
+      }
+    );
   }
 }
 
