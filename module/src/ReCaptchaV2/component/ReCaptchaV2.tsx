@@ -11,9 +11,13 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     this.state = {
       ref: React.createRef<HTMLDivElement>(),
       widgetId: undefined,
-      token: undefined
+      token: undefined,
+      expired: false,
+      error: false
     };
     this.successCallback = this.successCallback.bind(this);
+    this.expiredCallback = this.expiredCallback.bind(this);
+    this.errorCallback = this.errorCallback.bind(this);
   }
 
   /**
@@ -26,9 +30,13 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
       // render the widget and store the returned widget id in the state
       this.setState({
+        expired: false,
+        error: false,
         widgetId: grecaptcha.render(ref.current, {
           sitekey: siteKeyV2,
-          callback: this.successCallback
+          callback: this.successCallback,
+          'expired-callback': this.expiredCallback,
+          'error-callback': this.errorCallback
         })
       });
     }
@@ -48,11 +56,46 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     const { callback } = this.props;
     this.setState(
       {
-        token
+        token,
+        expired: false,
+        error: false
       },
       () => {
         // invoke callback with token, to signify success and pass the token
         callback(token);
+      }
+    );
+  }
+
+  /**
+   * invoked by the widget when the response expired and the user needs to re-verify
+   */
+  private expiredCallback(): void {
+    const { callback } = this.props;
+    this.setState(
+      {
+        expired: true
+      },
+      () => {
+        // invoke callback with false, to signify expiration
+        callback(false);
+      }
+    );
+  }
+
+  /**
+   * invoked by the widget when an error occurrs (usually network connectivity) and
+   * it cannot continue until connectivity is restored.
+   */
+  private errorCallback(): void {
+    const { callback } = this.props;
+    this.setState(
+      {
+        error: true
+      },
+      () => {
+        // invoke callback with false, to signify expiration
+        callback(new Error());
       }
     );
   }

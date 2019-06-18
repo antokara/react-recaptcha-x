@@ -11,6 +11,8 @@ import { render } from 'react-dom';
 // app state
 interface IState {
   v2TokenA: string | undefined;
+  v2Expired: boolean;
+  v2Error: boolean;
   v3TokenA: string | undefined;
   v3TokenB: string | undefined;
   v3RetrievingA: boolean;
@@ -29,6 +31,8 @@ class App extends React.PureComponent<{}, IState> {
     this.v3CallbackB = this.v3CallbackB.bind(this);
     this.state = {
       v2TokenA: undefined,
+      v2Expired: false,
+      v2Error: false,
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
@@ -39,6 +43,8 @@ class App extends React.PureComponent<{}, IState> {
   public render(): React.ReactNode {
     const {
       v2TokenA,
+      v2Expired,
+      v2Error,
       v3TokenA,
       v3TokenB,
       v3RetrievingA,
@@ -57,6 +63,8 @@ class App extends React.PureComponent<{}, IState> {
           <h2>ReCaptcha V2</h2>
           <ReCaptchaV2 callback={this.v2CallbackA} />
           <h6>Token: {v2TokenA}</h6>
+          <h6>Expired: {v2Expired}</h6>
+          <h6>Error: {v2Error}</h6>
 
           <hr />
           <h2>ReCaptcha V3 - ActionA</h2>
@@ -74,11 +82,20 @@ class App extends React.PureComponent<{}, IState> {
     );
   }
 
-  private v2CallbackA(token: string | void): TReCaptchaV2Callback {
+  private v2CallbackA(token: string | false | Error): TReCaptchaV2Callback {
     if (typeof token === 'string') {
-      // retrieved
       this.setState({
-        v2TokenA: token
+        v2TokenA: token,
+        v2Expired: false,
+        v2Error: false
+      });
+    } else if (typeof token === 'boolean' && !token) {
+      this.setState({
+        v2Expired: true
+      });
+    } else if (token instanceof Error) {
+      this.setState({
+        v2Error: true
       });
     }
   }

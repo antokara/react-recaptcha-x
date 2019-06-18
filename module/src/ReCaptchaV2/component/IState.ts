@@ -5,4 +5,6 @@ export interface IState {
   ref: React.RefObject<HTMLDivElement>;
   widgetId: number | undefined;
   token: string | undefined;
+  expired: boolean;
+  error: boolean;
 }
