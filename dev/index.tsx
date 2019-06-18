@@ -63,8 +63,8 @@ class App extends React.PureComponent<{}, IState> {
           <h2>ReCaptcha V2</h2>
           <ReCaptchaV2 callback={this.v2CallbackA} />
           <h6>Token: {v2TokenA}</h6>
-          <h6>Expired: {v2Expired}</h6>
-          <h6>Error: {v2Error}</h6>
+          <h6>Expired: {v2Expired ? 'yes' : 'no'}</h6>
+          <h6>Error: {v2Error ? 'yes' : 'no'}</h6>
 
           <hr />
           <h2>ReCaptcha V3 - ActionA</h2>
