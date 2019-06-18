@@ -3,6 +3,6 @@
  */
 export interface IState {
   ref: React.RefObject<HTMLDivElement>;
+  widgetId: number | undefined;
   token: string | undefined;
-  retrieving: boolean;
 }

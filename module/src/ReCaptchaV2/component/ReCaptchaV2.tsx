@@ -10,48 +10,56 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       ref: React.createRef<HTMLDivElement>(),
-      token: undefined,
-      retrieving: false
+      widgetId: undefined,
+      token: undefined
     };
     this.getToken = this.getToken.bind(this);
   }
 
+  /**
+   * if js api is loaded and was not previously loaded,
+   * attempt to render the widget
+   */
   public componentDidUpdate(prevProps: IProps): void {
     const { ref } = this.state;
-    const { loaded } = this.props.providerContext;
+    const { loaded, siteKeyV2 } = this.props.providerContext;
     if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
-      grecaptcha.render(ref.current);
+      // render the widget and store the returned widget id in the state
+      this.setState(
+        {
+          widgetId: grecaptcha.render(ref.current, {
+            sitekey: siteKeyV2
+          })
+        },
+        () => {
+          this.getToken();
+        }
+      );
     }
   }
 
   public render(): JSX.Element {
-    const { siteKeyV2 } = this.props.providerContext;
     const { ref } = this.state;
 
-    return <div ref={ref} data-sitekey={siteKeyV2} />;
+    return <div ref={ref} />;
   }
 
   private getToken(): void {
-    const { loaded, siteKeyV2 } = this.props.providerContext;
-    const { retrieving } = this.state;
-    const { action, callback } = this.props;
-    if (loaded && !retrieving) {
-      this.setState({
-        token: undefined,
-        retrieving: true
-      });
-
-      // invoke callback without args, to signify retrieving in progress
-      callback();
-
-      grecaptcha.execute(siteKeyV2, { action }).then((token: string): void => {
-        this.setState({
-          token,
-          retrieving: false
-        });
-        // invoke callback with token, to signify success and pass the token
-        callback(token);
-      });
+    const { loaded } = this.props.providerContext;
+    const { widgetId } = this.state;
+    const { callback } = this.props;
+    if (loaded && widgetId !== undefined) {
+      // get synchronously, the token
+      const token: string = grecaptcha.getResponse(widgetId);
+      this.setState(
+        {
+          token
+        },
+        () => {
+          // invoke callback with token, to signify success and pass the token
+          callback(token);
+        }
+      );
     }
   }
 }

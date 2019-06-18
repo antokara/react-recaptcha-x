@@ -42,6 +42,8 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
       script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload`;
+      script.async = true;
+      script.defer = true;
       document.body.appendChild(script);
     }
   }

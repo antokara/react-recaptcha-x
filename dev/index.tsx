@@ -2,6 +2,7 @@ import {
   ReCaptchaProvider,
   ReCaptchaV2,
   ReCaptchaV3,
+  TReCaptchaV2Callback,
   TReCaptchaV3Callback
 } from 'module/index';
 import * as React from 'react';
@@ -9,6 +10,7 @@ import { render } from 'react-dom';
 
 // app state
 interface IState {
+  v2TokenA: string | undefined;
   v3TokenA: string | undefined;
   v3TokenB: string | undefined;
   v3RetrievingA: boolean;
@@ -22,9 +24,11 @@ interface IState {
 class App extends React.PureComponent<{}, IState> {
   public constructor(props: {}) {
     super(props);
+    this.v2CallbackA = this.v2CallbackA.bind(this);
     this.v3CallbackA = this.v3CallbackA.bind(this);
     this.v3CallbackB = this.v3CallbackB.bind(this);
     this.state = {
+      v2TokenA: undefined,
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
@@ -33,7 +37,13 @@ class App extends React.PureComponent<{}, IState> {
   }
 
   public render(): React.ReactNode {
-    const { v3TokenA, v3TokenB, v3RetrievingA, v3RetrievingB } = this.state;
+    const {
+      v2TokenA,
+      v3TokenA,
+      v3TokenB,
+      v3RetrievingA,
+      v3RetrievingB
+    } = this.state;
 
     return (
       <ReCaptchaProvider
@@ -45,7 +55,8 @@ class App extends React.PureComponent<{}, IState> {
 
           <hr />
           <h2>ReCaptcha V2</h2>
-          <ReCaptchaV2 />
+          <ReCaptchaV2 callback={this.v2CallbackA} />
+          <h6>Token: {v2TokenA}</h6>
 
           <hr />
           <h2>ReCaptcha V3 - ActionA</h2>
@@ -61,6 +72,15 @@ class App extends React.PureComponent<{}, IState> {
         </div>
       </ReCaptchaProvider>
     );
+  }
+
+  private v2CallbackA(token: string | void): TReCaptchaV2Callback {
+    if (typeof token === 'string') {
+      // retrieved
+      this.setState({
+        v2TokenA: token
+      });
+    }
   }
 
   private v3CallbackA(token: string | void): TReCaptchaV3Callback {
