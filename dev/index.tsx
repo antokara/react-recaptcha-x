@@ -64,7 +64,10 @@ class App extends React.PureComponent<{}, IState> {
     } = this.state;
 
     return (
-      <ReCaptchaProvider siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}>
+      <ReCaptchaProvider
+        siteKeyV2={process.env.RE_CAPTCHA_V2_SITE_KEY}
+        siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}
+      >
         <div data-test="dummy wrapper to demonstrate react context">
           <h1>my demo app</h1>
 
