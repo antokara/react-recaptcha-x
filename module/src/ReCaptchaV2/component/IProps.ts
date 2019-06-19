@@ -11,4 +11,5 @@ export interface IProps extends IConsumer {
   callback: TCallback;
   theme: ETheme;
   size: ESize;
+  tabindex: number;
 }

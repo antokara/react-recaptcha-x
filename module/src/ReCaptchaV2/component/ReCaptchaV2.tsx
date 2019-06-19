@@ -27,7 +27,7 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
   public componentDidUpdate(prevProps: IProps): void {
     const { ref } = this.state;
     const { loaded, siteKeyV2 } = this.props.providerContext;
-    const { theme, size } = this.props;
+    const { theme, size, tabindex } = this.props;
     if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
       // render the widget and store the returned widget id in the state
       this.setState({
@@ -39,7 +39,8 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
           'expired-callback': this.expiredCallback,
           'error-callback': this.errorCallback,
           theme,
-          size
+          size,
+          tabindex
         })
       });
     }
@@ -47,8 +48,17 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
 
   public render(): JSX.Element {
     const { ref } = this.state;
+    const {
+      theme,
+      action,
+      callback,
+      size,
+      tabindex,
+      providerContext,
+      ...other
+    } = this.props;
 
-    return <div ref={ref} />;
+    return <div ref={ref} {...other} />;
   }
 
   /**

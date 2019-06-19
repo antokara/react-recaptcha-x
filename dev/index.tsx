@@ -64,9 +64,13 @@ class App extends React.PureComponent<{}, IState> {
           <hr />
           <h2>ReCaptcha V2</h2>
           <ReCaptchaV2
+            id="my-id"
+            className="test"
+            data-test-id="my-test-id"
             callback={this.v2CallbackA}
             theme={EReCaptchaV2Theme.Light}
-            size={EReCaptchaV2Size.Compact}
+            size={EReCaptchaV2Size.Normal}
+            tabindex={0}
           />
           <h6>Token: {v2TokenA}</h6>
           <h6>Expired: {v2Expired ? 'yes' : 'no'}</h6>
