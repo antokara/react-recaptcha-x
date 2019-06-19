@@ -1,10 +1,18 @@
 # react-recaptcha-v3-v2
 
-a React reCAPTCHA version 3 with version 2 fallback component
+a React reCAPTCHA version 3 and version 2 component in one.
+
+- Small and Performant
+- No need to include two reCAPTCHA script tags
+- Supports V3 and V2 in the same page, at the same time
+- Supports multiple instances of any version, at any time
+- Does not block the page from loading or scripts from executing
+- Allows custom props to the v2 component (className, id, data-x, etc.)
+- Easy to use, single callback for Token/Expiration/Error handling
 
 ## usage
 
-### usage installation
+### installation
 
 1. `$npm install react-recaptcha-v3-v2 --save`
 

@@ -12,6 +12,7 @@ declare global {
 type TProps = {
   siteKeyV2: string;
   siteKeyV3: string;
+  langCode?: string;
   children: React.ReactNode | React.ReactNodeArray;
 };
 type TState = {
@@ -33,7 +34,7 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
   }
 
   public componentDidMount(): void {
-    const { siteKeyV3 } = this.props;
+    const { siteKeyV3, langCode = '' } = this.props;
     // avoid loading again if previously loaded...
     // tslint:disable-next-line:no-typeof-undefined (@see https://github.com/Microsoft/tslint-microsoft-contrib/issues/415)
     if (typeof grecaptcha === 'undefined') {
@@ -41,7 +42,7 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload`;
+      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`;
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
