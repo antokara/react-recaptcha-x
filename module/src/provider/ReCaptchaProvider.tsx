@@ -13,6 +13,7 @@ type TProps = {
   siteKeyV2?: string;
   siteKeyV3?: string;
   langCode?: string;
+  hideV3Badge?: boolean;
   children: React.ReactNode | React.ReactNodeArray;
 };
 type TState = {
@@ -34,7 +35,11 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
   }
 
   public componentDidMount(): void {
-    const { siteKeyV3 = 'explicit', langCode = '' } = this.props;
+    const {
+      siteKeyV3 = 'explicit',
+      langCode = '',
+      hideV3Badge = false
+    } = this.props;
     // avoid loading again if previously loaded...
     // tslint:disable-next-line:no-typeof-undefined (@see https://github.com/Microsoft/tslint-microsoft-contrib/issues/415)
     if (typeof grecaptcha === 'undefined') {
@@ -46,6 +51,15 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
+    }
+
+    // in the case user wants to hide the reCaptchaV3 badge
+    // @see https://developers.google.com/recaptcha/docs/faq
+    if (hideV3Badge) {
+      const style: HTMLStyleElement = document.createElement('style');
+      // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
+      style.innerHTML = '.grecaptcha-badge{display: none;}';
+      document.body.appendChild(style);
     }
   }
 

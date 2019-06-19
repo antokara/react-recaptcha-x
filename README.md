@@ -1,15 +1,15 @@
 # react-recaptcha-v3-v2
 
-a React reCAPTCHA version 3 and version 2 component in one.
+a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 - Small and Performant
 - Available for both Javascript and Typescript projects
 - No need to include two reCAPTCHA script tags
 - Supports v3 and v2 in the same page, at the same time
 - Free to use only v3 or v2 or both (no need to have both site keys, to use one version)
-- Supports multiple instances of any version, at any time
+- Dynamically add or remove multiple instances of any version, at any time
 - Does not block the page from loading or scripts from executing
-- Allows custom props to the v2 component (className, id, data-x, etc.)
+- Supports custom props to the v2 component (className, id, data-x, etc.)
 - Easy to use, single callback for Token/Expiration/Error handling
 
 ## usage
