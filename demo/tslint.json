@@ -3,8 +3,8 @@
   "extends": [
     "tslint:recommended",
     "tslint-react",
-    "tslint-microsoft-contrib",
-    "tslint-consistent-codestyle"
+    "tslint-consistent-codestyle",
+    "tslint-microsoft-contrib"
   ],
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
@@ -24,6 +24,8 @@
       { "type": "class", "prefix": null },
       // inferface names must start with "I"
       { "type": "interface", "format": "PascalCase", "prefix": "I" },
+      // enum names must start with "E"
+      { "type": "enum", "format": "PascalCase", "prefix": "E" },
       // exclude the Window interface name to have to start with "I"
       {
         "type": "interface",

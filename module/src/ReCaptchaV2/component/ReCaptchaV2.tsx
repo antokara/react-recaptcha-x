@@ -27,6 +27,7 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
   public componentDidUpdate(prevProps: IProps): void {
     const { ref } = this.state;
     const { loaded, siteKeyV2 } = this.props.providerContext;
+    const { theme, size } = this.props;
     if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
       // render the widget and store the returned widget id in the state
       this.setState({
@@ -36,7 +37,9 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
           sitekey: siteKeyV2,
           callback: this.successCallback,
           'expired-callback': this.expiredCallback,
-          'error-callback': this.errorCallback
+          'error-callback': this.errorCallback,
+          theme,
+          size
         })
       });
     }

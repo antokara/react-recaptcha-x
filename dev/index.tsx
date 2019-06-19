@@ -1,4 +1,6 @@
 import {
+  EReCaptchaV2Size,
+  EReCaptchaV2Theme,
   ReCaptchaProvider,
   ReCaptchaV2,
   ReCaptchaV3,
@@ -61,7 +63,11 @@ class App extends React.PureComponent<{}, IState> {
 
           <hr />
           <h2>ReCaptcha V2</h2>
-          <ReCaptchaV2 callback={this.v2CallbackA} />
+          <ReCaptchaV2
+            callback={this.v2CallbackA}
+            theme={EReCaptchaV2Theme.Light}
+            size={EReCaptchaV2Size.Compact}
+          />
           <h6>Token: {v2TokenA}</h6>
           <h6>Expired: {v2Expired ? 'yes' : 'no'}</h6>
           <h6>Error: {v2Error ? 'yes' : 'no'}</h6>
