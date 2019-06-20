@@ -38,7 +38,12 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     const { ref } = this.state;
     const { loaded, siteKeyV2 } = this.props.providerContext;
     const { theme, size, tabindex } = this.props;
-    if (prevProps.providerContext.loaded !== loaded && loaded && ref.current) {
+    if (
+      prevProps.providerContext.loaded !== loaded &&
+      loaded &&
+      ref.current &&
+      siteKeyV2
+    ) {
       // render the widget and store the returned widget id in the state
       this.setState({
         expired: false,

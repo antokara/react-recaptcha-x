@@ -55,7 +55,7 @@ class ReCaptchaV3 extends React.Component<IProps, IState> {
     const { loaded, siteKeyV3 } = this.props.providerContext;
     const { retrieving } = this.state;
     const { action, callback } = this.props;
-    if (loaded && !retrieving) {
+    if (loaded && !retrieving && siteKeyV3) {
       this.setState(
         {
           token: undefined,
