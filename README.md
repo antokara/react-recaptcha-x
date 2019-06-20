@@ -16,11 +16,12 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 ### requirements
 
-1. React 16.6.0+
+1. [React 16.6.0+](https://reactjs.org/)
+1. reCAPTCHA v2 / v3 site key(s), which you can get from https://www.google.com/recaptcha
 
 ### installation
 
-1. `$npm install react-recaptcha-v3-v2 --save`
+`$npm install react-recaptcha-v3-v2 --save`
 
 ### basic typescript example
 
@@ -112,16 +113,16 @@ const v3Callback = token => {
 
 This is required only once, per application and should be placed as a wrapper for the whole application if possible. That way, you can insert and remove dynamically, at any place, the ReCaptchaV2 / ReCaptchaV3 components.
 
-It is responsible for injecting the required Javascript Script Tag, CSS Style Tag, when needed and passing down the site keys using react context.
+It is responsible for injecting the required Javascript Script Tag, CSS Style Tag when needed and passing down the site keys using [react context](https://reactjs.org/docs/context.html).
 
 #### Available Props
 
-| prop        | type    | default value | description                                                                                                                                                                                      |
-| ----------- | ------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| siteKeyV2   | string  | empty         | reCAPTCHA v2 site key, which you can get from https://www.google.com/recaptcha Required, if you plan to use the v2 component                                                                     |
-| siteKeyV3   | string  | empty         | reCAPTCHA v3 site key, which you can get from https://www.google.com/recaptcha Required, if you plan to use the v3 component                                                                     |
-| langCode    | string  | auto-detected | Lanuage Code of the Widget. If provided, the v2 checkbox component, will be rendered in that language. For a list of available values, see https://developers.google.com/recaptcha/docs/language |
-| hideV3Badge | boolean | false         | If true, the v3 Badge will be hidden using css. Before using this, please make sure you have read the terms of hiding the badge here https://developers.google.com/recaptcha/docs/faq            |
+| prop        | type    | default value | description                                                                                                                                                                                              |
+| ----------- | ------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| siteKeyV2   | string  | empty         | reCAPTCHA v2 site key, which you can get from [here](https://www.google.com/recaptcha). Required, if you plan to use the v2 component                                                                    |
+| siteKeyV3   | string  | empty         | reCAPTCHA v3 site key, which you can get from [here](https://www.google.com/recaptcha). Required, if you plan to use the v3 component                                                                    |
+| langCode    | string  | auto-detected | Lanuage Code of the Widget. If provided, the v2 checkbox component, will be rendered in that language. For a list of available values, see [here](https://developers.google.com/recaptcha/docs/language) |
+| hideV3Badge | boolean | false         | If true, the v3 Badge will be hidden using css. Before using this, please make sure you have read the terms of hiding the badge [here](https://developers.google.com/recaptcha/docs/faq)                 |
 
 ## development environment
 
