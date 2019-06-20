@@ -8,11 +8,21 @@ import { IState } from './IState';
 class ReCaptchaV3 extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
+
+    // validate the presence of the siteKeyV3
+    const { siteKeyV3 } = this.props.providerContext;
+    if (!siteKeyV3) {
+      throw new Error(
+        'The prop "siteKeyV3" must be set on the ReCaptchaProvider before using the ReCaptchaV3 component'
+      );
+    }
+
     this.state = {
       token: undefined,
       retrieving: false
     };
     this.getToken = this.getToken.bind(this);
+
     // in case the js api is already loaded, get the token immediatelly
     this.getToken();
   }

@@ -8,6 +8,15 @@ import { IState } from './IState';
 class ReCaptchaV2 extends React.Component<IProps, IState> {
   public constructor(props: IProps) {
     super(props);
+
+    // validate the presence of the siteKeyV2
+    const { siteKeyV2 } = this.props.providerContext;
+    if (!siteKeyV2) {
+      throw new Error(
+        'The prop "siteKeyV2" must be set on the ReCaptchaProvider before using the ReCaptchaV2 component'
+      );
+    }
+
     this.state = {
       ref: React.createRef<HTMLDivElement>(),
       widgetId: undefined,
@@ -15,6 +24,7 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
       expired: false,
       error: false
     };
+
     this.successCallback = this.successCallback.bind(this);
     this.expiredCallback = this.expiredCallback.bind(this);
     this.errorCallback = this.errorCallback.bind(this);
