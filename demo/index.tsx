@@ -8,7 +8,7 @@ import { ReCaptchaProvider } from 'react-recaptcha-v3-v2';
  */
 class App extends React.PureComponent {
   public render(): React.ReactNode {
-    return <ReCaptchaProvider />;
+    return <ReCaptchaProvider>demo app</ReCaptchaProvider>;
   }
 }
 
