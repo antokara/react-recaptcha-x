@@ -2,7 +2,7 @@
 
 a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
-- Small and Performant
+- Small and Performant, only 11KB
 - Available for both Javascript and Typescript projects
 - No need to include two reCAPTCHA script tags
 - Supports v3 and v2 in the same page, at the same time
