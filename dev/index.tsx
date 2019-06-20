@@ -3,9 +3,7 @@ import {
   EReCaptchaV2Theme,
   ReCaptchaProvider,
   ReCaptchaV2,
-  ReCaptchaV3,
-  TReCaptchaV2Callback,
-  TReCaptchaV3Callback
+  ReCaptchaV3
 } from 'module/index';
 import * as React from 'react';
 import { render } from 'react-dom';
@@ -113,7 +111,7 @@ class App extends React.PureComponent<{}, IState> {
     );
   }
 
-  private v2CallbackA(token: string | false | Error): TReCaptchaV2Callback {
+  private v2CallbackA(token: string | false | Error): void {
     if (typeof token === 'string') {
       this.setState({
         v2TokenA: token,
@@ -131,7 +129,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v2CallbackB(token: string | false | Error): TReCaptchaV2Callback {
+  private v2CallbackB(token: string | false | Error): void {
     if (typeof token === 'string') {
       this.setState({
         v2TokenB: token,
@@ -149,7 +147,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackA(token: string | void): TReCaptchaV3Callback {
+  private v3CallbackA(token: string | void): void {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
@@ -164,7 +162,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackB(token: string | void): TReCaptchaV3Callback {
+  private v3CallbackB(token: string | void): void {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
