@@ -38,6 +38,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 1. `$npm install`
 1. `$cd ../dev`
 1. `$npm install`
+1. create `.env` file with your reCAPTCHA keys using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9000`
 
