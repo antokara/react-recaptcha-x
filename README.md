@@ -14,7 +14,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 ## usage
 
-### requiremnts
+### requirements
 
 1. React 16.6.0+
 
@@ -22,7 +22,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 1. `$npm install react-recaptcha-v3-v2 --save`
 
-### typescript
+### basic typescript example
 
 ```ts
 import {
@@ -67,7 +67,7 @@ const v3Callback: TReCaptchaV3Callback = (token: string | void): void => {
 </ReCaptchaProvider>
 ```
 
-### javascript
+### basic javascript example
 
 ```js
 import {
