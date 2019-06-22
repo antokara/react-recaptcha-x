@@ -4,7 +4,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 - Small and Performant, only 10.8KB
 - Available for both Javascript and Typescript projects
-- Plug and play. No CSS or Scrip Tags required!
+- Plug and play. No CSS or Script Tags required!
 - It only inserts one _recaptcha/api.js_ script tag
 - Supports v3 and v2 in the same page, at the same time
 - Free to use only v3 or v2 or both (no need to have both site keys, to use one version)
