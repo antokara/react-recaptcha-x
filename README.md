@@ -164,7 +164,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 | prop     | type                           | default value | description                                                                                                                                                |
 | -------- | ------------------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | callback | function(token:string or void) | n/a           | Required. When called without arguments, it means requesting token in progress. When called with string (token), it means token retrieved                  |
-| action   | string                         | n/a           | Required. The name of the action to keep score and statistic about. IT can only contain alphanumeric characters and slashes, and must not be user-specific |
+| action   | string                         | n/a           | Required. The name of the action to keep score and statistic about. It can only contain alphanumeric characters and slashes, and must not be user-specific |
 
 ## development environment _(to contribute)_
 
