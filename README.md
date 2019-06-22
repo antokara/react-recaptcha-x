@@ -203,4 +203,4 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 ## other credits
 
-This project uses a modified version, of the Type definitions for Google Recaptcha 2.0 + 3.0 execute. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts).
+This project uses and includes, a modified version, of the Type definitions for Google Recaptcha 2.0. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts). Original Definitions by: Kristof Mattei <http://kristofmattei.be> Martin Costello <https://martincostello.com/> Ruslan Arkhipau <https://github.com/DethAriel> Rafael Tavares <https://github.com/rafaeltavares> Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
