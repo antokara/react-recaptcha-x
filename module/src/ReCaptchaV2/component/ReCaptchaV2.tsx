@@ -65,7 +65,6 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
     const { ref } = this.state;
     const {
       theme,
-      action,
       callback,
       size,
       tabindex,

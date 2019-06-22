@@ -4,10 +4,9 @@ import { ETheme } from './ETheme';
 import { TCallback } from './TCallback';
 
 /**
- * props for ReCaptchaV3 component
+ * props for ReCaptchaV2 component
  */
 export interface IProps extends IConsumer {
-  action: string;
   callback: TCallback;
   theme: ETheme;
   size: ESize;
