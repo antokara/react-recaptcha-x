@@ -1,7 +1,7 @@
 {
   "name": "react-recaptcha-v3-v2",
-  "version": "1.0.0",
-  "description": "a React component for Google's reCAPTCHA v3 with v2 fallback",
+  "version": "0.1.0",
+  "description": "a React component for Google's reCAPTCHA v3 and v2 checkbox",
   "main": "./dist/index.js",
   "scripts": {
     "prettier": "npx prettier --check 'src/**/*.ts?(x)' 'index.ts'",
@@ -19,7 +19,19 @@
     "react recaptcha v3",
     "react recaptcha v2"
   ],
-  "author": "Antonios Karagiannis",
+  "author": {
+    "name": "Antonios Karagiannis",
+    "email": "antokarag@gmail.com",
+    "url": "https://antokara.me"
+  },
+  "homepage": "https://github.com/antokara/react-recaptcha-v3-v2",
+  "bugs": {
+    "url": "https://github.com/antokara/react-recaptcha-v3-v2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antokara/react-recaptcha-v3-v2.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.4",

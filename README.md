@@ -200,3 +200,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$npm link react-recaptcha-v3-v2`
 1. `$npm start`
 1. open browser to `http://locahost:9001`
+
+## other credits
+
+This project uses a modified version, of the Type definitions for Google Recaptcha 2.0 + 3.0 execute. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts).
