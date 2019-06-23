@@ -59,7 +59,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, './env'),
+      path: path.resolve(__dirname, './.env'),
       safe: true,
       systemvars: true
     }),
@@ -68,7 +68,7 @@ module.exports = {
       DEBUG: false
     }),
     new HtmlWebpackPlugin({
-      title: 'React reCAPTCHA v3 v2 javascript demo',
+      title: 'React reCAPTCHA v3 v2 javascript example',
       minify: false,
       inject: false,
       template: HtmlWebpackTemplatePlugin,

@@ -12,8 +12,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
-      module: path.resolve(__dirname, '../module/'),
-      src: path.resolve(__dirname, '../module/src')
+      module: path.resolve(__dirname, '../'),
+      src: path.resolve(__dirname, '../src')
     }
   },
   output: {
@@ -61,7 +61,7 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, './env'),
+      path: path.resolve(__dirname, './.env'),
       safe: true,
       systemvars: true
     }),

@@ -9,8 +9,7 @@ import {
 } from 'react-recaptcha-v3-v2';
 
 /**
- * the main component of our development application
- * which is used to demo & develop our react module on-the-fly
+ * the main component of our javascript example application
  */
 class App extends React.PureComponent {
   constructor(props) {
@@ -53,7 +52,7 @@ class App extends React.PureComponent {
         siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}
       >
         <div data-test="dummy wrapper to demonstrate react context">
-          <h1>React reCAPTCHA v3 v2 javascript demo</h1>
+          <h1>React reCAPTCHA v3 v2 javascript working example</h1>
 
           <hr />
           <h2>ReCaptcha V2 - A</h2>

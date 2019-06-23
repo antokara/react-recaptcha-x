@@ -1,13 +1,12 @@
 {
-  "name": "react-recaptcha-v3-v2-ts-demo",
+  "name": "react-recaptcha-v3-v2-ts-example",
   "version": "1.0.0",
-  "description": "typescript demo of using the React component for Google's reCAPTCHA v3 with v2 fallback",
+  "description": "typescript example of using the React component for Google's reCAPTCHA v3 with v2 fallback",
   "private": true,
   "scripts": {
     "prettier": "npx prettier --check 'index.tsx'",
     "lint": "tslint 'index.tsx' -c tslint.json",
-    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
-    "build": "babel src/index.tsx --out-file dist/index.js"
+    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js"
   },
   "author": {
     "name": "Antonios Karagiannis",
@@ -37,7 +36,7 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.2",
     "webpack": "^4.35.0",
-    "webpack-cli": "^3.3.4",
+    "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {

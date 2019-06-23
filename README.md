@@ -24,7 +24,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 `$npm install react-recaptcha-v3-v2 --save`
 
-### typescript example
+### simple typescript example
 
 ```ts
 import {
@@ -35,25 +35,25 @@ import {
   ReCaptchaV3,
   TReCaptchaV2Callback,
   TReCaptchaV3Callback
-} from "react-recaptcha-v3-v2";
+} from 'react-recaptcha-v3-v2';
 
 const v2Callback: TReCaptchaV2Callback = (
   token: string | false | Error
 ): void => {
-  if (typeof token === "string") {
-    console.log("this is the token", token);
-  } else if (typeof token === "boolean" && !token) {
-    console.log("token has expired, user must check the checkbox again");
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
+  } else if (typeof token === 'boolean' && !token) {
+    console.log('token has expired, user must check the checkbox again');
   } else if (token instanceof Error) {
-    console.log("error. please check your network connection");
+    console.log('error. please check your network connection');
   }
 };
 
 const v3Callback: TReCaptchaV3Callback = (token: string | void): void => {
-  if (typeof token === "string") {
-    console.log("this is the token", token);
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
   } else {
-    console.log("token retrieval in progress...");
+    console.log('token retrieval in progress...');
   }
 };
 ```
@@ -80,7 +80,7 @@ const v3Callback: TReCaptchaV3Callback = (token: string | void): void => {
 </ReCaptchaProvider>
 ```
 
-### javascript example
+### simple javascript example
 
 ```js
 import {
@@ -89,23 +89,23 @@ import {
   ReCaptchaProvider,
   ReCaptchaV2,
   ReCaptchaV3
-} from "react-recaptcha-v3-v2";
+} from 'react-recaptcha-v3-v2';
 
 const v2Callback = token => {
-  if (typeof token === "string") {
-    console.log("this is the token", token);
-  } else if (typeof token === "boolean" && !token) {
-    console.log("token has expired, user must check the checkbox again");
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
+  } else if (typeof token === 'boolean' && !token) {
+    console.log('token has expired, user must check the checkbox again');
   } else if (token instanceof Error) {
-    console.log("error. please check your network connection");
+    console.log('error. please check your network connection');
   }
 };
 
 const v3Callback = token => {
-  if (typeof token === "string") {
-    console.log("this is the token", token);
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
   } else {
-    console.log("token retrieval in progress...");
+    console.log('token retrieval in progress...');
   }
 };
 ```
@@ -167,27 +167,26 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 | callback | function(token:string or void) | n/a           | Required. When called without arguments, it means requesting token in progress. When called with string (token), it means token retrieved                  |
 | action   | string                         | n/a           | Required. The name of the action to keep score and statistic about. It can only contain alphanumeric characters and slashes, and must not be user-specific |
 
-## demos
+## working examples
 
-### demos prerequisites & setup
+### examples prerequisites & setup
 
 1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
-1. `$cd module`
 1. `$npm install`
 1. `$npm run build`
-1. `$npm link` _(you might need sudo)_
+1. `$npm link` _(you might need sudo, if you get permission denied)_
 
-### typescript demo setup
+### typescript examples setup
 
-1. `$cd demo-ts`
+1. `$cd examples/typescript`
 1. `$npm install`
 1. `$npm link react-recaptcha-v3-v2`
 1. `$npm start`
 1. open browser to `http://locahost:9001`
 
-### javascript demo setup
+### javascript examples setup
 
-1. `$cd demo-js`
+1. `$cd examples/javascript`
 1. `$npm install`
 1. `$npm link react-recaptcha-v3-v2`
 1. `$npm start`
