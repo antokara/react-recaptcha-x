@@ -10,7 +10,7 @@ const HtmlWebpackTemplatePlugin = require('html-webpack-template');
 module.exports = {
   entry: './index.jsx',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.js'],
     alias: {
       module: path.resolve(__dirname, '../module/')
     }
@@ -48,7 +48,6 @@ module.exports = {
                   '@babel/preset-env',
                   { targets: { browsers: ['> 5%', 'last 2 versions'] } }
                 ],
-                '@babel/preset-typescript',
                 '@babel/preset-react'
               ],
               plugins: ['@babel/plugin-proposal-object-rest-spread']
