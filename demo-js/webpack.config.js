@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplatePlugin = require('html-webpack-template');
 
 module.exports = {
-  entry: './index.tsx',
+  entry: './index.jsx',
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
@@ -37,7 +37,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|reports)/,
         use: [
           {
@@ -69,7 +69,7 @@ module.exports = {
       DEBUG: false
     }),
     new HtmlWebpackPlugin({
-      title: 'React reCAPTCHA v3 v2 typescript demo',
+      title: 'React reCAPTCHA v3 v2 javascript demo',
       minify: false,
       inject: false,
       template: HtmlWebpackTemplatePlugin,

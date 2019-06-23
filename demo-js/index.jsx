@@ -8,26 +8,12 @@ import {
   ReCaptchaV3
 } from 'react-recaptcha-v3-v2';
 
-// app state
-interface IState {
-  v2TokenA: string | undefined;
-  v2ExpiredA: boolean;
-  v2ErrorA: boolean;
-  v2TokenB: string | undefined;
-  v2ExpiredB: boolean;
-  v2ErrorB: boolean;
-  v3TokenA: string | undefined;
-  v3TokenB: string | undefined;
-  v3RetrievingA: boolean;
-  v3RetrievingB: boolean;
-}
-
 /**
  * the main component of our development application
  * which is used to demo & develop our react module on-the-fly
  */
-class App extends React.PureComponent<{}, IState> {
-  public constructor(props: {}) {
+class App extends React.PureComponent {
+  constructor(props) {
     super(props);
     this.v2CallbackA = this.v2CallbackA.bind(this);
     this.v2CallbackB = this.v2CallbackB.bind(this);
@@ -47,7 +33,7 @@ class App extends React.PureComponent<{}, IState> {
     };
   }
 
-  public render(): React.ReactNode {
+  render() {
     const {
       v2TokenA,
       v2ExpiredA,
@@ -67,7 +53,7 @@ class App extends React.PureComponent<{}, IState> {
         siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}
       >
         <div data-test="dummy wrapper to demonstrate react context">
-          <h1>React reCAPTCHA v3 v2 typescript demo</h1>
+          <h1>React reCAPTCHA v3 v2 javascript demo</h1>
 
           <hr />
           <h2>ReCaptcha V2 - A</h2>
@@ -111,7 +97,7 @@ class App extends React.PureComponent<{}, IState> {
     );
   }
 
-  private v2CallbackA(token: string | false | Error): void {
+  v2CallbackA(token) {
     if (typeof token === 'string') {
       this.setState({
         v2TokenA: token,
@@ -129,7 +115,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v2CallbackB(token: string | false | Error): void {
+  v2CallbackB(token) {
     if (typeof token === 'string') {
       this.setState({
         v2TokenB: token,
@@ -147,7 +133,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackA(token: string | void): void {
+  v3CallbackA(token) {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
@@ -162,7 +148,7 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackB(token: string | void): void {
+  v3CallbackB(token) {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
