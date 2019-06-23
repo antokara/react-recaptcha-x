@@ -167,22 +167,6 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 | callback | function(token:string or void) | n/a           | Required. When called without arguments, it means requesting token in progress. When called with string (token), it means token retrieved                  |
 | action   | string                         | n/a           | Required. The name of the action to keep score and statistic about. It can only contain alphanumeric characters and slashes, and must not be user-specific |
 
-## development environment _(to contribute)_
-
-### development prerequisites
-
-1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
-
-### development setup
-
-1. `$cd module`
-1. `$npm install`
-1. `$cd ../dev`
-1. `$npm install`
-1. create `.env` file with your reCAPTCHA keys using `.env.example` as a template
-1. `$npm start`
-1. open browser to `http://locahost:9000`
-
 ## demos
 
 ### demos prerequisites & setup
@@ -208,6 +192,22 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$npm link react-recaptcha-v3-v2`
 1. `$npm start`
 1. open browser to `http://locahost:9001`
+
+## development environment _(to contribute)_
+
+### development prerequisites
+
+1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
+
+### development setup
+
+1. `$cd module`
+1. `$npm install`
+1. `$cd ../dev`
+1. `$npm install`
+1. create `.env` file with your reCAPTCHA keys using `.env.example` as a template
+1. `$npm start`
+1. open browser to `http://locahost:9000`
 
 ## other credits
 
