@@ -1,4 +1,4 @@
-# react-recaptcha-v3-v2
+# react-recaptcha-x
 
 a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
@@ -22,7 +22,7 @@ a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
 
 ### installation
 
-`$npm install react-recaptcha-v3-v2 --save`
+`$npm install react-recaptcha-x --save`
 
 ### simple typescript example
 
@@ -35,7 +35,7 @@ import {
   ReCaptchaV3,
   TReCaptchaV2Callback,
   TReCaptchaV3Callback
-} from 'react-recaptcha-v3-v2';
+} from 'react-recaptcha-x';
 
 const v2Callback: TReCaptchaV2Callback = (
   token: string | false | Error
@@ -89,7 +89,7 @@ import {
   ReCaptchaProvider,
   ReCaptchaV2,
   ReCaptchaV3
-} from 'react-recaptcha-v3-v2';
+} from 'react-recaptcha-x';
 
 const v2Callback = token => {
   if (typeof token === 'string') {
@@ -180,7 +180,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 1. `$cd examples/typescript`
 1. `$npm install`
-1. `$npm link react-recaptcha-v3-v2`
+1. `$npm link react-recaptcha-x`
 1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9001`
@@ -189,7 +189,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 1. `$cd examples/javascript`
 1. `$npm install`
-1. `$npm link react-recaptcha-v3-v2`
+1. `$npm link react-recaptcha-x`
 1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9001`

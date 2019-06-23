@@ -1,5 +1,5 @@
 {
-  "name": "react-recaptcha-v3-v2-dev-development",
+  "name": "react-recaptcha-x-dev-development",
   "version": "1.0.0",
   "description": "dev example of a React component for Google's reCAPTCHA v3 with v2 fallback",
   "private": true,
@@ -13,9 +13,9 @@
     "email": "antokarag@gmail.com",
     "url": "https://antokara.me"
   },
-  "homepage": "https://github.com/antokara/react-recaptcha-v3-v2",
+  "homepage": "https://github.com/antokara/react-recaptcha-x",
   "bugs": {
-    "url": "https://github.com/antokara/react-recaptcha-v3-v2/issues"
+    "url": "https://github.com/antokara/react-recaptcha-x/issues"
   },
   "license": "MIT",
   "devDependencies": {

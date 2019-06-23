@@ -11,9 +11,9 @@
     "quotemark": [true, "single", "jsx-double"],
     // @see https://github.com/prettier/prettier/issues/1565
     "newline-per-chained-call": false,
-    // because we perform a `$npm link react-recaptcha-v3-v2`,
+    // because we perform a `$npm link react-recaptcha-x`,
     // this package will NOT be listed in the dependencies of package.json
-    "no-implicit-dependencies": [true, ["react-recaptcha-v3-v2"]],
+    "no-implicit-dependencies": [true, ["react-recaptcha-x"]],
     // @see https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/naming-convention.md
     "naming-convention": [
       true,

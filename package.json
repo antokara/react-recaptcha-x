@@ -1,5 +1,5 @@
 {
-  "name": "react-recaptcha-v3-v2",
+  "name": "react-recaptcha-x",
   "version": "1.0.0-beta.0",
   "description": "a React component for Google's reCAPTCHA v3 and v2 checkbox",
   "main": "./dist/index.js",
@@ -24,13 +24,13 @@
     "email": "antokarag@gmail.com",
     "url": "https://antokara.me"
   },
-  "homepage": "https://github.com/antokara/react-recaptcha-v3-v2",
+  "homepage": "https://github.com/antokara/react-recaptcha-x",
   "bugs": {
-    "url": "https://github.com/antokara/react-recaptcha-v3-v2/issues"
+    "url": "https://github.com/antokara/react-recaptcha-x/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/antokara/react-recaptcha-v3-v2.git"
+    "url": "https://github.com/antokara/react-recaptcha-x.git"
   },
   "license": "MIT",
   "devDependencies": {

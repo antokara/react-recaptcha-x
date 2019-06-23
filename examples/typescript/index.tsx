@@ -6,7 +6,7 @@ import {
   ReCaptchaProvider,
   ReCaptchaV2,
   ReCaptchaV3
-} from 'react-recaptcha-v3-v2';
+} from 'react-recaptcha-x';
 
 // app state
 interface IState {
