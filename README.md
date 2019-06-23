@@ -181,6 +181,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$cd examples/typescript`
 1. `$npm install`
 1. `$npm link react-recaptcha-v3-v2`
+1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9001`
 
@@ -189,6 +190,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$cd examples/javascript`
 1. `$npm install`
 1. `$npm link react-recaptcha-v3-v2`
+1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9001`
 
@@ -203,7 +205,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$npm install`
 1. `$cd dev`
 1. `$npm install`
-1. create `.env` file with your reCAPTCHA keys using `.env.example` as a template
+1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
 1. open browser to `http://locahost:9000`
 
