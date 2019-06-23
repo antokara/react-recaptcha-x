@@ -174,7 +174,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
 1. `$npm install`
 1. `$npm run build`
-1. `$npm link` _(you might need sudo, if you get permission denied)_
+1. `$npm link` _(you might need to run with sudo, if you get permission denied)_
 
 ### typescript examples setup
 
@@ -200,9 +200,8 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 ### development setup
 
-1. `$cd module`
 1. `$npm install`
-1. `$cd ../dev`
+1. `$cd dev`
 1. `$npm install`
 1. create `.env` file with your reCAPTCHA keys using `.env.example` as a template
 1. `$npm start`

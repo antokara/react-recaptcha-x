@@ -12,7 +12,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
-      module: path.resolve(__dirname, '../'),
+      module: path.resolve(__dirname, '../src'),
       src: path.resolve(__dirname, '../src')
     }
   },
@@ -39,7 +39,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: /(node_modules|assets|reports)/,
+        exclude: /(node_modules|reports)/,
         use: [
           {
             loader: 'babel-loader',

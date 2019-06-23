@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, 'index.ts'),
+  entry: path.resolve(__dirname, './src/index.ts'),
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
