@@ -1,6 +1,6 @@
 # react-recaptcha-x
 
-a React reCAPTCHA version 3 and version 2 (checkbox) component in one.
+a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 
 - Small and Performant, only 10.8KB
 - Available for both Javascript and Typescript projects
