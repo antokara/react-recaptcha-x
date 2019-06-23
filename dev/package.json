@@ -9,7 +9,15 @@
     "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
     "build": "babel src/index.tsx --out-file dist/index.js"
   },
-  "author": "Antonios Karagiannis",
+  "author": {
+    "name": "Antonios Karagiannis",
+    "email": "antokarag@gmail.com",
+    "url": "https://antokara.me"
+  },
+  "homepage": "https://github.com/antokara/react-recaptcha-v3-v2",
+  "bugs": {
+    "url": "https://github.com/antokara/react-recaptcha-v3-v2/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
