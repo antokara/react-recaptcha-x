@@ -183,19 +183,19 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 1. `$npm start`
 1. open browser to `http://locahost:9000`
 
-## demo
+## typescript demo
 
-### demo prerequisites
+### typescript demo prerequisites
 
 1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
 
-### demo setup
+### typescript demo setup
 
 1. `$cd module`
 1. `$npm install`
 1. `$npm run build`
 1. `$npm link` _(you might need sudo)_
-1. `$cd ../demo`
+1. `$cd ../demo-ts`
 1. `$npm install`
 1. `$npm link react-recaptcha-v3-v2`
 1. `$npm start`
