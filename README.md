@@ -1,4 +1,6 @@
 # react-recaptcha-x
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x?ref=badge_shield)
+
 
 a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 
@@ -212,3 +214,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 ## other credits
 
 This project uses and includes, a modified version, of the Type definitions for Google Recaptcha 2.0. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts). Original Definitions by: Kristof Mattei <http://kristofmattei.be> Martin Costello <https://martincostello.com/> Ruslan Arkhipau <https://github.com/DethAriel> Rafael Tavares <https://github.com/rafaeltavares> Definitions: <https://github.com/DefinitelyTyped/DefinitelyTyped>
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x?ref=badge_large)
