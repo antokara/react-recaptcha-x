@@ -28,6 +28,58 @@ a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 
 `$npm install react-recaptcha-x --save`
 
+### simple javascript example
+
+```js
+import {
+  EReCaptchaV2Size,
+  EReCaptchaV2Theme,
+  ReCaptchaProvider,
+  ReCaptchaV2,
+  ReCaptchaV3
+} from 'react-recaptcha-x';
+
+const v2Callback = token => {
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
+  } else if (typeof token === 'boolean' && !token) {
+    console.log('token has expired, user must check the checkbox again');
+  } else if (token instanceof Error) {
+    console.log('error. please check your network connection');
+  }
+};
+
+const v3Callback = token => {
+  if (typeof token === 'string') {
+    console.log('this is the token', token);
+  } else {
+    console.log('token retrieval in progress...');
+  }
+};
+```
+
+...
+
+```jsx
+<ReCaptchaProvider
+  siteKeyV2="your-reCAPTCHA-v2-site-key"
+  siteKeyV3="your-reCAPTCHA-v3-site-key"
+  langCode="en"
+  hideV3Badge={false}
+>
+  Your Application
+  <ReCaptchaV2
+    callback={v2Callback}
+    theme={EReCaptchaV2Theme.Light}
+    size={EReCaptchaV2Size.Normal}
+    id="my-id"
+    data-test-id="my-test-id"
+    tabindex={0}
+  />
+  <ReCaptchaV3 action="your-action" callback={v3Callback} />
+</ReCaptchaProvider>
+```
+
 ### simple typescript example
 
 ```ts
@@ -84,58 +136,6 @@ const v3Callback: TReCaptchaV3Callback = (token: string | void): void => {
 </ReCaptchaProvider>
 ```
 
-### simple javascript example
-
-```js
-import {
-  EReCaptchaV2Size,
-  EReCaptchaV2Theme,
-  ReCaptchaProvider,
-  ReCaptchaV2,
-  ReCaptchaV3
-} from 'react-recaptcha-x';
-
-const v2Callback = token => {
-  if (typeof token === 'string') {
-    console.log('this is the token', token);
-  } else if (typeof token === 'boolean' && !token) {
-    console.log('token has expired, user must check the checkbox again');
-  } else if (token instanceof Error) {
-    console.log('error. please check your network connection');
-  }
-};
-
-const v3Callback = token => {
-  if (typeof token === 'string') {
-    console.log('this is the token', token);
-  } else {
-    console.log('token retrieval in progress...');
-  }
-};
-```
-
-...
-
-```jsx
-<ReCaptchaProvider
-  siteKeyV2="your-reCAPTCHA-v2-site-key"
-  siteKeyV3="your-reCAPTCHA-v3-site-key"
-  langCode="en"
-  hideV3Badge={false}
->
-  Your Application
-  <ReCaptchaV2
-    callback={v2Callback}
-    theme={EReCaptchaV2Theme.Light}
-    size={EReCaptchaV2Size.Normal}
-    id="my-id"
-    data-test-id="my-test-id"
-    tabindex={0}
-  />
-  <ReCaptchaV3 action="your-action" callback={v3Callback} />
-</ReCaptchaProvider>
-```
-
 ### ReCaptchaProvider _(provider)_
 
 This is required only once, per application and should be placed as a wrapper for the whole application if possible. That way, you can insert and remove dynamically, at any place, the ReCaptchaV2 / ReCaptchaV3 components.
@@ -153,6 +153,10 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 ### ReCaptchaV2 _(checkbox, component)_
 
+It can be used to render the reCAPTCHA v2 checkbox Component. It must be a child of the ReCaptchaProvider (direct or indirect, at any level). It requires a siteKeyV2 to be defined in the ReCaptchaProvider.
+
+The use of this component is not required but can be combined with the v3 reCAPTCHA Component (ie. as a failover in case of a false positive as a bot).
+
 #### ReCaptchaV2 Props
 
 | prop     | type                                     | default value | description                                                                                                                                                                                                                                                                                  |
@@ -163,6 +167,10 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 | tabindex | number                                   | 0             | Optional. The tabindex of the widget                                                                                                                                                                                                                                                         |
 
 ### ReCaptchaV3 _(invisible with score, component)_
+
+It can be used to handle the reCAPTCHA v3 invisible (score) Component. It must be a child of the ReCaptchaProvider (direct or indirect, at any level). It requires a siteKeyV3 to be defined in the ReCaptchaProvider.
+
+The use of this component is not required but can be combined with the v2 reCAPTCHA Component (ie. first try v3 and if that fails, show v2 in case of a false positive as a bot).
 
 #### ReCaptchaV3 Props
 
