@@ -67,7 +67,7 @@ class App extends React.PureComponent<{}, IState> {
         siteKeyV3={process.env.RE_CAPTCHA_V3_SITE_KEY}
       >
         <div data-test="dummy wrapper to demonstrate react context">
-          <h1>React reCAPTCHA v3 v2 typescript working example</h1>
+          <h1>React reCAPTCHA X - Typescript working example</h1>
 
           <hr />
           <h2>ReCaptcha V2 - A</h2>
