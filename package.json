@@ -9,7 +9,8 @@
     "build": "npm run build:clean && npm run build:types && npm run build:js",
     "build:clean": "rm dist/* -rf",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress"
+    "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress",
+    "cl": "commitlint --from=HEAD~1"
   },
   "keywords": [
     "react",
@@ -17,7 +18,10 @@
     "recaptcha v3",
     "recaptcha v2",
     "react recaptcha v3",
-    "react recaptcha v2"
+    "react recaptcha v2",
+    "javascript",
+    "typescript",
+    "google recaptcha"
   ],
   "author": {
     "name": "Antonios Karagiannis",
@@ -41,10 +45,17 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.2",
+    "@semantic-release/npm": "^5.1.13",
     "babel-loader": "^8.0.6",
     "babel-preset-minify": "^0.5.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.8.6",
+    "semantic-release": "^15.13.18",
     "tslint": "^5.18.0",
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-microsoft-contrib": "^6.2.0",
@@ -81,5 +92,59 @@
   },
   "prettier": {
     "singleQuote": true
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "publishConfig": {
+    "tag": "beta"
+  },
+  "release": {
+    "dryRun": false,
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@semantic-release/npm"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/npm"
+    ],
+    "publish": [
+      "@semantic-release/github",
+      "@semantic-release/npm"
+    ],
+    "npmPublish": false,
+    "success": [],
+    "fail": [],
+    "plugins": [
+      {
+        "path": "@semantic-release/changelog",
+        "changelogFile": "CHANGELOG.md"
+      },
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json"
+        ],
+        "message": "chore(release): v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      },
+      {
+        "path": "@semantic-release/github",
+        "assets": "dist/*.tgz"
+      },
+      {
+        "path": "@semantic-release/npm",
+        "npmPublish": false,
+        "tarballDir": "dist"
+      }
+    ]
   }
 }
