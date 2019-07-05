@@ -2,8 +2,12 @@
 
 a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 
+[![FOSSA Status][licenses]][licenses-url]
+[![Dependencies][deps]][deps-url]
+[![Build Status][build-status]][build-status-url]
+
 - Small and Performant, only 10.8KB
-- Available for both Javascript and Typescript projects
+- Available for both **Javascript** and **Typescript** projects
 - Plug and play. No CSS or Script Tags required!
 - It only inserts one _recaptcha/api.js_ script tag
 - Supports v3 and v2 in the same page, at the same time
@@ -171,7 +175,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 ### examples prerequisites & setup
 
-1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
+1. [nodejs](https://nodejs.org/en/) 10.x.x LTS
 1. `$npm install`
 1. `$npm run build`
 1. `$npm link` _(you might need to run with sudo, if you get permission denied)_
@@ -198,7 +202,7 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 
 ### development prerequisites
 
-1. [nodejs](https://nodejs.org/en/) 10.15.x LTS
+1. [nodejs](https://nodejs.org/en/) 10.x.x LTS
 
 ### development setup
 
@@ -212,3 +216,10 @@ It is responsible for injecting the required Javascript Script Tag, CSS Style Ta
 ## other credits
 
 This project uses and includes, a modified version, of the Type definitions for Google Recaptcha 2.0. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts). Original Definitions by: Kristof Mattei <http://kristofmattei.be> Martin Costello <https://martincostello.com/> Ruslan Arkhipau <https://github.com/DethAriel> Rafael Tavares <https://github.com/rafaeltavares> Definitions: <https://github.com/DefinitelyTyped/DefinitelyTyped>
+
+[deps]: https://david-dm.org/antokara/react-recaptcha-x.svg
+[deps-url]: https://david-dm.org/antokara/react-recaptcha-x
+[licenses]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x.svg?type=shield
+[licenses-url]: https://app.fossa.com/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x?ref=badge_shield
+[build-status]: https://travis-ci.org/antokara/react-recaptcha-x.svg?branch=master
+[build-status-url]: https://travis-ci.org/antokara/react-recaptcha-x

@@ -1,0 +1,43 @@
+env:
+  global:
+    - secure: 'hJ/iGIm5actlSUrj42yrU/NlfME8EvoqJVI9Xjz3eLz8eTea5VjnaypN1Rk6HOrJqZL4KmdppYhUF+XN0+YMC5Qz7pk9PAq7jY3AZ81XlTkVIAMJDS0i6X6KIeenSo28q195ZmPYr7/SjUAiD0VxjCvNYzbkgMVXqXwGbxm2rgcHhRuudYnD37Eph/VPkNt1h9RwFuS6xrIvbQjwo2L4+V4lFNMdvZqJYq+GAtrFt5iLNAciMbnVtqqUA1U/frRl05TCO+bhrYPKr6ZK/8o1SwKARNnXcNKAmRAPZpaEeC0bBW0jvFqr5rbZGADXtNRjQ66Nqz+ptShAmycZi5D/bKzUpTvWac0J/DpQk06xqHFnH6i58G/5ApbKQvqaw8n48EeeWfASNB47fvel7CpqKf09FKRBXlAh5HXveBr6aHglc2ZNSkFDbQ/v9hGWa6xf4WpQSnu94Ie7xB+cmadWCxAj9JZZrvFRyKZ09cRWhFZMMjJZ0v2y1e2nMcG0lvCJdSqqS2zQ+Va1+a9fN/oyd0Kt2ukbmSGc8nzRumTgouJOctHEneTwInGG8q46U386cvAaF8HlkrQXj7pGmyA7vkTbbC7sAJY0PfPxw/nc1MJWWusDcUDuBv0zmosjecume4iIeg/AzX0BXQypA3hz6hiowHJ6CHU7E0MsMVbvzVc='
+    - secure: 'reWsfr4p/6GXtATL/sMHIUtEiY/dk6snwW1lOH4Ld0HKAjJhPnvw5HqTKSY/nxGFpSpfJCoALzUtBD9afsMjSAc7uZT7BhlWBCtE6S1H3UrJXJJh6e5nzuj/bQyQ4hh0BH652t+3hGqDtznRwZUgIDo8s0U+VWiwOT4vGHp5TixcnWoVPNjzRQEIkMUItDImyhDO7W6SvtvFV74vWHDmhKA7sVeT+ntjDUbqzEBsmNLDdDCj6gKQOP/l5T0Ou32mF4vgQGvg26Xj+laImRDyhsJjKl35HuAim+9qfV6CFphp1nKmqs/MkWxXkRew8mrg6tL1onc76X8NyDAQBnZNsEnXLN64VxH8Hln5/9RGhHwD5uPFydgUkwDFI61RnCaKIUfikheVE7OQzZEBcnRTdTVqYE2328/+9eIawkJgN/n8ES9RHruT62l+K+c5CUjN4/VUJoCKZQZmHeza8poQkGhP0nqC/y56JVqgGiul8oZ3bpRe/IKO6jAG6B6luKsScmhpo6IgFhChkzd3YIMTCO8+UxckmP7s5uLT6T1xIqySCwyI8/ZIUBoiPMVdDAot5vWHbwvdD5YQGEOU/WRwl0GVQOeKZI2vdUYQ3TKIPc+GhuC3c6PumlwtcQgLyv2R5UcRSJIy6j1Z/64Bdh8KZDi9+mTvYucDk4DYFL/fa8E='
+    - GIT_AUTHOR_NAME: 'Antonios Karagiannis'
+    - GIT_AUTHOR_EMAIL: 'antokarag@gmail.com'
+    - GIT_COMMITTER_NAME: 'Antonios Karagiannis'
+    - GIT_COMMITTER_EMAIL: 'antokarag@gmail.com'
+
+sudo: false
+language: node_js
+node_js:
+  - 10.16.0
+
+stages:
+  - lint
+  - test
+  - build
+  - name: deploy
+    if: branch = master AND type = push
+
+jobs:
+  include:
+    - stage: lint
+      script:
+        - npm run cl
+        - npm run prettier
+        - npm run lint
+
+    - stage: test
+      script:
+        - npm run test
+
+    - stage: build
+      script:
+        - npm run build
+
+    - stage: deploy
+      skip_cleanup: true
+      script:
+        - npm run build
+      after_success:
+        - npx semantic-release
