@@ -2,9 +2,19 @@
 
 a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 
-[![FOSSA Status][licenses]][licenses-url]
+[![npm][npm]][npm-url]
+[![Last Release][last-release]][last-release-url]
+[![Last Commit][last-commit]][last-commit-url]
+
 [![Dependencies][deps]][deps-url]
 [![Build Status][build-status]][build-status-url]
+[![FOSSA Status][licenses]][licenses-url]
+
+[![npm Downloads][npm-downloads]][npm-downloads-url]
+[![GitHub Issues][github-issues]][github-issues-url]
+[![Top Language][top-language]][top-language-url]
+[![License][license]][license-url]
+![Types][types]
 
 - Small and Performant, only 10.8KB
 - Available for both **Javascript** and **Typescript** projects
@@ -225,9 +235,24 @@ The use of this component is not required but can be combined with the v2 reCAPT
 
 This project uses and includes, a modified version, of the Type definitions for Google Recaptcha 2.0. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts). Original Definitions by: Kristof Mattei <http://kristofmattei.be> Martin Costello <https://martincostello.com/> Ruslan Arkhipau <https://github.com/DethAriel> Rafael Tavares <https://github.com/rafaeltavares> Definitions: <https://github.com/DefinitelyTyped/DefinitelyTyped>
 
+[npm]: https://img.shields.io/npm/v/react-recaptcha-x.svg
+[npm-url]: https://www.npmjs.com/package/react-recaptcha-x
 [deps]: https://david-dm.org/antokara/react-recaptcha-x.svg
 [deps-url]: https://david-dm.org/antokara/react-recaptcha-x
 [licenses]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x.svg?type=shield
 [licenses-url]: https://app.fossa.com/projects/git%2Bgithub.com%2Fantokara%2Freact-recaptcha-x?ref=badge_shield
 [build-status]: https://travis-ci.org/antokara/react-recaptcha-x.svg?branch=master
 [build-status-url]: https://travis-ci.org/antokara/react-recaptcha-x
+[license]: https://img.shields.io/npm/l/react-recaptcha-x.svg
+[license-url]: https://github.com/antokara/react-recaptcha-x/blob/master/LICENSE
+[top-language]: https://img.shields.io/github/languages/top/antokara/react-recaptcha-x.svg
+[top-language-url]: https://github.com/antokara/react-recaptcha-x/search?l=typescript
+[github-issues]: https://img.shields.io/github/issues/antokara/react-recaptcha-x.svg
+[github-issues-url]: https://github.com/antokara/react-recaptcha-x/issues
+[npm-downloads]: https://img.shields.io/npm/dm/react-recaptcha-x.svg
+[npm-downloads-url]: https://www.npmjs.com/package/react-recaptcha-x
+[types]: https://img.shields.io/npm/types/react-recaptcha-x.svg
+[last-commit]: https://img.shields.io/github/last-commit/antokara/react-recaptcha-x.svg
+[last-commit-url]: https://github.com/antokara/react-recaptcha-x/graphs/commit-activity
+[last-release]: https://img.shields.io/github/release-date/antokara/react-recaptcha-x.svg
+[last-release-url]: https://github.com/antokara/react-recaptcha-x/releases
