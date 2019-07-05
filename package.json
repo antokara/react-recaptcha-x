@@ -1,6 +1,6 @@
 {
   "name": "react-recaptcha-x",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.1",
   "description": "a React component for Google's reCAPTCHA v3 and v2 (checkbox) component",
   "main": "./dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "cl": "commitlint --from=HEAD~1"
   },
   "keywords": [
-    "react",
+    "google recaptcha",
     "react recaptcha",
     "recaptcha v3",
     "recaptcha v2",
@@ -21,7 +21,7 @@
     "react recaptcha v2",
     "javascript",
     "typescript",
-    "google recaptcha"
+    "react"
   ],
   "author": {
     "name": "Antonios Karagiannis",
@@ -111,12 +111,12 @@
     ],
     "prepare": [
       "@semantic-release/changelog",
-      "@semantic-release/git",
-      "@semantic-release/npm"
+      "@semantic-release/npm",
+      "@semantic-release/git"
     ],
     "publish": [
-      "@semantic-release/github",
-      "@semantic-release/npm"
+      "@semantic-release/npm",
+      "@semantic-release/github"
     ],
     "npmPublish": true,
     "success": [],
