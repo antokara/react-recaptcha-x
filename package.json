@@ -1,6 +1,6 @@
 {
   "name": "react-recaptcha-x",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0",
   "description": "a React component for Google's reCAPTCHA v3 and v2 (checkbox) component",
   "main": "./dist/index.js",
   "scripts": {
@@ -99,7 +99,7 @@
     ]
   },
   "publishConfig": {
-    "tag": "beta"
+    "tag": "stable"
   },
   "release": {
     "dryRun": false,
@@ -142,7 +142,7 @@
       },
       {
         "path": "@semantic-release/npm",
-        "npmPublish": false,
+        "npmPublish": true,
         "tarballDir": "dist"
       }
     ]
