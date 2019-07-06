@@ -22,7 +22,7 @@
       "allow-pascal-case"
     ],
     // @see https://github.com/palantir/tslint/issues/3364
-    "no-implicit-dependencies": [true, ["src"]],
+    "no-implicit-dependencies": [true, "dev", ["src"]],
     "no-submodule-imports": [true, "src"],
     // @see https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/naming-convention.md
     "naming-convention": [
