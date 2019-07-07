@@ -4,11 +4,22 @@ import { ETheme } from './ETheme';
 import { TCallback } from './TCallback';
 
 /**
- * props for ReCaptchaV2 component
+ * props for ReCaptchaV2 component.
+ * includes:
+ *  - Context props provided by the Provider component
+ *  - HTMLDivElement props
+ *  - its own props
  */
-export interface IProps extends IConsumer {
+interface IProps
+  extends IConsumer,
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLDivElement>,
+      HTMLDivElement
+    > {
   callback: TCallback;
   theme: ETheme;
   size: ESize;
   tabindex: number;
 }
+
+export { IProps };
