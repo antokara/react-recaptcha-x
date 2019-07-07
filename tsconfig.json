@@ -17,8 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"]
-    }
+    },
+    "typeRoots": ["src/types", "node_modules/@types"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dev", "dist", "examples"]
+  "exclude": ["node_modules", "dev", "dist", "examples", "src/types"]
 }
