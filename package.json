@@ -12,7 +12,8 @@
     "build:clean": "rm dist/* -rf",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress",
-    "cl": "commitlint --from=HEAD~1"
+    "cl": "commitlint --from=HEAD~1",
+    "ts:validate": "tsc --outDir /tmp"
   },
   "keywords": [
     "google recaptcha",
@@ -40,13 +41,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@semantic-release/changelog": "^3.0.4",
@@ -56,14 +50,13 @@
     "@testing-library/dom": "^5.5.0",
     "@types/jest": "^24.0.15",
     "@types/react-test-renderer": "^16.8.2",
-    "babel-loader": "^8.0.6",
-    "babel-preset-minify": "^0.5.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
     "semantic-release": "^15.13.18",
     "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-microsoft-contrib": "^6.2.0",
@@ -75,28 +68,6 @@
   "dependencies": {
     "@types/react": "^16.8.22",
     "react": "^16.8.6"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "browsers": [
-              "> 5%",
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
-      "@babel/preset-react",
-      "@babel/preset-typescript",
-      "minify"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-object-rest-spread",
-      "@babel/plugin-transform-react-jsx"
-    ]
   },
   "prettier": {
     "singleQuote": true
