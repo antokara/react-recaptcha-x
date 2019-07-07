@@ -14,7 +14,9 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "module/*": ["../src/*"]
-    }
+      "module/*": ["../src/*"],
+      "src/*": ["../src/*"]
+    },
+    "typeRoots": ["../src/types", "../node_modules/@types"]
   }
 }

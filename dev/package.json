@@ -6,7 +6,8 @@
   "scripts": {
     "prettier": "prettier --check '*.ts?(x)'",
     "lint": "tslint '*.ts?(x)' -c tslint.json -e 'node_modules/**'",
-    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js"
+    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js",
+    "ts:validate": "tsc --outDir /tmp"
   },
   "author": {
     "name": "Antonios Karagiannis",
@@ -19,20 +20,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
     "@types/dotenv": "^6.1.1",
-    "babel-loader": "^8.0.6",
-    "babel-preset-minify": "^0.5.0",
     "dotenv": "^8.0.0",
     "dotenv-webpack": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "prettier": "^1.18.2",
+    "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
     "tslint-consistent-codestyle": "^1.15.1",
     "tslint-microsoft-contrib": "^6.2.0",
@@ -47,26 +41,6 @@
     "@types/react-dom": "^16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "browsers": [
-              "> 5%",
-              "last 2 versions"
-            ]
-          }
-        }
-      ],
-      "@babel/preset-react",
-      "@babel/preset-typescript"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-object-rest-spread"
-    ]
   },
   "prettier": {
     "singleQuote": true
