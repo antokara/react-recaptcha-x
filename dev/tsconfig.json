@@ -17,6 +17,6 @@
       "module/*": ["../src/*"],
       "src/*": ["../src/*"]
     },
-    "typeRoots": ["../src/types", "../node_modules/@types"]
+    "typeRoots": ["../types", "../node_modules/@types"]
   }
 }
