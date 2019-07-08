@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { ESize } from './ESize';
+import { ETheme } from './ETheme';
 import { IProps } from './IProps';
 import { IState } from './IState';
 
@@ -6,6 +8,12 @@ import { IState } from './IState';
  * a React reCAPTCHA version 2 component
  */
 class ReCaptchaV2 extends React.Component<IProps, IState> {
+  public static defaultProps: Pick<IProps, 'theme' | 'size' | 'tabindex'> = {
+    theme: ETheme.Light,
+    size: ESize.Normal,
+    tabindex: 0
+  };
+
   public constructor(props: IProps) {
     super(props);
 

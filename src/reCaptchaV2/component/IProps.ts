@@ -17,9 +17,9 @@ interface IProps
       HTMLDivElement
     > {
   callback: TCallback;
-  theme: ETheme;
-  size: ESize;
-  tabindex: number;
+  theme?: ETheme;
+  size?: ESize;
+  tabindex?: number;
 }
 
 export { IProps };
