@@ -7,7 +7,7 @@
     "test": "TZ=UTC jest",
     "test:cov": "TZ=UTC jest --coverage",
     "prettier": "npx prettier --check 'src/**/*.ts?(x)'",
-    "lint": "tslint 'src/**/*.ts?(x)' -c tslint.json -e 'src/provider/grecaptcha.d.ts'",
+    "lint": "tslint 'src/**/*.ts?(x)' -c tslint.json",
     "build": "npm run build:clean && npm run build:types && npm run build:js",
     "build:clean": "rm dist/* -rf",
     "build:types": "tsc --emitDeclarationOnly",
