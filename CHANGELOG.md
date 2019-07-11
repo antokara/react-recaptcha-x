@@ -1,3 +1,12 @@
+## [1.0.4](https://github.com/antokara/react-recaptcha-x/compare/v1.0.3...v1.0.4) (2019-07-11)
+
+
+### Bug Fixes
+
+* **provider and components:** fix context prop type requirement ([34ed67c](https://github.com/antokara/react-recaptcha-x/commit/34ed67c))
+* **recaptcha v2:** optional props ([5461afc](https://github.com/antokara/react-recaptcha-x/commit/5461afc))
+* **recaptcha v2 interface props:** add html div props ([1e531f1](https://github.com/antokara/react-recaptcha-x/commit/1e531f1))
+
 ## [1.0.3](https://github.com/antokara/react-recaptcha-x/compare/v1.0.2...v1.0.3) (2019-07-05)
 
 
