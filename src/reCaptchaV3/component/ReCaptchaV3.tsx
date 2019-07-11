@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { IConsumer } from 'src/provider/IConsumer';
 import { IProps } from './IProps';
 import { IState } from './IState';
 
 /**
  * a React reCAPTCHA version 3 component
  */
-class ReCaptchaV3 extends React.Component<IProps, IState> {
-  public constructor(props: IProps) {
+class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
+  public constructor(props: IProps & IConsumer) {
     super(props);
 
     // validate the presence of the siteKeyV3
@@ -31,7 +32,7 @@ class ReCaptchaV3 extends React.Component<IProps, IState> {
    * if js api is loaded and was not previously loaded,
    * attempt to get the token
    */
-  public componentDidUpdate(prevProps: IProps): void {
+  public componentDidUpdate(prevProps: IProps & IConsumer): void {
     const { loaded } = this.props.providerContext;
     if (prevProps.providerContext.loaded !== loaded && loaded) {
       this.getToken();

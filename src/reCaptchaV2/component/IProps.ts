@@ -1,4 +1,3 @@
-import { IConsumer } from 'src/provider/IConsumer';
 import { ESize } from './ESize';
 import { ETheme } from './ETheme';
 import { TCallback } from './TCallback';
@@ -11,11 +10,10 @@ import { TCallback } from './TCallback';
  *  - its own props
  */
 interface IProps
-  extends IConsumer,
-    React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLDivElement>,
-      HTMLDivElement
-    > {
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   callback: TCallback;
   theme?: ETheme;
   size?: ESize;
