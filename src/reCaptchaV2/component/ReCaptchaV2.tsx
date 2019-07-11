@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IConsumer } from 'src/provider/IConsumer';
 import { ESize } from './ESize';
 import { ETheme } from './ETheme';
 import { IProps } from './IProps';
@@ -7,14 +8,14 @@ import { IState } from './IState';
 /**
  * a React reCAPTCHA version 2 component
  */
-class ReCaptchaV2 extends React.Component<IProps, IState> {
+class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
   public static defaultProps: Pick<IProps, 'theme' | 'size' | 'tabindex'> = {
     theme: ETheme.Light,
     size: ESize.Normal,
     tabindex: 0
   };
 
-  public constructor(props: IProps) {
+  public constructor(props: IProps & IConsumer) {
     super(props);
 
     // validate the presence of the siteKeyV2
@@ -42,7 +43,7 @@ class ReCaptchaV2 extends React.Component<IProps, IState> {
    * if js api is loaded and was not previously loaded,
    * attempt to render the widget
    */
-  public componentDidUpdate(prevProps: IProps): void {
+  public componentDidUpdate(prevProps: IProps & IConsumer): void {
     const { ref } = this.state;
     const { loaded, siteKeyV2 } = this.props.providerContext;
     const { theme, size, tabindex } = this.props;
