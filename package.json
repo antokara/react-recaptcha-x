@@ -41,7 +41,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
+    "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.16",
@@ -54,7 +54,7 @@
     "prettier": "^1.18.2",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
-    "semantic-release": "^15.13.18",
+    "semantic-release": "^15.13.24",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
