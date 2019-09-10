@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IConsumer } from 'src/provider/IConsumer';
+import { IConsumer } from '../../provider/IConsumer';
 import { IProps } from './IProps';
 import { IState } from './IState';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IConsumer } from 'src/provider/IConsumer';
+import { IConsumer } from '../../provider/IConsumer';
 import { ESize } from './ESize';
 import { ETheme } from './ETheme';
 import { IProps } from './IProps';

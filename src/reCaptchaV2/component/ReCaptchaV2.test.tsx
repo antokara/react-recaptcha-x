@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as TestRenderer from 'react-test-renderer';
-import { IContext } from 'src/provider/IContext';
+import { IContext } from '../../provider/IContext';
 import { ESize } from './ESize';
 import { ETheme } from './ETheme';
 import { ReCaptchaV2 } from './ReCaptchaV2';
