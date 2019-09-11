@@ -1,6 +1,6 @@
 {
   "name": "react-recaptcha-x",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "a React component for Google's reCAPTCHA v3 and v2 (checkbox) component",
   "main": "./dist/index.js",
   "scripts": {
