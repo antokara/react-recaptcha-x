@@ -1,0 +1,37 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-consistent-codestyle",
+    "tslint-microsoft-contrib"
+  ],
+  "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
+  "rules": {
+    "quotemark": [true, "single", "jsx-double"],
+    // @see https://github.com/prettier/prettier/issues/1565
+    "newline-per-chained-call": false,
+    // because we perform a `$npm link react-recaptcha-x`,
+    // this package will NOT be listed in the dependencies of package.json
+    "no-implicit-dependencies": [true, ["react-recaptcha-x"]],
+    // @see https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/naming-convention.md
+    "naming-convention": [
+      true,
+      // type alias names must start with "T"
+      // enforce PascalCase for classes, interfaces, enums, etc. Remember, there are still no underscores allowed
+      { "type": "type", "format": "PascalCase", "prefix": "T" },
+      // do not require class names to have prefix
+      { "type": "class", "prefix": null },
+      // inferface names must start with "I"
+      { "type": "interface", "format": "PascalCase", "prefix": "I" },
+      // enum names must start with "E"
+      { "type": "enum", "format": "PascalCase", "prefix": "E" },
+      // exclude the Window interface name to have to start with "I"
+      {
+        "type": "interface",
+        "filter": "^Window$",
+        "prefix": null
+      }
+    ]
+  }
+}
