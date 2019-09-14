@@ -41,18 +41,7 @@ module.exports = {
         exclude: /(node_modules|reports)/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  '@babel/preset-env',
-                  { targets: { browsers: ['> 5%', 'last 2 versions'] } }
-                ],
-                '@babel/preset-typescript',
-                '@babel/preset-react'
-              ],
-              plugins: ['@babel/plugin-proposal-object-rest-spread']
-            }
+            loader: 'ts-loader'
           }
         ]
       }
