@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/antokara/react-recaptcha-x/compare/v1.0.5...v1.0.6) (2019-09-15)
+
+
+### Bug Fixes
+
+* **declaration import paths:** typing issues with paths [#9](https://github.com/antokara/react-recaptcha-x/issues/9) ([5287109](https://github.com/antokara/react-recaptcha-x/commit/5287109))
+
 ## [1.0.5](https://github.com/antokara/react-recaptcha-x/compare/v1.0.4...v1.0.5) (2019-09-11)
 
 
