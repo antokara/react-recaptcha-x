@@ -27,6 +27,19 @@ a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 - Supports custom props to the v2 component (className, id, data-x, etc.)
 - Easy to use, single callback for Token/Expiration/Error handling
 
+## why I created another one of those reCAPTCHA wrappers
+
+Using the Google reCAPTCHA v3, can be an issue if your human user,
+gets a low score and is falsely identified as a bot. There is nothing the user can do to proceed, in that case.
+
+This can be especially troublesome, if it happens during an important action, such as signing up.
+Chances are, your human user will not be able to proceed and won't retry either.
+
+Using this component, you can chose to fallback to the Google reCAPTCHA v2 checkbox, if the user scored low and was identified as a bot. This will allow the user to attempt to pass the checkbox and
+perhaps, solve the more difficult image reCAPTCHA.
+
+Most reCAPTCHA wrappers do not support both v3 and v2 at the same time properly. This component was created to solve that case, so that you would never lose a human user again.
+
 ## usage
 
 ### requirements
