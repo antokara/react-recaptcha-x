@@ -11,26 +11,55 @@ describe('ReCaptchaV2 component', () => {
   let callback: TCallback;
   let providerContext: IContext;
 
-  beforeEach(() => {
-    callback = jest.fn();
-    providerContext = {
-      siteKeyV2: 'test',
-      siteKeyV3: undefined,
-      loaded: false
-    };
+  describe('without the V2 site key', () => {
+    beforeEach(() => {
+      callback = jest.fn();
+      providerContext = {
+        siteKeyV2: undefined,
+        siteKeyV3: undefined,
+        loaded: false
+      };
+    });
 
-    renderer = TestRenderer.create(
-      <ReCaptchaV2
-        callback={callback}
-        theme={ETheme.Light}
-        tabindex={0}
-        size={ESize.Normal}
-        providerContext={providerContext}
-      />
-    );
+    it('throws an Error', () => {
+      expect(() =>
+        TestRenderer.create(
+          <ReCaptchaV2
+            callback={callback}
+            theme={ETheme.Light}
+            tabindex={0}
+            size={ESize.Normal}
+            providerContext={providerContext}
+          />
+        )
+      ).toThrowError(
+        'The prop "siteKeyV2" must be set on the ReCaptchaProvider before using the ReCaptchaV2 component'
+      );
+    });
   });
 
-  it('matches the snapshot', () => {
-    expect(renderer.toJSON()).toMatchSnapshot();
+  describe('with a V2 site key', () => {
+    beforeEach(() => {
+      callback = jest.fn();
+      providerContext = {
+        siteKeyV2: 'test',
+        siteKeyV3: undefined,
+        loaded: false
+      };
+
+      renderer = TestRenderer.create(
+        <ReCaptchaV2
+          callback={callback}
+          theme={ETheme.Light}
+          tabindex={0}
+          size={ESize.Normal}
+          providerContext={providerContext}
+        />
+      );
+    });
+
+    it('matches the snapshot', () => {
+      expect(renderer.toJSON()).toMatchSnapshot();
+    });
   });
 });
