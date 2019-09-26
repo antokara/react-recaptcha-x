@@ -37,16 +37,24 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
     this.successCallback = this.successCallback.bind(this);
     this.expiredCallback = this.expiredCallback.bind(this);
     this.errorCallback = this.errorCallback.bind(this);
+    this.checkComponentDidUpdate = this.checkComponentDidUpdate.bind(this);
+  }
+
+  public componentDidUpdate(prevProps: IProps & IConsumer): void {
+    this.checkComponentDidUpdate(this.state.ref, this.props, prevProps);
   }
 
   /**
    * if js api is loaded and was not previously loaded,
    * attempt to render the widget
    */
-  public componentDidUpdate(prevProps: IProps & IConsumer): void {
-    const { ref } = this.state;
-    const { loaded, siteKeyV2 } = this.props.providerContext;
-    const { theme, size, tabindex } = this.props;
+  public checkComponentDidUpdate(
+    ref: React.RefObject<HTMLDivElement>,
+    props: IProps & IConsumer,
+    prevProps: IProps & IConsumer
+  ): void {
+    const { loaded, siteKeyV2 } = props.providerContext;
+    const { theme, size, tabindex } = props;
     if (
       prevProps.providerContext.loaded !== loaded &&
       loaded &&
