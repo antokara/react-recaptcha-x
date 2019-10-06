@@ -244,6 +244,92 @@ The use of this component is not required but can be combined with the v2 reCAPT
 1. `$npm start`
 1. open browser to `http://locahost:9000`
 
+### Code Quality / Linting
+
+#### Code Quality / Linting - Packages / References
+
+1. [Commitlint](https://commitlint.js.org/)
+   1. [conventional changelog](https://github.com/conventional-changelog/commitlint#readme)
+1. [Prettier](https://prettier.io/)
+1. [TSLint](https://palantir.github.io/tslint/)
+   1. [consistent codestyle](https://github.com/ajafff/tslint-consistent-codestyle#rules)
+   1. [microsoft contrib](https://github.com/microsoft/tslint-microsoft-contrib#supported-rules)
+   1. [tslint react](https://github.com/palantir/tslint-react#rules)
+
+#### Code Quality / Linting - Commands
+
+1. for Commitlint run `$npm run cl`
+1. for Prettier run `$npm run prettier`
+1. for TSLint run `$npm run lint`
+1. for Typescript compilation validation run `$npm run ts:validate`
+
+### Unit Testing
+
+#### Unit Testing - Packages / References
+
+1. [Jest](https://jestjs.io)
+1. [React Testing Library](https://testing-library.com/)
+1. [Jest DOM](https://github.com/testing-library/jest-dom)
+
+#### Unit Testing - Commands
+
+- for unit tests run `$npm test`
+- for unit tests plus code coverage report run `$npm test:cov`
+
+#### Unit Testing - Reports
+
+- code coverage `/reports/coverage/lcov-report/index.html`
+
+### Build / Deployment / Release
+
+#### Build / Deployment / Release - Packages / References
+
+1. [Typescript compiler](http://www.typescriptlang.org/docs/handbook/compiler-options.html)
+1. [Webpack](https://webpack.js.org/)
+   1. [ts loader](https://github.com/TypeStrong/ts-loader)
+1. [Semantic Release](https://semantic-release.gitbook.io/semantic-release/)
+   1. [commit analyzer](https://github.com/semantic-release/commit-analyzer)
+   1. [release notes generator](https://github.com/semantic-release/release-notes-generator)
+   1. [changelog](https://github.com/semantic-release/changelog)
+   1. [git](https://github.com/semantic-release/git)
+   1. [github](https://github.com/semantic-release/github)
+   1. [npm](https://github.com/semantic-release/npm)
+1. [Semantic Versioning](https://semver.org/)
+1. [Travis CI](https://docs.travis-ci.com/)
+   1. [builds](https://travis-ci.org/antokara/react-recaptcha-x)
+
+#### Build / Deployment / Release - Commands
+
+For the complete build sequence run:
+
+- `$npm run build`
+
+Alternatively, if you want more control:
+
+- to clean the `dist/` directory, run `$npm run build:clean`
+- for _declaration files_ generation, run `$npm run build:types`
+- for _javascript files_ generation, run `$npm run build:js`
+- for _tsc paths_ resolution, run `$npm run build:tscpaths`
+
+Travis CI lints, tests and builds any GitHub branch and PR.
+Once the PR gets merged to **master**, Travis CI runs again
+and this time, additionally to lint, test and build, the **deploy** stage runs which executes the `semantic-release`.
+
+When Semantic Release runs, it analyzes the git commits and if applicable, it:
+
+1. generates the updated changelog
+1. creates a git (release) tag with the appropriate semantic release
+   version
+1. updates the version in `package.json`
+1. commits the file changes and new tag, to the GitHub master branch
+1. publishes the new version, to the npm repository with the `latest` tag
+
+There's one final step that needs to be done manually, after we verify the published npm:
+
+- run `$npm dist-tag add react-recaptcha-x@{version} stable`
+
+this will add the `stable` distribution tag, marking the latest release, as the stable one.
+
 ## other credits
 
 This project uses and includes, a modified version, of the Type definitions for Google Recaptcha 2.0. Original version taken from [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/grecaptcha/index.d.ts). Original Definitions by: Kristof Mattei <http://kristofmattei.be> Martin Costello <https://martincostello.com/> Ruslan Arkhipau <https://github.com/DethAriel> Rafael Tavares <https://github.com/rafaeltavares> Definitions: <https://github.com/DefinitelyTyped/DefinitelyTyped>
