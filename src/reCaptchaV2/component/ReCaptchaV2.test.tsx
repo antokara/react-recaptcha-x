@@ -1,5 +1,5 @@
+import { render, RenderResult, waitForElement } from '@testing-library/react';
 import * as React from 'react';
-import * as TestRenderer from 'react-test-renderer';
 import { IContext } from 'src/provider/IContext';
 import { ESize } from './ESize';
 import { ETheme } from './ETheme';
@@ -7,9 +7,9 @@ import { ReCaptchaV2 } from './ReCaptchaV2';
 import { TCallback } from './TCallback';
 
 describe('ReCaptchaV2 component', () => {
-  let renderer: TestRenderer.ReactTestRenderer;
   let callback: TCallback;
   let providerContext: IContext;
+  let rr: RenderResult;
 
   describe('without the V2 site key', () => {
     beforeEach(() => {
@@ -22,17 +22,16 @@ describe('ReCaptchaV2 component', () => {
     });
 
     it('throws an Error', () => {
-      expect(() =>
-        TestRenderer.create(
-          <ReCaptchaV2
-            callback={callback}
-            theme={ETheme.Light}
-            tabindex={0}
-            size={ESize.Normal}
-            providerContext={providerContext}
-          />
-        )
-      ).toThrowError(
+      expect(
+        () =>
+          new ReCaptchaV2({
+            callback,
+            theme: ETheme.Light,
+            tabindex: 0,
+            size: ESize.Normal,
+            providerContext: providerContext
+          })
+      ).toThrow(
         'The prop "siteKeyV2" must be set on the ReCaptchaProvider before using the ReCaptchaV2 component'
       );
     });
@@ -46,8 +45,7 @@ describe('ReCaptchaV2 component', () => {
         siteKeyV3: undefined,
         loaded: false
       };
-
-      renderer = TestRenderer.create(
+      rr = render(
         <ReCaptchaV2
           callback={callback}
           theme={ETheme.Light}
@@ -59,7 +57,7 @@ describe('ReCaptchaV2 component', () => {
     });
 
     it('matches the snapshot', () => {
-      expect(renderer.toJSON()).toMatchSnapshot();
+      expect(rr.container.firstChild).toMatchSnapshot();
     });
   });
 });
