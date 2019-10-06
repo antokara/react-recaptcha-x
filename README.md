@@ -268,6 +268,7 @@ The use of this component is not required but can be combined with the v2 reCAPT
 #### Unit Testing - Packages / References
 
 1. [Jest](https://jestjs.io)
+   1. [TS Jest](https://github.com/kulshekhar/ts-jest)
 1. [React Testing Library](https://testing-library.com/)
 1. [Jest DOM](https://github.com/testing-library/jest-dom)
 
