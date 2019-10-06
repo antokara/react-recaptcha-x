@@ -3,7 +3,6 @@ const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
   testURL: 'http://localhost',
   coverageDirectory: '<rootDir>/reports/coverage',
@@ -15,5 +14,6 @@ module.exports = {
       lines: 100,
       statements: 100
     }
-  }
+  },
+  setupFiles: ['<rootDir>/jest.setup.js']
 };
