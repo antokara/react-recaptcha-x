@@ -49,13 +49,12 @@
     "@semantic-release/github": "^5.5.0",
     "@semantic-release/npm": "^5.2.0",
     "@testing-library/dom": "^6.5.0",
+    "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.18",
-    "@types/react-test-renderer": "^16.9.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.10.2",
-    "react-test-renderer": "^16.10.2",
     "semantic-release": "^15.13.24",
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.0",
@@ -81,7 +80,7 @@
     ]
   },
   "publishConfig": {
-    "tag": "stable"
+    "tag": "latest"
   },
   "release": {
     "branch": "master",
