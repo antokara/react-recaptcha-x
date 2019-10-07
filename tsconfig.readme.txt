@@ -1,0 +1,13 @@
+//
+// why have tsconfig.json + tsconfig.build.json?
+// @see https://github.com/testing-library/jest-dom/issues/123
+//
+// basically, it's not possible currently, to import
+// @testing-library/jest-dom/extend-expect globally
+// so that Jest actually uses it AND so that the IDE uses it too
+// but at the same time, the build script, does not.
+//
+// if we exclude the test files in tsconfig.json, the IDE
+// complains about the Jest DOM custom matchers.
+// if we keep them, they get included in the /dist...
+//

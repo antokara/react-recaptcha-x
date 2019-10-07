@@ -20,7 +20,10 @@ module.exports = {
         exclude: /(node_modules|reports)/,
         use: [
           {
-            loader: 'ts-loader'
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.build.json'
+            }
           }
         ]
       }

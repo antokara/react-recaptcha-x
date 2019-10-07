@@ -10,9 +10,9 @@
     "lint": "tslint 'src/**/*.ts?(x)' -c tslint.json",
     "build": "npm run build:clean && npm run build:types && npm run build:js && npm run build:tscpaths",
     "build:clean": "rm dist/* -rf",
-    "build:types": "tsc --emitDeclarationOnly",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
     "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress",
-    "build:tscpaths": "tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "build:tscpaths": "tscpaths -p tsconfig.build.json -s ./src -o ./dist",
     "cl": "commitlint --from=HEAD~1",
     "ts:validate": "tsc --outDir /tmp"
   },
