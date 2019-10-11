@@ -1,4 +1,4 @@
-import { render, RenderResult, waitForElement } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
 import { ESize } from './ESize';
@@ -10,6 +10,7 @@ describe('ReCaptchaV2 component', () => {
   let callback: TCallback;
   let providerContext: IContext;
   let rr: RenderResult;
+  let node: ChildNode | null;
 
   describe('without the V2 site key', () => {
     beforeEach(() => {
@@ -26,9 +27,6 @@ describe('ReCaptchaV2 component', () => {
         () =>
           new ReCaptchaV2({
             callback,
-            theme: ETheme.Light,
-            tabindex: 0,
-            size: ESize.Normal,
             providerContext: providerContext
           })
       ).toThrow(
@@ -45,19 +43,51 @@ describe('ReCaptchaV2 component', () => {
         siteKeyV3: undefined,
         loaded: false
       };
-      rr = render(
-        <ReCaptchaV2
-          callback={callback}
-          theme={ETheme.Light}
-          tabindex={0}
-          size={ESize.Normal}
-          providerContext={providerContext}
-        />
-      );
     });
 
-    it('matches the snapshot', () => {
-      expect(rr.container.firstChild).toMatchSnapshot();
+    describe('and required props', () => {
+      beforeEach(() => {
+        rr = render(
+          <ReCaptchaV2 callback={callback} providerContext={providerContext} />
+        );
+        node = rr.container.firstChild;
+      });
+
+      it('renders the div element', () => {
+        expect(node).toMatchInlineSnapshot('<div />');
+      });
+    });
+
+    describe('and optional props', () => {
+      beforeEach(() => {
+        rr = render(
+          <ReCaptchaV2
+            callback={callback}
+            theme={ETheme.Light}
+            tabindex={0}
+            size={ESize.Normal}
+            providerContext={providerContext}
+            className="test-class-name"
+            id="test-id"
+            data-test-id="data-test-id"
+          />
+        );
+        node = rr.container.firstChild;
+      });
+
+      it('renders the div element', () => {
+        expect(node).toMatchInlineSnapshot(`
+          <div
+            class="test-class-name"
+            data-test-id="data-test-id"
+            id="test-id"
+          />
+        `);
+      });
+
+      it('it has the class attribute', () => {
+        expect(node).toHaveClass('test-class-name');
+      });
     });
   });
 });

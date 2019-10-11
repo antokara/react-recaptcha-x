@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ReCaptchaV2 component with a V2 site key matches the snapshot 1`] = `<div />`;
