@@ -11,7 +11,10 @@ describe('ReCaptchaV2 component', () => {
   let providerContext: IContext;
   let rr: RenderResult;
   let node: ChildNode | null;
+  // grecaptcha callbacks to simulate actions
   let grecaptchaCallback: (response: string) => void;
+  let grecaptchaExpiredCallback: () => void;
+  let grecaptchaErrorCallback: () => void;
 
   describe('without the V2 site key', () => {
     beforeEach(() => {
@@ -67,8 +70,16 @@ describe('ReCaptchaV2 component', () => {
                 container: string | HTMLElement,
                 parameters?: ReCaptchaV2.Parameters
               ): number => {
-                if (parameters && parameters.callback) {
-                  grecaptchaCallback = parameters.callback;
+                if (parameters) {
+                  if (parameters.callback) {
+                    grecaptchaCallback = parameters.callback;
+                  }
+                  if (parameters['expired-callback']) {
+                    grecaptchaExpiredCallback = parameters['expired-callback'];
+                  }
+                  if (parameters['error-callback']) {
+                    grecaptchaErrorCallback = parameters['error-callback'];
+                  }
                 }
 
                 // return a dummy widget id for future testing
@@ -119,6 +130,34 @@ describe('ReCaptchaV2 component', () => {
 
           it('invokes props.callback with the token', () => {
             expect(callback).toHaveBeenCalledWith('test-token');
+          });
+        });
+
+        describe('when grecaptcha calls "expired-callback"', () => {
+          beforeEach(() => {
+            grecaptchaExpiredCallback();
+          });
+
+          it('invokes props.callback once', () => {
+            expect(callback).toHaveBeenCalledTimes(1);
+          });
+
+          it('invokes props.callback with "false" arg', () => {
+            expect(callback).toHaveBeenCalledWith(false);
+          });
+        });
+
+        describe('when grecaptcha calls "error-callback"', () => {
+          beforeEach(() => {
+            grecaptchaErrorCallback();
+          });
+
+          it('invokes props.callback once', () => {
+            expect(callback).toHaveBeenCalledTimes(1);
+          });
+
+          it('invokes props.callback with "Error" arg', () => {
+            expect(callback).toHaveBeenCalledWith(new Error());
           });
         });
       });
