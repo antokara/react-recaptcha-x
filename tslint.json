@@ -41,7 +41,17 @@
         "type": "interface",
         "filter": "^Window$",
         "prefix": null
+      },
+      // exclude the Global interface name to have to start with "I"
+      {
+        "type": "interface",
+        "filter": "^Global$",
+        "prefix": null
       }
-    ]
+    ],
+    // since we already have the "naming-convention" rule that
+    // lints interface names, where we also define exclusions,
+    // there is no need for redundancy. hence, disabling this rule
+    "interface-name": [false]
   }
 }
