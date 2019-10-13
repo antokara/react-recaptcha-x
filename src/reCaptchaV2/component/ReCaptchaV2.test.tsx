@@ -11,6 +11,7 @@ describe('ReCaptchaV2 component', () => {
   let providerContext: IContext;
   let rr: RenderResult;
   let node: ChildNode | null;
+  let grecaptchaCallback: (response: string) => void;
 
   describe('without the V2 site key', () => {
     beforeEach(() => {
@@ -61,7 +62,19 @@ describe('ReCaptchaV2 component', () => {
         beforeEach(() => {
           // mock the google reCaptcha object
           global.grecaptcha = {
-            render: jest.fn(),
+            render: jest.fn(
+              (
+                container: string | HTMLElement,
+                parameters?: ReCaptchaV2.Parameters
+              ): number => {
+                if (parameters && parameters.callback) {
+                  grecaptchaCallback = parameters.callback;
+                }
+
+                // return a dummy widget id for future testing
+                return 10;
+              }
+            ),
             reset: jest.fn(),
             getResponse: jest.fn(),
             execute: jest.fn()
@@ -92,6 +105,20 @@ describe('ReCaptchaV2 component', () => {
             theme: expect.any(String),
             size: expect.any(String),
             tabindex: expect.any(Number)
+          });
+        });
+
+        describe('when grecaptcha calls "callback"', () => {
+          beforeEach(() => {
+            grecaptchaCallback('test-token');
+          });
+
+          it('invokes props.callback once', () => {
+            expect(callback).toHaveBeenCalledTimes(1);
+          });
+
+          it('invokes props.callback with the token', () => {
+            expect(callback).toHaveBeenCalledWith('test-token');
           });
         });
       });
