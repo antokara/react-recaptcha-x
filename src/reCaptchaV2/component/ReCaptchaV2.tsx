@@ -55,6 +55,9 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
   ): void {
     const { loaded, siteKeyV2 } = props.providerContext;
     const { theme, size, tabindex } = props;
+    // make sure the providerContext changed to loaded,
+    // we have a ref.current defined (happens in constructor) and
+    // the siteKeyV2 has been defined as well.
     if (
       prevProps.providerContext.loaded !== loaded &&
       loaded &&

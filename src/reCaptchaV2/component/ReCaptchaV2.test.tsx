@@ -56,6 +56,45 @@ describe('ReCaptchaV2 component', () => {
       it('renders the div element', () => {
         expect(node).toMatchInlineSnapshot('<div />');
       });
+
+      describe('when providerContext.loaded changes to true', () => {
+        beforeEach(() => {
+          // mock the google reCaptcha object
+          global.grecaptcha = {
+            render: jest.fn(),
+            reset: jest.fn(),
+            getResponse: jest.fn(),
+            execute: jest.fn()
+          };
+          // change loaded to true
+          providerContext = {
+            ...providerContext,
+            loaded: true
+          };
+          rr.rerender(
+            <ReCaptchaV2
+              callback={callback}
+              providerContext={providerContext}
+            />
+          );
+        });
+
+        it('invokes the google reCaptcha render once', () => {
+          expect(global.grecaptcha.render).toHaveBeenCalledTimes(1);
+        });
+
+        it('invokes the google reCaptcha render with the proper args', () => {
+          expect(global.grecaptcha.render).toHaveBeenCalledWith(node, {
+            sitekey: providerContext.siteKeyV2,
+            callback: expect.any(Function),
+            'expired-callback': expect.any(Function),
+            'error-callback': expect.any(Function),
+            theme: expect.any(String),
+            size: expect.any(String),
+            tabindex: expect.any(Number)
+          });
+        });
+      });
     });
 
     describe('and optional props', () => {
@@ -87,6 +126,14 @@ describe('ReCaptchaV2 component', () => {
 
       it('it has the class attribute', () => {
         expect(node).toHaveClass('test-class-name');
+      });
+
+      it('it has the data-test-id attribute', () => {
+        expect(node).toHaveAttribute('data-test-id', 'data-test-id');
+      });
+
+      it('it has the id attribute', () => {
+        expect(node).toHaveAttribute('id', 'test-id');
       });
     });
   });
