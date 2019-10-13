@@ -275,7 +275,7 @@ The use of this component is not required but can be combined with the v2 reCAPT
 #### Unit Testing - Commands
 
 - for unit tests run `$npm test`
-- for unit tests plus code coverage report run `$npm test:cov`
+- for unit tests plus code coverage report run `$npm run test:cov`
 
 #### Unit Testing - Reports
 
