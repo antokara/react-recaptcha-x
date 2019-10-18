@@ -8,6 +8,7 @@
   ],
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
+    "max-file-line-count": [true, 250],
     "quotemark": [true, "single", "jsx-double"],
     // @see https://github.com/prettier/prettier/issues/1565
     "newline-per-chained-call": false,
