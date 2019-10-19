@@ -4,6 +4,10 @@ import { IConsumer } from './IConsumer';
 import { ReCaptchaProvider } from './ReCaptchaProvider';
 import { withContext } from './withContext';
 
+// dummy prop values
+const siteKeyV2: string = 'test-key-v2';
+const siteKeyV3: string = 'test-key-v3';
+
 // our dummy component's props
 interface IProps {
   dummy: string;
@@ -37,7 +41,7 @@ describe('withContext HOC', () => {
     // render our dummy component in a two level nested node
     // under the provider, to test the context passing down
     rr = render(
-      <ReCaptchaProvider siteKeyV2="test-key-v2" siteKeyV3="test-key-v3">
+      <ReCaptchaProvider siteKeyV2={siteKeyV2} siteKeyV3={siteKeyV3}>
         <div>
           <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
         </div>
@@ -48,11 +52,11 @@ describe('withContext HOC', () => {
 
   describe('context provided props', () => {
     it('has the siteKeyV2', () => {
-      expect(node).toHaveAttribute('data-sitekey-v2', 'test-key-v2');
+      expect(node).toHaveAttribute('data-sitekey-v2', siteKeyV2);
     });
 
     it('has the siteKeyV3', () => {
-      expect(node).toHaveAttribute('data-sitekey-v3', 'test-key-v3');
+      expect(node).toHaveAttribute('data-sitekey-v3', siteKeyV3);
     });
 
     it('has the loaded', () => {
