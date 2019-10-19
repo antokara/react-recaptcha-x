@@ -47,9 +47,12 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`;
-      script.async = true;
-      script.defer = true;
+      script.setAttribute(
+        'src',
+        `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`
+      );
+      script.setAttribute('async', 'true');
+      script.setAttribute('defer', 'true');
       document.body.appendChild(script);
     }
 
