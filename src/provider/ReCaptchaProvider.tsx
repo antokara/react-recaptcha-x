@@ -40,27 +40,32 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       langCode = '',
       hideV3Badge = false
     } = this.props;
+    // build the script tag src
+    const src: string = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`;
+
     // avoid loading again if previously loaded...
-    // tslint:disable-next-line:no-typeof-undefined (@see https://github.com/Microsoft/tslint-microsoft-contrib/issues/415)
-    if (typeof grecaptcha === 'undefined') {
+    if (document.querySelector(`script[src="${src}"]`) === null) {
       // load the Google reCAPTCHA JS API script tag.
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
-      script.setAttribute(
-        'src',
-        `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`
-      );
+      script.setAttribute('src', src);
       script.setAttribute('async', 'true');
       script.setAttribute('defer', 'true');
       document.body.appendChild(script);
 
-      // in the case user wants to hide the reCaptchaV3 badge
+      // in the case user wants to hide the reCaptchaV3 badge and
+      // if it wasn't previously appended...
       // @see https://developers.google.com/recaptcha/docs/faq
-      if (hideV3Badge) {
+      const styleDataId: string = 'react-recaptcha-v3-v2-style';
+      if (
+        hideV3Badge &&
+        document.querySelector(`style[data-id="${styleDataId}"]`) === null
+      ) {
         const style: HTMLStyleElement = document.createElement('style');
         // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
         style.innerHTML = '.grecaptcha-badge{display: none;}';
+        style.setAttribute('data-id', styleDataId);
         document.body.appendChild(style);
       }
     }
