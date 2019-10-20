@@ -28,6 +28,7 @@
     "dist",
     "examples",
     "types",
-    "**/*.test.ts?"
+    "**/*.test.ts?",
+    "**/*.test/*"
   ]
 }
