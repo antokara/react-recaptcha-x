@@ -54,15 +54,15 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       script.setAttribute('async', 'true');
       script.setAttribute('defer', 'true');
       document.body.appendChild(script);
-    }
 
-    // in the case user wants to hide the reCaptchaV3 badge
-    // @see https://developers.google.com/recaptcha/docs/faq
-    if (hideV3Badge) {
-      const style: HTMLStyleElement = document.createElement('style');
-      // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
-      style.innerHTML = '.grecaptcha-badge{display: none;}';
-      document.body.appendChild(style);
+      // in the case user wants to hide the reCaptchaV3 badge
+      // @see https://developers.google.com/recaptcha/docs/faq
+      if (hideV3Badge) {
+        const style: HTMLStyleElement = document.createElement('style');
+        // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
+        style.innerHTML = '.grecaptcha-badge{display: none;}';
+        document.body.appendChild(style);
+      }
     }
   }
 
