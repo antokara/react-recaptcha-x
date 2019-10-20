@@ -95,6 +95,16 @@ describe('ReCaptchaProvider', () => {
         expect(scriptTagNode).toBeNull();
       });
     });
+
+    describe('window.GoogleReCaptcha_onload callback', () => {
+      beforeEach(() => {
+        window.GoogleReCaptcha_onload();
+      });
+
+      it('the loaded prop changes to true', () => {
+        expect(node).toHaveAttribute('data-loaded', 'true');
+      });
+    });
   });
 
   describe('with optional props', () => {
