@@ -55,21 +55,21 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       script.setAttribute('async', 'true');
       script.setAttribute('defer', 'true');
       document.body.appendChild(script);
+    }
 
-      // in the case user wants to hide the reCaptchaV3 badge and
-      // if it wasn't previously appended...
-      // @see https://developers.google.com/recaptcha/docs/faq
-      const styleDataId: string = 'react-recaptcha-v3-v2-style';
-      if (
-        hideV3Badge &&
-        document.querySelector(`style[data-id="${styleDataId}"]`) === null
-      ) {
-        const style: HTMLStyleElement = document.createElement('style');
-        // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
-        style.innerHTML = '.grecaptcha-badge{display: none;}';
-        style.setAttribute('data-id', styleDataId);
-        document.body.appendChild(style);
-      }
+    // in the case user wants to hide the reCaptchaV3 badge and
+    // if it wasn't previously appended...
+    // @see https://developers.google.com/recaptcha/docs/faq
+    const styleDataId: string = 'react-recaptcha-v3-v2-style';
+    if (
+      hideV3Badge &&
+      document.querySelector(`style[data-id="${styleDataId}"]`) === null
+    ) {
+      const style: HTMLStyleElement = document.createElement('style');
+      // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
+      style.innerHTML = '.grecaptcha-badge{display: none;}';
+      style.setAttribute('data-id', styleDataId);
+      document.body.appendChild(style);
     }
   }
 
