@@ -18,5 +18,7 @@ module.exports = {
     }
   },
   setupFiles: ['<rootDir>/jest.setup.ts'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.afterEnv.ts']
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.afterEnv.ts'],
+  clearMocks: true,
+  errorOnDeprecated: true
 };
