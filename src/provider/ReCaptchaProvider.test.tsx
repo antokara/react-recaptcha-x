@@ -2,52 +2,21 @@ import { getByTestId, render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { IConsumer } from './IConsumer';
 import { ReCaptchaProvider } from './ReCaptchaProvider';
+import { clearDOM } from './ReCaptchaProvider.test/clearDOM';
+import { DummyComponent } from './ReCaptchaProvider.test/DummyComponent';
+import { EProps } from './ReCaptchaProvider.test/EProps';
+import { IProps } from './ReCaptchaProvider.test/IProps';
 import { withContext } from './withContext';
-
-// dummy prop values
-const siteKeyV2: string = 'test-site-key-v2';
-const siteKeyV3: string = 'test-site-key-v3';
-const langCode: string = 'en';
-
-// our dummy component's props
-interface IProps {
-  dummy: string;
-  otherDummy: number;
-}
-
-// our dummy component
-const DummyComponent: (props: IProps & IConsumer) => JSX.Element = (
-  props: IProps & IConsumer
-): JSX.Element => (
-  <div
-    data-testid="dummy-test-id"
-    data-dummy={props.dummy}
-    data-other-dummy={props.otherDummy}
-    data-sitekey-v2={props.providerContext.siteKeyV2}
-    data-sitekey-v3={props.providerContext.siteKeyV3}
-    data-loaded={props.providerContext.loaded}
-  >
-    dummyComponent
-  </div>
-);
 
 describe('ReCaptchaProvider', () => {
   let rr: RenderResult;
   let node: ChildNode | null;
   let DummyComponentWithContext: React.ComponentType<IProps>;
 
-  /**
-   * clears the DOM from script, style tags
-   * to ensure a "clear DOM" state, between each test
-   */
-  beforeEach(() =>
-    document
-      .querySelectorAll('script,style')
-      .forEach((n: Element) => n.remove())
-  );
-
   describe('with required props', () => {
     beforeEach(() => {
+      // make sure we clean DOM from script/style tags
+      clearDOM();
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -130,15 +99,17 @@ describe('ReCaptchaProvider', () => {
 
   describe('with optional props', () => {
     beforeEach(() => {
+      // make sure we clean DOM from script/style tags
+      clearDOM();
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
       // under the provider, to test the context passing down
       rr = render(
         <ReCaptchaProvider
-          siteKeyV2={siteKeyV2}
-          siteKeyV3={siteKeyV3}
-          langCode={langCode}
+          siteKeyV2={EProps.siteKeyV2}
+          siteKeyV3={EProps.siteKeyV3}
+          langCode={EProps.langCode}
           hideV3Badge={true}
         >
           <div>
@@ -151,11 +122,11 @@ describe('ReCaptchaProvider', () => {
 
     describe('context provided props', () => {
       it('has the siteKeyV2', () => {
-        expect(node).toHaveAttribute('data-sitekey-v2', siteKeyV2);
+        expect(node).toHaveAttribute('data-sitekey-v2', EProps.siteKeyV2);
       });
 
       it('has the siteKeyV3', () => {
-        expect(node).toHaveAttribute('data-sitekey-v3', siteKeyV3);
+        expect(node).toHaveAttribute('data-sitekey-v3', EProps.siteKeyV3);
       });
 
       it('has the loaded', () => {
@@ -190,7 +161,7 @@ describe('ReCaptchaProvider', () => {
       it('has the correct src attribute', () => {
         expect(scriptTagNode).toHaveAttribute(
           'src',
-          `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`
+          `https://www.google.com/recaptcha/api.js?render=${EProps.siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${EProps.langCode}`
         );
       });
 
@@ -214,6 +185,54 @@ describe('ReCaptchaProvider', () => {
       });
 
       it('gets injected only once', () => {
+        expect(document.querySelectorAll('style')).toHaveLength(1);
+      });
+    });
+  });
+
+  // check re-mount script/style inject being only one
+  // but disable the beforeEach cleanup though
+  // so that the script is already there and we re-render/re-mount...
+  describe('first mount with required props', () => {
+    beforeEach(() => {
+      // wrap our dummy component with the context and get its props
+      DummyComponentWithContext = withContext(DummyComponent);
+      // render our dummy component in a two level nested node
+      // under the provider, to test the context passing down
+      rr = render(
+        <ReCaptchaProvider>
+          <div>
+            <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+          </div>
+        </ReCaptchaProvider>
+      );
+      node = getByTestId(rr.container, 'dummy-test-id');
+    });
+
+    describe('second mount with optional props', () => {
+      beforeEach(() => {
+        // wrap our dummy component with the context and get its props
+        DummyComponentWithContext = withContext(DummyComponent);
+        // re-render/re-mount with all optional props
+        rr.rerender(
+          <ReCaptchaProvider
+            siteKeyV2={EProps.siteKeyV2}
+            siteKeyV3={EProps.siteKeyV3}
+            langCode={EProps.langCode}
+            hideV3Badge={true}
+          >
+            <div>
+              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+            </div>
+          </ReCaptchaProvider>
+        );
+      });
+
+      it('script tag gets injected only once', () => {
+        expect(document.querySelectorAll('script')).toHaveLength(1);
+      });
+
+      it('style tag gets injected only once', () => {
         expect(document.querySelectorAll('style')).toHaveLength(1);
       });
     });
