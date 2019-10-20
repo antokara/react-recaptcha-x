@@ -1,4 +1,4 @@
-import { render, RenderResult } from '@testing-library/react';
+import { getByTestId, render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { IConsumer } from './IConsumer';
 import { ReCaptchaProvider } from './ReCaptchaProvider';
@@ -33,7 +33,10 @@ const DummyComponent: (props: IProps & IConsumer) => JSX.Element = (
 describe('withContext HOC', () => {
   let rr: RenderResult;
   let node: ChildNode | null;
-  beforeEach(async () => {
+  beforeEach(() => {
+    // clear the DOM from script tags
+    // to ensure a "clear DOM" state, between each test
+    document.querySelectorAll('script').forEach((n: Element) => n.remove());
     // wrap our dummy component with the context and get its props
     const DummyComponentWithContext: React.ComponentType<IProps> = withContext(
       DummyComponent
@@ -47,7 +50,7 @@ describe('withContext HOC', () => {
         </div>
       </ReCaptchaProvider>
     );
-    node = await rr.findByTestId('dummy-test-id');
+    node = getByTestId(rr.container, 'dummy-test-id');
   });
 
   describe('context provided props', () => {
