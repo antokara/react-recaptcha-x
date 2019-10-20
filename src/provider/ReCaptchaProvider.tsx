@@ -40,16 +40,18 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       langCode = '',
       hideV3Badge = false
     } = this.props;
-    // build the script tag src
-    const src: string = `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`;
-
+    const scriptDataId: string = 'react-recaptcha-v3-v2-script';
     // avoid loading again if previously loaded...
-    if (document.querySelector(`script[src="${src}"]`) === null) {
+    if (document.querySelector(`script[data-id="${scriptDataId}"]`) === null) {
       // load the Google reCAPTCHA JS API script tag.
       // We cannot dynamically import because
       // there are no CORS headers and the FETCH will fail if we try...
       const script: HTMLScriptElement = document.createElement('script');
-      script.setAttribute('src', src);
+      script.setAttribute('data-id', scriptDataId);
+      script.setAttribute(
+        'src',
+        `https://www.google.com/recaptcha/api.js?render=${siteKeyV3}&onload=GoogleReCaptcha_onload&hl=${langCode}`
+      );
       script.setAttribute('async', 'true');
       script.setAttribute('defer', 'true');
       document.body.appendChild(script);
