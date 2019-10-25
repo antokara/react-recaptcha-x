@@ -1,3 +1,14 @@
+## [1.0.7](https://github.com/antokara/react-recaptcha-x/compare/v1.0.6...v1.0.7) (2019-10-25)
+
+
+### Bug Fixes
+
+* **provider:** avoid script multi inject ([a94d9f9](https://github.com/antokara/react-recaptcha-x/commit/a94d9f94bf5c38fd61618990252fae78584b1478))
+* **provider:** avoid script/style multi inject ([1e2e87e](https://github.com/antokara/react-recaptcha-x/commit/1e2e87e3df04b4735ed3cdcc1023b2f613acb8fa))
+* **provider:** multiple style tag injection ([1e215c0](https://github.com/antokara/react-recaptcha-x/commit/1e215c0351d989d4ceeee4bfcda437c9673159dd))
+* **provider:** style tag inject ([1b25669](https://github.com/antokara/react-recaptcha-x/commit/1b25669502fac4d25c2a485fdd96035165a3f6e0))
+* **recaptcha provider:** properly set script attrs ([8d857f9](https://github.com/antokara/react-recaptcha-x/commit/8d857f92056abe88966125d9f941a88309be9467))
+
 ## [1.0.6](https://github.com/antokara/react-recaptcha-x/compare/v1.0.5...v1.0.6) (2019-09-15)
 
 
