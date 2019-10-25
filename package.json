@@ -6,6 +6,7 @@
   "scripts": {
     "test": "TZ=UTC jest",
     "test:cov": "TZ=UTC jest --coverage",
+    "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "prettier": "npx prettier --check 'src/**/*.ts?(x)'",
     "lint": "tslint 'src/**/*.ts?(x)' -c tslint.json",
     "build": "npm run build:clean && npm run build:types && npm run build:js && npm run build:tscpaths",
@@ -52,6 +53,7 @@
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.19",
+    "coveralls": "^3.0.7",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.10.2",
