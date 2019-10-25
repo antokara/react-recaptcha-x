@@ -30,6 +30,7 @@ jobs:
     - stage: test
       script:
         - npm run test:cov
+        - npm run coveralls
 
     - stage: build
       script:
