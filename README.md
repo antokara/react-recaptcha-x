@@ -5,6 +5,7 @@ a React component for Google's reCAPTCHA v3 and v2 (checkbox) component.
 [![npm][npm]][npm-url]
 [![Last Release][last-release]][last-release-url]
 [![Last Commit][last-commit]][last-commit-url]
+[![Coverage][coveralls]][coveralls-url]
 
 [![Dependencies][deps]][deps-url]
 [![Build Status][build-status]][build-status-url]
@@ -356,3 +357,5 @@ This project uses and includes, a modified version, of the Type definitions for 
 [last-commit-url]: https://github.com/antokara/react-recaptcha-x/graphs/commit-activity
 [last-release]: https://img.shields.io/github/release-date/antokara/react-recaptcha-x.svg
 [last-release-url]: https://github.com/antokara/react-recaptcha-x/releases
+[coveralls]: https://coveralls.io/repos/github/antokara/react-recaptcha-x/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/antokara/react-recaptcha-x?branch=master
