@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1280"
+   height="640"
+   viewBox="0 0 338.66667 169.33334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (unknown)"
+   sodipodi:docname="githubSocial.svg"
+   inkscape:export-filename="/home/user/Projects/react-recaptcha-v3-v2/githubSocial.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="78.9626"
+     inkscape:cy="346.94399"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer3"
+     showgrid="false"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(5.1540069,46.148206)"
+     style="display:none">
+    <image
+       sodipodi:absref="/home/user/Downloads/repository-open-graph-template (1).png"
+       y="-45.926785"
+       x="-4.9325862"
+       id="image1627"
+       xlink:href="file:///home/user/Downloads/repository-open-graph-template%20(1).png"
+       preserveAspectRatio="none"
+       height="169.33333"
+       width="338.66666" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="logo"
+     style="display:inline">
+    <g
+       style="display:inline"
+       id="g854"
+       transform="matrix(0.09084896,0,0,0.09084896,60.955214,22.853114)">
+	<path
+   id="path846"
+   d="m 666.3,296.5 c 0,-32.5 -40.7,-63.3 -103.1,-82.4 14.4,-63.6 8,-114.2 -20.2,-130.4 -6.5,-3.8 -14.1,-5.6 -22.4,-5.6 v 22.3 c 4.6,0 8.3,0.9 11.4,2.6 13.6,7.8 19.5,37.5 14.9,75.7 -1.1,9.4 -2.9,19.3 -5.1,29.4 -19.6,-4.8 -41,-8.5 -63.5,-10.9 -13.5,-18.5 -27.5,-35.3 -41.6,-50 32.6,-30.3 63.2,-46.9 84,-46.9 V 78 c 0,0 0,0 0,0 -27.5,0 -63.5,19.6 -99.9,53.6 C 384.4,97.8 348.4,78.4 320.9,78.4 v 22.3 c 20.7,0 51.4,16.5 84,46.6 -14,14.7 -28,31.4 -41.3,49.9 -22.6,2.4 -44,6.1 -63.6,11 -2.3,-10 -4,-19.7 -5.2,-29 -4.7,-38.2 1.1,-67.9 14.6,-75.8 3,-1.8 6.9,-2.6 11.5,-2.6 V 78.5 c 0,0 0,0 0,0 -8.4,0 -16,1.8 -22.6,5.6 -28.1,16.2 -34.4,66.7 -19.9,130.1 -62.2,19.2 -102.7,49.9 -102.7,82.3 0,32.5 40.7,63.3 103.1,82.4 -14.4,63.6 -8,114.2 20.2,130.4 6.5,3.8 14.1,5.6 22.5,5.6 27.5,0 63.5,-19.6 99.9,-53.6 36.4,33.8 72.4,53.2 99.9,53.2 8.4,0 16,-1.8 22.6,-5.6 28.1,-16.2 34.4,-66.7 19.9,-130.1 62,-19.1 102.5,-49.9 102.5,-82.3 z M 536.1,229.8 c -3.7,12.9 -8.3,26.2 -13.5,39.5 -4.1,-8 -8.4,-16 -13.1,-24 -4.6,-8 -9.5,-15.8 -14.4,-23.4 14.2,2.1 27.9,4.7 41,7.9 z m -45.8,106.5 c -7.8,13.5 -15.8,26.3 -24.1,38.2 -14.9,1.3 -30,2 -45.2,2 -15.1,0 -30.2,-0.7 -45,-1.9 -8.3,-11.9 -16.4,-24.6 -24.2,-38 -7.6,-13.1 -14.5,-26.4 -20.8,-39.8 6.2,-13.4 13.2,-26.8 20.7,-39.9 7.8,-13.5 15.8,-26.3 24.1,-38.2 14.9,-1.3 30,-2 45.2,-2 15.1,0 30.2,0.7 45,1.9 8.3,11.9 16.4,24.6 24.2,38 7.6,13.1 14.5,26.4 20.8,39.8 -6.3,13.4 -13.2,26.8 -20.7,39.9 z m 32.3,-13 c 5.4,13.4 10,26.8 13.8,39.8 -13.1,3.2 -26.9,5.9 -41.2,8 4.9,-7.7 9.8,-15.6 14.4,-23.7 4.6,-8 8.9,-16.1 13,-24.1 z M 421.2,430 c -9.3,-9.6 -18.6,-20.3 -27.8,-32 9,0.4 18.2,0.7 27.5,0.7 9.4,0 18.7,-0.2 27.8,-0.7 -9,11.7 -18.3,22.4 -27.5,32 z m -74.4,-58.9 c -14.2,-2.1 -27.9,-4.7 -41,-7.9 3.7,-12.9 8.3,-26.2 13.5,-39.5 4.1,8 8.4,16 13.1,24 4.7,8 9.5,15.8 14.4,23.4 z M 420.7,163 c 9.3,9.6 18.6,20.3 27.8,32 -9,-0.4 -18.2,-0.7 -27.5,-0.7 -9.4,0 -18.7,0.2 -27.8,0.7 9,-11.7 18.3,-22.4 27.5,-32 z m -74,58.9 c -4.9,7.7 -9.8,15.6 -14.4,23.7 -4.6,8 -8.9,16 -13,24 -5.4,-13.4 -10,-26.8 -13.8,-39.8 13.1,-3.1 26.9,-5.8 41.2,-7.9 z m -90.5,125.2 c -35.4,-15.1 -58.3,-34.9 -58.3,-50.6 0,-15.7 22.9,-35.6 58.3,-50.6 8.6,-3.7 18,-7 27.7,-10.1 5.7,19.6 13.2,40 22.5,60.9 -9.2,20.8 -16.6,41.1 -22.2,60.6 -9.9,-3.1 -19.3,-6.5 -28,-10.2 z M 310,490 c -13.6,-7.8 -19.5,-37.5 -14.9,-75.7 1.1,-9.4 2.9,-19.3 5.1,-29.4 19.6,4.8 41,8.5 63.5,10.9 13.5,18.5 27.5,35.3 41.6,50 -32.6,30.3 -63.2,46.9 -84,46.9 -4.5,-0.1 -8.3,-1 -11.3,-2.7 z m 237.2,-76.2 c 4.7,38.2 -1.1,67.9 -14.6,75.8 -3,1.8 -6.9,2.6 -11.5,2.6 -20.7,0 -51.4,-16.5 -84,-46.6 14,-14.7 28,-31.4 41.3,-49.9 22.6,-2.4 44,-6.1 63.6,-11 2.3,10.1 4.1,19.8 5.2,29.1 z m 38.5,-66.7 c -8.6,3.7 -18,7 -27.7,10.1 -5.7,-19.6 -13.2,-40 -22.5,-60.9 9.2,-20.8 16.6,-41.1 22.2,-60.6 9.9,3.1 19.3,6.5 28.1,10.2 35.4,15.1 58.3,34.9 58.3,50.6 -0.1,15.7 -23,35.6 -58.4,50.6 z"
+   inkscape:connector-curvature="0"
+   style="fill:#61dafb" />
+
+	<polygon
+   id="polygon848"
+   points=""
+   style="fill:#61dafb" />
+
+	<circle
+   id="circle850"
+   r="45.700001"
+   cy="296.5"
+   cx="420.89999"
+   style="fill:#61dafb" />
+
+	<polygon
+   id="polygon852"
+   points=""
+   style="fill:#61dafb" />
+
+</g>
+    <g
+       id="g888"
+       transform="matrix(0.3509459,0,0,0.3509459,72.530481,25.164717)"
+       style="display:inline;opacity:0.75099996">
+      <g
+         id="g893"
+         transform="translate(1.0004849,8.032891)">
+        <path
+           inkscape:connector-curvature="0"
+           d="m 117,62.063 c -0.002,-0.60232 -0.0159,-1.2014 -0.0429,-1.7976 v -33.991 l -9.3971,9.3971 c -7.691,-9.4141 -19.391,-15.427 -32.496,-15.427 -13.638,0 -25.754,6.5097 -33.413,16.591 l 15.403,15.565 c 1.5095,-2.7917 3.6539,-5.1895 6.2395,-7.0005 2.6891,-2.0985 6.4993,-3.8143 11.77,-3.8143 0.63674,0 1.1282,0.0744 1.4893,0.21458 6.5304,0.51543 12.191,4.1194 15.524,9.3503 l -10.903,10.903 c 13.81,-0.0542 29.411,-0.086 35.825,0.007"
+           style="fill:#1c3aa9"
+           id="path868" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 74.819,20.246 c -0.60232,0.002 -1.2014,0.0159 -1.7976,0.0429 h -33.991 l 9.3971,9.3971 c -9.4141,7.691 -15.427,19.391 -15.427,32.496 0,13.638 6.5098,25.754 16.591,33.413 l 15.565,-15.403 c -2.7917,-1.5095 -5.1895,-3.6539 -7.0005,-6.2395 -2.0984,-2.6891 -3.8143,-6.4993 -3.8143,-11.77 0,-0.63674 0.0744,-1.1282 0.21458,-1.4893 0.51543,-6.5304 4.1194,-12.191 9.3503,-15.524 l 10.903,10.903 c -0.0542,-13.81 -0.0861,-29.411 0.007,-35.825"
+           style="fill:#4285f4"
+           id="path870" />
+        <path
+           inkscape:connector-curvature="0"
+           d="m 33.002,62.181 c 0.002,0.60232 0.0159,1.2014 0.0429,1.7976 v 33.991 l 9.3971,-9.3971 c 7.691,9.4141 19.391,15.427 32.496,15.427 13.638,0 25.754,-6.5097 33.413,-16.591 L 92.948,71.8435 c -1.5095,2.7917 -3.6539,5.1895 -6.2395,7.0005 -2.6891,2.0985 -6.4993,3.8143 -11.77,3.8143 -0.63674,0 -1.1282,-0.0744 -1.4893,-0.21458 -6.5304,-0.51543 -12.191,-4.1194 -15.524,-9.3503 l 10.903,-10.903 c -13.81,0.0542 -29.411,0.086 -35.825,-0.007"
+           style="fill:#ababab"
+           id="path872" />
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="text"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.8166666px;line-height:6.61458302px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.76505"
+       y="53.872894"
+       id="text1644"><tspan
+         sodipodi:role="line"
+         id="tspan1642"
+         x="130.76505"
+         y="53.872894"
+         style="stroke-width:0.26458332">react-recaptcha-x</tspan></text>
+    <text
+       id="text1648"
+       y="108.93042"
+       x="30.866343"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:10.8479166px;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.26458332"
+         y="108.93042"
+         x="30.866343"
+         sodipodi:role="line"
+         id="tspan1652">a React reCAPTCHA version 3 and version 2</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="119.77834"
+         x="30.866343"
+         sodipodi:role="line"
+         id="tspan1656">(checkbox) component in one. </tspan><tspan
+         style="stroke-width:0.26458332"
+         y="130.62625"
+         x="30.866343"
+         sodipodi:role="line"
+         id="tspan1658" /><tspan
+         style="stroke-width:0.26458332"
+         y="141.47417"
+         x="30.866343"
+         sodipodi:role="line"
+         id="tspan1662">Available for both Javascript and Typescript projects.</tspan><tspan
+         style="stroke-width:0.26458332"
+         y="152.32208"
+         x="30.866343"
+         sodipodi:role="line"
+         id="tspan1650" /></text>
+  </g>
+</svg>
