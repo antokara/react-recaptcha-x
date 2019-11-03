@@ -45,21 +45,21 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/git": "^7.0.16",
-    "@semantic-release/github": "^5.5.4",
-    "@semantic-release/npm": "^5.2.0",
-    "@testing-library/dom": "^6.8.1",
-    "@testing-library/jest-dom": "^4.1.2",
-    "@testing-library/react": "^9.3.0",
-    "@types/jest": "^24.0.19",
+    "@semantic-release/changelog": "^3.0.5",
+    "@semantic-release/git": "^7.0.17",
+    "@semantic-release/github": "^5.5.5",
+    "@semantic-release/npm": "^5.3.3",
+    "@testing-library/dom": "^6.10.0",
+    "@testing-library/jest-dom": "^4.2.3",
+    "@testing-library/react": "^9.3.1",
+    "@types/jest": "^24.0.21",
     "coveralls": "^3.0.7",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "react-dom": "^16.10.2",
-    "semantic-release": "^15.13.27",
+    "react-dom": "^16.11.0",
+    "semantic-release": "^15.13.30",
     "ts-jest": "^24.1.0",
-    "ts-loader": "^6.2.0",
+    "ts-loader": "^6.2.1",
     "tscpaths": "0.0.9",
     "tslint": "^5.20.0",
     "tslint-consistent-codestyle": "^1.16.0",
@@ -67,11 +67,11 @@
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.4",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "@types/react": "^16.9.9",
-    "react": "^16.10.2"
+    "@types/react": "^16.9.11",
+    "react": "^16.11.0"
   },
   "prettier": {
     "singleQuote": true

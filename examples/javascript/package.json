@@ -30,17 +30,17 @@
     "html-webpack-template": "^6.2.0",
     "prettier": "^1.18.2",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "@types/dotenv": "^6.1.1",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.7.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "babel": {
     "presets": [
