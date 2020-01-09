@@ -141,7 +141,7 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
         error: true
       },
       () => {
-        // invoke callback with false, to signify expiration
+        // invoke callback with error, to signify error
         callback(new Error());
       }
     );
