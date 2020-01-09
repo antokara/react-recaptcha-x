@@ -14,6 +14,13 @@
     // because we perform a `$npm link react-recaptcha-x`,
     // this package will NOT be listed in the dependencies of package.json
     "no-implicit-dependencies": [true, ["react-recaptcha-x"]],
+    // @see https://github.com/palantir/tslint-react/issues/120
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
     // @see https://github.com/ajafff/tslint-consistent-codestyle/blob/master/docs/naming-convention.md
     "naming-convention": [
       true,
