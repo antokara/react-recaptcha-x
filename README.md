@@ -73,9 +73,12 @@ const v2Callback = token => {
   }
 };
 
-const v3Callback = token => {
+const v3Callback = (token, refreshToken) => {
   if (typeof token === 'string') {
     console.log('this is the token', token);
+    if (typeof refreshToken === 'function') {
+      console.log('this is the refresh token function', refreshToken);
+    }
   } else {
     console.log('token retrieval in progress...');
   }
@@ -129,9 +132,15 @@ const v2Callback: TReCaptchaV2Callback = (
   }
 };
 
-const v3Callback: TReCaptchaV3Callback = (token: string | void): void => {
+const v3Callback: TReCaptchaV3Callback = (
+  token: string | void,
+  refreshToken: TReCaptchaV3RefreshToken | void
+): void => {
   if (typeof token === 'string') {
     console.log('this is the token', token);
+    if (typeof refreshToken === 'function') {
+      console.log('this is the refresh token function', refreshToken);
+    }
   } else {
     console.log('token retrieval in progress...');
   }
@@ -198,10 +207,10 @@ The use of this component is not required but can be combined with the v2 reCAPT
 
 #### ReCaptchaV3 Props
 
-| prop     | type                           | default value | description                                                                                                                                                |
-| -------- | ------------------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| callback | function(token:string or void) | n/a           | Required. When called without arguments, it means requesting token in progress. When called with string (token), it means token retrieved                  |
-| action   | string                         | n/a           | Required. The name of the action to keep score and statistic about. It can only contain alphanumeric characters and slashes, and must not be user-specific |
+| prop     | type                                                    | default value | description                                                                                                                                                                                                                                                  |
+| -------- | ------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| callback | function(token:string or void, refreshToken:fn or void) | n/a           | Required. When called without arguments, it means requesting token in progress. When called with string (token) and function (refreshToken), it means token retrieved. The refreshToken function can be used at any time, to refresh the token by calling it |
+| action   | string                                                  | n/a           | Required. The name of the action to keep score and statistic about. It can only contain alphanumeric characters and slashes, and must not be user-specific                                                                                                   |
 
 ## working examples
 
