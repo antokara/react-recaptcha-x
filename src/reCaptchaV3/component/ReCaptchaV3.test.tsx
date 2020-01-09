@@ -3,9 +3,21 @@ import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
 import { ReCaptchaV3 } from './ReCaptchaV3';
 import { TCallback } from './TCallback';
+import { TRefreshToken } from './TRefreshToken';
+
+// mocked global functions types
+declare let global: {
+  grecaptcha: {
+    render: jest.Mock;
+    reset: jest.Mock;
+    getResponse: jest.Mock;
+    execute: jest.Mock<(siteKey: string, options?: options) => Promise<string>>;
+  };
+};
 
 describe('ReCaptchaV3 component', () => {
   let callback: jest.Mock<TCallback>;
+  let refreshTokenFn: TRefreshToken | undefined;
   let providerContext: IContext;
   let rr: RenderResult;
   let node: ChildNode | null;
@@ -36,7 +48,16 @@ describe('ReCaptchaV3 component', () => {
 
   describe('with a V3 site key', () => {
     beforeEach(() => {
-      callback = jest.fn();
+      callback = jest
+        .fn()
+        .mockImplementation(
+          (token: string | void, refreshToken: TRefreshToken | void): void => {
+            if (refreshToken) {
+              refreshTokenFn = refreshToken;
+            }
+          }
+        );
+      refreshTokenFn = undefined;
       providerContext = {
         siteKeyV2: undefined,
         siteKeyV3: 'test',
@@ -69,7 +90,6 @@ describe('ReCaptchaV3 component', () => {
             render: jest.fn(),
             reset: jest.fn(),
             getResponse: jest.fn(),
-            // execute: jest.fn((widgetId?: number, options?: options): void => { return; })
             execute: jest
               .fn()
               .mockImplementation(
@@ -103,8 +123,29 @@ describe('ReCaptchaV3 component', () => {
           expect(callback).toHaveBeenNthCalledWith(1);
         });
 
-        it('invokes the callback with the token', () => {
-          expect(callback).toHaveBeenNthCalledWith(2, 'test-token');
+        it('invokes the callback with the token and refreshToken function', () => {
+          expect(callback).toHaveBeenNthCalledWith(
+            2,
+            'test-token',
+            expect.any(Function)
+          );
+        });
+
+        it('sets the refresh token function', () => {
+          expect(refreshTokenFn).toBeInstanceOf(Function);
+        });
+
+        describe('refresh token function', () => {
+          beforeEach(() => {
+            global.grecaptcha.execute.mockClear();
+            if (refreshTokenFn) {
+              refreshTokenFn();
+            }
+          });
+
+          it('invokes the google reCaptcha execute once', () => {
+            expect(global.grecaptcha.execute).toHaveBeenCalledTimes(1);
+          });
         });
       });
     });

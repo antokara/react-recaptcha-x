@@ -3,8 +3,10 @@ import {
   EReCaptchaV2Theme,
   ReCaptchaProvider,
   ReCaptchaV2,
-  ReCaptchaV3
+  ReCaptchaV3,
+  TReCaptchaV3RefreshToken
 } from 'module/index';
+import { TRefreshToken } from 'module/reCaptchaV3/component/TRefreshToken';
 import * as React from 'react';
 import { render } from 'react-dom';
 
@@ -18,6 +20,8 @@ interface IState {
   v2ErrorB: boolean;
   v3TokenA: string | undefined;
   v3TokenB: string | undefined;
+  v3RefreshTokenA?: TReCaptchaV3RefreshToken;
+  v3RefreshTokenB?: TReCaptchaV3RefreshToken;
   v3RetrievingA: boolean;
   v3RetrievingB: boolean;
 }
@@ -43,7 +47,9 @@ class App extends React.PureComponent<{}, IState> {
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
-      v3RetrievingB: false
+      v3RetrievingB: false,
+      v3RefreshTokenA: undefined,
+      v3RefreshTokenB: undefined
     };
   }
 
@@ -60,6 +66,20 @@ class App extends React.PureComponent<{}, IState> {
       v3RetrievingA,
       v3RetrievingB
     } = this.state;
+
+    let RefreshTokenA: React.ReactNode | null;
+    if (this.state.v3RefreshTokenA) {
+      RefreshTokenA = (
+        <button onClick={this.state.v3RefreshTokenA}>refresh token</button>
+      );
+    }
+
+    let RefreshTokenB: React.ReactNode | null;
+    if (this.state.v3RefreshTokenB) {
+      RefreshTokenB = (
+        <button onClick={this.state.v3RefreshTokenB}>refresh token</button>
+      );
+    }
 
     return (
       <ReCaptchaProvider
@@ -100,12 +120,14 @@ class App extends React.PureComponent<{}, IState> {
           <ReCaptchaV3 action="actionA" callback={this.v3CallbackA} />
           <h3>Retrieving: {v3RetrievingA ? 'yes' : 'no'}</h3>
           <h6>Token: {v3TokenA}</h6>
+          {RefreshTokenA}
 
           <hr />
           <h2>ReCaptcha V3 - ActionB</h2>
           <ReCaptchaV3 action="actionB" callback={this.v3CallbackB} />
           <h3>Retrieving: {v3RetrievingB ? 'yes' : 'no'}</h3>
           <h6>Token: {v3TokenB}</h6>
+          {RefreshTokenB}
         </div>
       </ReCaptchaProvider>
     );
@@ -147,12 +169,16 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackA(token: string | void): void {
-    if (typeof token === 'string') {
+  private v3CallbackA(
+    token: string | void,
+    refreshToken: TRefreshToken | void
+  ): void {
+    if (typeof token === 'string' && refreshToken) {
       // retrieved
       this.setState({
         v3TokenA: token,
-        v3RetrievingA: false
+        v3RetrievingA: false,
+        v3RefreshTokenA: refreshToken
       });
     } else {
       // retrieval in progress
@@ -162,12 +188,16 @@ class App extends React.PureComponent<{}, IState> {
     }
   }
 
-  private v3CallbackB(token: string | void): void {
-    if (typeof token === 'string') {
+  private v3CallbackB(
+    token: string | void,
+    refreshToken: TRefreshToken | void
+  ): void {
+    if (typeof token === 'string' && refreshToken) {
       // retrieved
       this.setState({
         v3TokenB: token,
-        v3RetrievingB: false
+        v3RetrievingB: false,
+        v3RefreshTokenB: refreshToken
       });
     } else {
       // retrieval in progress
