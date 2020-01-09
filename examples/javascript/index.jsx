@@ -28,7 +28,9 @@ class App extends React.PureComponent {
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
-      v3RetrievingB: false
+      v3RetrievingB: false,
+      v3RefreshTokenA: undefined,
+      v3RefreshTokenB: undefined
     };
   }
 
@@ -45,6 +47,20 @@ class App extends React.PureComponent {
       v3RetrievingA,
       v3RetrievingB
     } = this.state;
+
+    let RefreshTokenA;
+    if (this.state.v3RefreshTokenA) {
+      RefreshTokenA = (
+        <button onClick={this.state.v3RefreshTokenA}>refresh token</button>
+      );
+    }
+
+    let RefreshTokenB;
+    if (this.state.v3RefreshTokenB) {
+      RefreshTokenB = (
+        <button onClick={this.state.v3RefreshTokenB}>refresh token</button>
+      );
+    }
 
     return (
       <ReCaptchaProvider
@@ -85,12 +101,14 @@ class App extends React.PureComponent {
           <ReCaptchaV3 action="actionA" callback={this.v3CallbackA} />
           <h3>Retrieving: {v3RetrievingA ? 'yes' : 'no'}</h3>
           <h6>Token: {v3TokenA}</h6>
+          {RefreshTokenA}
 
           <hr />
           <h2>ReCaptcha V3 - ActionB</h2>
           <ReCaptchaV3 action="actionB" callback={this.v3CallbackB} />
           <h3>Retrieving: {v3RetrievingB ? 'yes' : 'no'}</h3>
           <h6>Token: {v3TokenB}</h6>
+          {RefreshTokenB}
         </div>
       </ReCaptchaProvider>
     );
@@ -132,12 +150,13 @@ class App extends React.PureComponent {
     }
   }
 
-  v3CallbackA(token) {
+  v3CallbackA(token, refreshToken) {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
         v3TokenA: token,
-        v3RetrievingA: false
+        v3RetrievingA: false,
+        v3RefreshTokenA: refreshToken
       });
     } else {
       // retrieval in progress
@@ -147,12 +166,13 @@ class App extends React.PureComponent {
     }
   }
 
-  v3CallbackB(token) {
+  v3CallbackB(token, refreshToken) {
     if (typeof token === 'string') {
       // retrieved
       this.setState({
         v3TokenB: token,
-        v3RetrievingB: false
+        v3RetrievingB: false,
+        v3RefreshTokenB: refreshToken
       });
     } else {
       // retrieval in progress
