@@ -228,7 +228,7 @@ The use of this component is not required but can be combined with the v2 reCAPT
 1. `$npm link react-recaptcha-x`
 1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
-1. open browser to `http://locahost:9001`
+1. open browser to `http://localhost:9001`
 
 ### javascript examples setup
 
@@ -237,7 +237,7 @@ The use of this component is not required but can be combined with the v2 reCAPT
 1. `$npm link react-recaptcha-x`
 1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
-1. open browser to `http://locahost:9001`
+1. open browser to `http://localhost:9001`
 
 ## other credits
 
