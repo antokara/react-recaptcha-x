@@ -31,7 +31,6 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       loaded: false
     };
     this.onLoadHandler = this.onLoadHandler.bind(this);
-    window.GoogleReCaptcha_onload = this.onLoadHandler;
   }
 
   public componentDidMount(): void {
@@ -40,6 +39,7 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       langCode = '',
       hideV3Badge = false
     } = this.props;
+    window.GoogleReCaptcha_onload = this.onLoadHandler;
     const scriptDataId: string = 'react-recaptcha-v3-v2-script';
     // avoid loading again if previously loaded...
     if (document.querySelector(`script[data-id="${scriptDataId}"]`) === null) {
