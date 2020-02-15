@@ -31,10 +31,10 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       loaded: false
     };
     this.onLoadHandler = this.onLoadHandler.bind(this);
-    window.GoogleReCaptcha_onload = this.onLoadHandler;
   }
 
   public componentDidMount(): void {
+    window.GoogleReCaptcha_onload = this.onLoadHandler;
     const {
       siteKeyV3 = 'explicit',
       langCode = '',
