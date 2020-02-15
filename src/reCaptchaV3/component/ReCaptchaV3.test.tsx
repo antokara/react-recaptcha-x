@@ -15,15 +15,15 @@ declare let global: {
   };
 };
 
-describe('ReCaptchaV3 component', () => {
+describe('ReCaptchaV3 component', (): void => {
   let callback: jest.Mock<TCallback>;
   let refreshTokenFn: TRefreshToken | undefined;
   let providerContext: IContext;
   let rr: RenderResult;
   let node: ChildNode | null;
 
-  describe('without the V3 site key', () => {
-    beforeEach(() => {
+  describe('without the V3 site key', (): void => {
+    beforeEach((): void => {
       callback = jest.fn();
       providerContext = {
         siteKeyV2: undefined,
@@ -32,9 +32,9 @@ describe('ReCaptchaV3 component', () => {
       };
     });
 
-    it('throws an Error', () => {
+    it('throws an Error', (): void => {
       expect(
-        () =>
+        (): ReCaptchaV3 =>
           new ReCaptchaV3({
             action: 'test-action',
             callback,
@@ -46,8 +46,8 @@ describe('ReCaptchaV3 component', () => {
     });
   });
 
-  describe('with a V3 site key', () => {
-    beforeEach(() => {
+  describe('with a V3 site key', (): void => {
+    beforeEach((): void => {
       callback = jest
         .fn()
         .mockImplementation(
@@ -65,8 +65,8 @@ describe('ReCaptchaV3 component', () => {
       };
     });
 
-    describe('and required props', () => {
-      beforeEach(() => {
+    describe('and required props', (): void => {
+      beforeEach((): void => {
         rr = render(
           <ReCaptchaV3
             action="test-action"
@@ -77,12 +77,12 @@ describe('ReCaptchaV3 component', () => {
         node = rr.container.firstChild;
       });
 
-      it('renders nothing', () => {
+      it('renders nothing', (): void => {
         expect(node).toBeFalsy();
       });
 
-      describe('when providerContext.loaded changes to true', () => {
-        beforeEach(() => {
+      describe('when providerContext.loaded changes to true', (): void => {
+        beforeEach((): void => {
           // make sure the mocked callback hasn't been called before
           callback.mockClear();
           // mock the google reCaptcha object
@@ -111,19 +111,19 @@ describe('ReCaptchaV3 component', () => {
           );
         });
 
-        it('invokes the google reCaptcha execute once', () => {
+        it('invokes the google reCaptcha execute once', (): void => {
           expect(global.grecaptcha.execute).toHaveBeenCalledTimes(1);
         });
 
-        it('invokes the callback twice', () => {
+        it('invokes the callback twice', (): void => {
           expect(callback).toHaveBeenCalledTimes(2);
         });
 
-        it('invokes the callback without any arguments', () => {
+        it('invokes the callback without any arguments', (): void => {
           expect(callback).toHaveBeenNthCalledWith(1);
         });
 
-        it('invokes the callback with the token and refreshToken function', () => {
+        it('invokes the callback with the token and refreshToken function', (): void => {
           expect(callback).toHaveBeenNthCalledWith(
             2,
             'test-token',
@@ -131,19 +131,19 @@ describe('ReCaptchaV3 component', () => {
           );
         });
 
-        it('sets the refresh token function', () => {
+        it('sets the refresh token function', (): void => {
           expect(refreshTokenFn).toBeInstanceOf(Function);
         });
 
-        describe('refresh token function', () => {
-          beforeEach(() => {
+        describe('refresh token function', (): void => {
+          beforeEach((): void => {
             global.grecaptcha.execute.mockClear();
             if (refreshTokenFn) {
               refreshTokenFn();
             }
           });
 
-          it('invokes the google reCaptcha execute once', () => {
+          it('invokes the google reCaptcha execute once', (): void => {
             expect(global.grecaptcha.execute).toHaveBeenCalledTimes(1);
           });
         });
