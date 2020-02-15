@@ -30,13 +30,15 @@ const DummyComponent: (props: IProps & IConsumer) => JSX.Element = (
   </div>
 );
 
-describe('withContext HOC', () => {
+describe('withContext HOC', (): void => {
   let rr: RenderResult;
   let node: ChildNode | null;
-  beforeEach(() => {
+  beforeEach((): void => {
     // clear the DOM from script tags
     // to ensure a "clear DOM" state, between each test
-    document.querySelectorAll('script').forEach((n: Element) => n.remove());
+    document
+      .querySelectorAll('script')
+      .forEach((n: Element): void => n.remove());
     // wrap our dummy component with the context and get its props
     const DummyComponentWithContext: React.ComponentType<IProps> = withContext(
       DummyComponent
@@ -53,26 +55,26 @@ describe('withContext HOC', () => {
     node = getByTestId(rr.container, 'dummy-test-id');
   });
 
-  describe('context provided props', () => {
-    it('has the siteKeyV2', () => {
+  describe('context provided props', (): void => {
+    it('has the siteKeyV2', (): void => {
       expect(node).toHaveAttribute('data-sitekey-v2', siteKeyV2);
     });
 
-    it('has the siteKeyV3', () => {
+    it('has the siteKeyV3', (): void => {
       expect(node).toHaveAttribute('data-sitekey-v3', siteKeyV3);
     });
 
-    it('has the loaded', () => {
+    it('has the loaded', (): void => {
       expect(node).toHaveAttribute('data-loaded', 'false');
     });
   });
 
-  describe('own props', () => {
-    it('has the dummy prop', () => {
+  describe('own props', (): void => {
+    it('has the dummy prop', (): void => {
       expect(node).toHaveAttribute('data-dummy', 'dummy-prop');
     });
 
-    it('has the otherDummy prop', () => {
+    it('has the otherDummy prop', (): void => {
       expect(node).toHaveAttribute('data-other-dummy', '55');
     });
   });

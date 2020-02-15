@@ -16,28 +16,28 @@ import {
   TReCaptchaV3Callback
 } from './index';
 
-describe('index', () => {
-  it('re-exports ESize as EReCaptchaV2Size', () => {
+describe('index', (): void => {
+  it('re-exports ESize as EReCaptchaV2Size', (): void => {
     expect(EReCaptchaV2Size).toStrictEqual(ESize);
   });
 
-  it('re-exports ETheme as EReCaptchaV2Theme', () => {
+  it('re-exports ETheme as EReCaptchaV2Theme', (): void => {
     expect(EReCaptchaV2Theme).toStrictEqual(ETheme);
   });
 
-  it('re-exports ReCaptchaProvider', () => {
+  it('re-exports ReCaptchaProvider', (): void => {
     expect(ReCaptchaProvider).toStrictEqual(OriginPathReCaptchaProvider);
   });
 
-  it('re-exports ReCaptchaV2', () => {
+  it('re-exports ReCaptchaV2', (): void => {
     expect(ReCaptchaV2).toStrictEqual(OriginPathReCaptchaV2);
   });
 
-  it('re-exports ReCaptchaV3', () => {
+  it('re-exports ReCaptchaV3', (): void => {
     expect(ReCaptchaV3).toStrictEqual(OriginPathReCaptchaV3);
   });
 
-  it('re-exports TCallbackV2 as TReCaptchaV2Callback', () => {
+  it('re-exports TCallbackV2 as TReCaptchaV2Callback', (): void => {
     const callback: TReCaptchaV2Callback | TCallbackV2 = (
       token: string | false | Error
     ): void => {
@@ -46,7 +46,7 @@ describe('index', () => {
     expect(callback).toBeTruthy();
   });
 
-  it('re-exports TCallbackV3 as TReCaptchaV3Callback', () => {
+  it('re-exports TCallbackV3 as TReCaptchaV3Callback', (): void => {
     const callback: TReCaptchaV3Callback | TCallbackV3 = (
       token: string | void
     ): void => {

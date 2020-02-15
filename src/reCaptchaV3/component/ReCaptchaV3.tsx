@@ -62,7 +62,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
           token: undefined,
           retrieving: true
         },
-        () => {
+        (): void => {
           // invoke callback without args, to signify retrieving in progress
           callback();
 
@@ -74,7 +74,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
                   token,
                   retrieving: false
                 },
-                () => {
+                (): void => {
                   // invoke callback with token and then refreshToken function,
                   // to signify success and pass the token
                   callback(token, this.getToken);

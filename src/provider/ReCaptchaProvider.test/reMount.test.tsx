@@ -7,7 +7,7 @@ import { DummyComponent } from './helpers/DummyComponent';
 import { EProps } from './helpers/EProps';
 import { IProps } from './helpers/IProps';
 
-describe('ReCaptchaProvider', () => {
+describe('ReCaptchaProvider', (): void => {
   let rr: RenderResult;
   let DummyComponentWithContext: React.ComponentType<IProps>;
 
@@ -18,8 +18,8 @@ describe('ReCaptchaProvider', () => {
   // script/style getting inject twice as well
   // but without the beforeEach cleanup though
   // so that the script is already there and we double render/mount...
-  describe('first mount with required props', () => {
-    beforeEach(() => {
+  describe('first mount with required props', (): void => {
+    beforeEach((): void => {
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -33,8 +33,8 @@ describe('ReCaptchaProvider', () => {
       );
     });
 
-    describe('second mount with optional props', () => {
-      beforeEach(() => {
+    describe('second mount with optional props', (): void => {
+      beforeEach((): void => {
         // wrap our dummy component with the context and get its props
         DummyComponentWithContext = withContext(DummyComponent);
         // new render to trigger a new mount with all optional props
@@ -52,11 +52,11 @@ describe('ReCaptchaProvider', () => {
         );
       });
 
-      it('script tag gets injected only once', () => {
+      it('script tag gets injected only once', (): void => {
         expect(document.querySelectorAll('script')).toHaveLength(1);
       });
 
-      it('style tag gets injected only once', () => {
+      it('style tag gets injected only once', (): void => {
         expect(document.querySelectorAll('style')).toHaveLength(1);
       });
     });

@@ -6,7 +6,7 @@ import { ETheme } from './ETheme';
 import { ReCaptchaV2 } from './ReCaptchaV2';
 import { TCallback } from './TCallback';
 
-describe('ReCaptchaV2 component', () => {
+describe('ReCaptchaV2 component', (): void => {
   let callback: TCallback;
   let providerContext: IContext;
   let rr: RenderResult;
@@ -16,8 +16,8 @@ describe('ReCaptchaV2 component', () => {
   let grecaptchaExpiredCallback: () => void;
   let grecaptchaErrorCallback: () => void;
 
-  describe('without the V2 site key', () => {
-    beforeEach(() => {
+  describe('without the V2 site key', (): void => {
+    beforeEach((): void => {
       callback = jest.fn();
       providerContext = {
         siteKeyV2: undefined,
@@ -26,9 +26,9 @@ describe('ReCaptchaV2 component', () => {
       };
     });
 
-    it('throws an Error', () => {
+    it('throws an Error', (): void => {
       expect(
-        () =>
+        (): ReCaptchaV2 =>
           new ReCaptchaV2({
             callback,
             providerContext: providerContext
@@ -39,8 +39,8 @@ describe('ReCaptchaV2 component', () => {
     });
   });
 
-  describe('with a V2 site key', () => {
-    beforeEach(() => {
+  describe('with a V2 site key', (): void => {
+    beforeEach((): void => {
       callback = jest.fn();
       providerContext = {
         siteKeyV2: 'test',
@@ -49,20 +49,20 @@ describe('ReCaptchaV2 component', () => {
       };
     });
 
-    describe('and required props', () => {
-      beforeEach(() => {
+    describe('and required props', (): void => {
+      beforeEach((): void => {
         rr = render(
           <ReCaptchaV2 callback={callback} providerContext={providerContext} />
         );
         node = rr.container.firstChild;
       });
 
-      it('renders the div element', () => {
+      it('renders the div element', (): void => {
         expect(node).toMatchInlineSnapshot('<div />');
       });
 
-      describe('when providerContext.loaded changes to true', () => {
-        beforeEach(() => {
+      describe('when providerContext.loaded changes to true', (): void => {
+        beforeEach((): void => {
           // mock the google reCaptcha object
           global.grecaptcha = {
             render: jest.fn(
@@ -103,11 +103,11 @@ describe('ReCaptchaV2 component', () => {
           );
         });
 
-        it('invokes the google reCaptcha render once', () => {
+        it('invokes the google reCaptcha render once', (): void => {
           expect(global.grecaptcha.render).toHaveBeenCalledTimes(1);
         });
 
-        it('invokes the google reCaptcha render with the proper args', () => {
+        it('invokes the google reCaptcha render with the proper args', (): void => {
           expect(global.grecaptcha.render).toHaveBeenCalledWith(node, {
             sitekey: providerContext.siteKeyV2,
             callback: expect.any(Function),
@@ -119,52 +119,52 @@ describe('ReCaptchaV2 component', () => {
           });
         });
 
-        describe('when grecaptcha calls "callback"', () => {
-          beforeEach(() => {
+        describe('when grecaptcha calls "callback"', (): void => {
+          beforeEach((): void => {
             grecaptchaCallback('test-token');
           });
 
-          it('invokes props.callback once', () => {
+          it('invokes props.callback once', (): void => {
             expect(callback).toHaveBeenCalledTimes(1);
           });
 
-          it('invokes props.callback with the token', () => {
+          it('invokes props.callback with the token', (): void => {
             expect(callback).toHaveBeenCalledWith('test-token');
           });
         });
 
-        describe('when grecaptcha calls "expired-callback"', () => {
-          beforeEach(() => {
+        describe('when grecaptcha calls "expired-callback"', (): void => {
+          beforeEach((): void => {
             grecaptchaExpiredCallback();
           });
 
-          it('invokes props.callback once', () => {
+          it('invokes props.callback once', (): void => {
             expect(callback).toHaveBeenCalledTimes(1);
           });
 
-          it('invokes props.callback with "false" arg', () => {
+          it('invokes props.callback with "false" arg', (): void => {
             expect(callback).toHaveBeenCalledWith(false);
           });
         });
 
-        describe('when grecaptcha calls "error-callback"', () => {
-          beforeEach(() => {
+        describe('when grecaptcha calls "error-callback"', (): void => {
+          beforeEach((): void => {
             grecaptchaErrorCallback();
           });
 
-          it('invokes props.callback once', () => {
+          it('invokes props.callback once', (): void => {
             expect(callback).toHaveBeenCalledTimes(1);
           });
 
-          it('invokes props.callback with "Error" arg', () => {
+          it('invokes props.callback with "Error" arg', (): void => {
             expect(callback).toHaveBeenCalledWith(new Error());
           });
         });
       });
     });
 
-    describe('and optional props', () => {
-      beforeEach(() => {
+    describe('and optional props', (): void => {
+      beforeEach((): void => {
         rr = render(
           <ReCaptchaV2
             callback={callback}
@@ -180,7 +180,7 @@ describe('ReCaptchaV2 component', () => {
         node = rr.container.firstChild;
       });
 
-      it('renders the div element', () => {
+      it('renders the div element', (): void => {
         expect(node).toMatchInlineSnapshot(`
           <div
             class="test-class-name"
@@ -190,15 +190,15 @@ describe('ReCaptchaV2 component', () => {
         `);
       });
 
-      it('it has the class attribute', () => {
+      it('it has the class attribute', (): void => {
         expect(node).toHaveClass('test-class-name');
       });
 
-      it('it has the data-test-id attribute', () => {
+      it('it has the data-test-id attribute', (): void => {
         expect(node).toHaveAttribute('data-test-id', 'data-test-id');
       });
 
-      it('it has the id attribute', () => {
+      it('it has the id attribute', (): void => {
         expect(node).toHaveAttribute('id', 'test-id');
       });
     });

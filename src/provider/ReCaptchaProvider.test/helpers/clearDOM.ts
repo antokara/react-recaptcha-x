@@ -3,4 +3,6 @@
  * to ensure a "clear DOM" state, between each test
  */
 export const clearDOM: () => void = (): void =>
-  document.querySelectorAll('script,style').forEach((n: Element) => n.remove());
+  document
+    .querySelectorAll('script,style')
+    .forEach((n: Element): void => n.remove());

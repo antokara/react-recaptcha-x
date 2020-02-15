@@ -107,7 +107,7 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
         expired: false,
         error: false
       },
-      () => {
+      (): void => {
         // invoke callback with token, to signify success and pass the token
         callback(token);
       }
@@ -123,7 +123,7 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
       {
         expired: true
       },
-      () => {
+      (): void => {
         // invoke callback with false, to signify expiration
         callback(false);
       }
@@ -140,7 +140,7 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
       {
         error: true
       },
-      () => {
+      (): void => {
         // invoke callback with error, to signify error
         callback(new Error());
       }
