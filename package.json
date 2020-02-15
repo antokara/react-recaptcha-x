@@ -15,7 +15,7 @@
     "build:js": "webpack --config ./webpack.config.js --env.NODE_ENV=production --env.production --progress",
     "build:tscpaths": "tscpaths -p tsconfig.build.json -s ./src -o ./dist",
     "cl": "commitlint --from=HEAD~1",
-    "ts:validate": "tsc --outDir /tmp"
+    "ts:validate": "tsc --noEmit"
   },
   "keywords": [
     "google recaptcha",
