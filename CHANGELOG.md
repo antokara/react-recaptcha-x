@@ -1,3 +1,17 @@
+## [1.1.1](https://github.com/antokara/react-recaptcha-x/compare/v1.1.0...v1.1.1) (2020-02-15)
+
+
+### Bug Fixes
+
+* **packages:** update npm packages ([4386faa](https://github.com/antokara/react-recaptcha-x/commit/4386faa8743eba4e72a81d5364a34a6c7498a70b))
+* **recaptcha provider:** support server side usage ([46caf6f](https://github.com/antokara/react-recaptcha-x/commit/46caf6f122a74ef4ff5b336b818349bf4e1c895b)), closes [#21](https://github.com/antokara/react-recaptcha-x/issues/21)
+* **travis ci:** nodejs version ([9e8aeb0](https://github.com/antokara/react-recaptcha-x/commit/9e8aeb0f1778dfb5317ed1d91bbe12cad18be338))
+
+
+### Performance Improvements
+
+* **package:** improve ts validate script ([8a58af4](https://github.com/antokara/react-recaptcha-x/commit/8a58af4cba4a80260dec92ff03802c703ae1572c))
+
 # [1.1.0](https://github.com/antokara/react-recaptcha-x/compare/v1.0.9...v1.1.0) (2020-01-09)
 
 
