@@ -70,7 +70,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'React reCAPTCHA v3 v2 javascript example',
       minify: false,
-      inject: false,
       template: HtmlWebpackTemplatePlugin,
       lang: 'en-US',
       appMountId: 'root',
