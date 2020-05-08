@@ -17,6 +17,7 @@ interface IState {
   v2TokenB: string | undefined;
   v2ExpiredB: boolean;
   v2ErrorB: boolean;
+  v2VisibleB: boolean;
   v3TokenA: string | undefined;
   v3TokenB: string | undefined;
   v3RetrievingA: boolean;
@@ -43,6 +44,7 @@ class App extends React.PureComponent<{}, IState> {
       v2TokenB: undefined,
       v2ExpiredB: false,
       v2ErrorB: false,
+      v2VisibleB: false,
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
@@ -50,6 +52,15 @@ class App extends React.PureComponent<{}, IState> {
       v3RefreshTokenA: undefined,
       v3RefreshTokenB: undefined
     };
+
+    // render the v2 B widget with a delay
+    setTimeout(
+      (): void =>
+        this.setState({
+          v2VisibleB: true
+        }),
+      2000
+    );
   }
 
   public render(): React.ReactNode {
@@ -60,6 +71,7 @@ class App extends React.PureComponent<{}, IState> {
       v2TokenB,
       v2ExpiredB,
       v2ErrorB,
+      v2VisibleB,
       v3TokenA,
       v3TokenB,
       v3RetrievingA,
@@ -103,13 +115,15 @@ class App extends React.PureComponent<{}, IState> {
           <h6>Error: {v2ErrorA ? 'yes' : 'no'}</h6>
 
           <hr />
-          <h2>ReCaptcha V2 - B</h2>
-          <ReCaptchaV2
-            callback={this.v2CallbackB}
-            theme={EReCaptchaV2Theme.Dark}
-            size={EReCaptchaV2Size.Compact}
-            tabindex={0}
-          />
+          <h2>ReCaptcha V2 - B (delayed render)</h2>
+          {v2VisibleB && (
+            <ReCaptchaV2
+              callback={this.v2CallbackB}
+              theme={EReCaptchaV2Theme.Dark}
+              size={EReCaptchaV2Size.Compact}
+              tabindex={0}
+            />
+          )}
           <h6>Token: {v2TokenB}</h6>
           <h6>Expired: {v2ExpiredB ? 'yes' : 'no'}</h6>
           <h6>Error: {v2ErrorB ? 'yes' : 'no'}</h6>
