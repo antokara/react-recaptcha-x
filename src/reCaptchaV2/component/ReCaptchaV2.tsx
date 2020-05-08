@@ -37,33 +37,33 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
     this.successCallback = this.successCallback.bind(this);
     this.expiredCallback = this.expiredCallback.bind(this);
     this.errorCallback = this.errorCallback.bind(this);
-    this.checkComponentDidUpdate = this.checkComponentDidUpdate.bind(this);
+    this.shouldRenderWidget = this.shouldRenderWidget.bind(this);
   }
 
-  public componentDidUpdate(prevProps: IProps & IConsumer): void {
-    this.checkComponentDidUpdate(this.state.ref, this.props, prevProps);
+  public componentDidUpdate(): void {
+    this.shouldRenderWidget(this.state.ref, this.props);
+  }
+
+  public componentDidMount(): void {
+    this.shouldRenderWidget(this.state.ref, this.props);
   }
 
   /**
    * if js api is loaded and was not previously loaded,
    * attempt to render the widget
    */
-  public checkComponentDidUpdate(
+  public shouldRenderWidget(
     ref: React.RefObject<HTMLDivElement>,
-    props: IProps & IConsumer,
-    prevProps: IProps & IConsumer
+    props: IProps & IConsumer
   ): void {
     const { loaded, siteKeyV2 } = props.providerContext;
     const { theme, size, tabindex } = props;
-    // make sure the providerContext changed to loaded,
+    const { widgetId } = this.state;
+    // make sure we haven't rendered this widget before,
+    // the providerContext is loaded,
     // we have a ref.current defined (happens in constructor) and
     // the siteKeyV2 has been defined as well.
-    if (
-      prevProps.providerContext.loaded !== loaded &&
-      loaded &&
-      ref.current &&
-      siteKeyV2
-    ) {
+    if (widgetId === undefined && loaded && ref.current && siteKeyV2) {
       // render the widget and store the returned widget id in the state
       this.setState({
         expired: false,

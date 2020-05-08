@@ -1,5 +1,5 @@
 /**
- * state for ReCaptchaV3 component
+ * state for ReCaptchaV2 component
  */
 export interface IState {
   ref: React.RefObject<HTMLDivElement>;

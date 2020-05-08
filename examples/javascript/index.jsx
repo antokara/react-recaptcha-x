@@ -25,6 +25,7 @@ class App extends React.PureComponent {
       v2TokenB: undefined,
       v2ExpiredB: false,
       v2ErrorB: false,
+      v2VisibleB: false,
       v3TokenA: undefined,
       v3TokenB: undefined,
       v3RetrievingA: false,
@@ -32,6 +33,15 @@ class App extends React.PureComponent {
       v3RefreshTokenA: undefined,
       v3RefreshTokenB: undefined
     };
+
+    // render the v2 B widget with a delay
+    setTimeout(
+      () =>
+        this.setState({
+          v2VisibleB: true
+        }),
+      2000
+    );
   }
 
   render() {
@@ -42,6 +52,7 @@ class App extends React.PureComponent {
       v2TokenB,
       v2ExpiredB,
       v2ErrorB,
+      v2VisibleB,
       v3TokenA,
       v3TokenB,
       v3RetrievingA,
@@ -85,13 +96,15 @@ class App extends React.PureComponent {
           <h6>Error: {v2ErrorA ? 'yes' : 'no'}</h6>
 
           <hr />
-          <h2>ReCaptcha V2 - B</h2>
-          <ReCaptchaV2
-            callback={this.v2CallbackB}
-            theme={EReCaptchaV2Theme.Dark}
-            size={EReCaptchaV2Size.Compact}
-            tabindex={0}
-          />
+          <h2>ReCaptcha V2 - B (delayed render)</h2>
+          {v2VisibleB && (
+            <ReCaptchaV2
+              callback={this.v2CallbackB}
+              theme={EReCaptchaV2Theme.Dark}
+              size={EReCaptchaV2Size.Compact}
+              tabindex={0}
+            />
+          )}
           <h6>Token: {v2TokenB}</h6>
           <h6>Expired: {v2ExpiredB ? 'yes' : 'no'}</h6>
           <h6>Error: {v2ErrorB ? 'yes' : 'no'}</h6>
