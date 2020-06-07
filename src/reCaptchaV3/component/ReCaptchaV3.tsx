@@ -23,8 +23,10 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
       retrieving: false
     };
     this.getToken = this.getToken.bind(this);
+  }
 
-    // in case the js api is already loaded, get the token immediatelly
+  public componentDidMount(): void {
+    // in case the js api is already loaded, get the token immediately
     this.getToken();
   }
 
