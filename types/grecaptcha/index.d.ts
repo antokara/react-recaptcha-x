@@ -45,7 +45,7 @@ declare namespace ReCaptchaV2 {
     execute(opt_widget_id?: number, options?: options): void;
 
     // v3
-    execute(siteKey: string, options?: options): Promise<string>;
+    execute(siteKey: string, options?: options): PromiseLike<string>;
   }
 
   type Theme = 'light' | 'dark';
