@@ -7,6 +7,11 @@ import { IState } from './IState';
  * a React reCAPTCHA version 3 component
  */
 class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
+  /**
+   * if true, the component is in the process of being unmounted
+   */
+  private unMounting: boolean = false;
+
   public constructor(props: IProps & IConsumer) {
     super(props);
 
@@ -23,8 +28,10 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
       retrieving: false
     };
     this.getToken = this.getToken.bind(this);
+  }
 
-    // in case the js api is already loaded, get the token immediatelly
+  public componentDidMount(): void {
+    // in case the js api is already loaded, get the token immediately
     this.getToken();
   }
 
@@ -44,6 +51,13 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
    */
   public render(): false {
     return false;
+  }
+
+  /**
+   * mark our component as being unmounted
+   */
+  public componentWillUnmount(): void {
+    this.unMounting = true;
   }
 
   /**
@@ -69,6 +83,11 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
           grecaptcha
             .execute(siteKeyV3, { action })
             .then((token: string): void => {
+              // do not attempt to set state or invoke the callback
+              // if the component is being unmounted
+              if (this.unMounting) {
+                return;
+              }
               this.setState(
                 {
                   token,
