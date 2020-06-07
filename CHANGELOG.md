@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/antokara/react-recaptcha-x/compare/v1.1.5...v1.1.6) (2020-06-07)
+
+
+### Bug Fixes
+
+* **grecaptcha:** correct return type of execute ([609ab88](https://github.com/antokara/react-recaptcha-x/commit/609ab88bdd70994d15e354bc4ab644df48ecefda))
+
 ## [1.1.5](https://github.com/antokara/react-recaptcha-x/compare/v1.1.4...v1.1.5) (2020-06-07)
 
 
