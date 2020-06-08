@@ -24,6 +24,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
     }
 
     this.state = {
+      loaded: this.props.providerContext.loaded,
       token: undefined,
       retrieving: false
     };
@@ -32,7 +33,9 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
 
   public componentDidMount(): void {
     // in case the js api is already loaded, get the token immediately
-    this.getToken();
+    if (this.state.loaded) {
+      this.getToken();
+    }
   }
 
   /**
@@ -41,7 +44,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
    */
   public componentDidUpdate(prevProps: IProps & IConsumer): void {
     const { loaded } = this.props.providerContext;
-    if (prevProps.providerContext.loaded !== loaded && loaded) {
+    if (!this.state.loaded && loaded) {
       this.getToken();
     }
   }
@@ -73,6 +76,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
     if (loaded && !retrieving && siteKeyV3) {
       this.setState(
         {
+          loaded: true,
           token: undefined,
           retrieving: true
         },
@@ -90,6 +94,7 @@ class ReCaptchaV3 extends React.Component<IProps & IConsumer, IState> {
               }
               this.setState(
                 {
+                  loaded: true,
                   token,
                   retrieving: false
                 },
