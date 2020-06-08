@@ -55,6 +55,8 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       script.setAttribute('async', 'true');
       script.setAttribute('defer', 'true');
       document.body.appendChild(script);
+    } else if (typeof grecaptcha === 'object') {
+      this.setState({ loaded: true });
     }
 
     // in the case user wants to hide the reCaptchaV3 badge and
