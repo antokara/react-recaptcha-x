@@ -1,4 +1,4 @@
-import { render, RenderResult } from '@testing-library/react';
+import { getByTestId, render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { ReCaptchaProvider } from 'src/provider/ReCaptchaProvider';
 import { withContext } from 'src/provider/withContext';
@@ -10,16 +10,13 @@ import { IProps } from './helpers/IProps';
 describe('ReCaptchaProvider', (): void => {
   let rr: RenderResult;
   let DummyComponentWithContext: React.ComponentType<IProps>;
+  let node: ChildNode | null;
 
-  // make sure everything is clear
-  beforeAll(clearDOM);
-
-  // check double render/mount not causing the
-  // script/style getting inject twice as well
-  // but without the beforeEach cleanup though
-  // so that the script is already there and we double render/mount...
-  describe('first mount with required props', (): void => {
-    beforeEach((): void => {
+  describe('first mount with required props and post onload invocation', (): void => {
+    beforeAll((): void => {
+      clearDOM();
+      // reset state
+      delete window.GoogleReCaptcha_onload;
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -33,8 +30,24 @@ describe('ReCaptchaProvider', (): void => {
       );
     });
 
+    it('onload handler is defined', (): void => {
+      expect(window.GoogleReCaptcha_onload).toBeInstanceOf(Function);
+    });
+
+    describe('unmount and invoke onload handler', (): void => {
+      beforeAll((): void => {
+        rr.unmount();
+        // emulate the onload call by the google api
+        window.GoogleReCaptcha_onload();
+      });
+
+      it('onload handler is undefined', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
+      });
+    });
+
     describe('second mount with optional props', (): void => {
-      beforeEach((): void => {
+      beforeAll((): void => {
         // wrap our dummy component with the context and get its props
         DummyComponentWithContext = withContext(DummyComponent);
         // new render to trigger a new mount with all optional props
@@ -50,6 +63,7 @@ describe('ReCaptchaProvider', (): void => {
             </div>
           </ReCaptchaProvider>
         );
+        node = getByTestId(rr.container, 'dummy-test-id');
       });
 
       it('script tag gets injected only once', (): void => {
@@ -58,6 +72,139 @@ describe('ReCaptchaProvider', (): void => {
 
       it('style tag gets injected only once', (): void => {
         expect(document.querySelectorAll('style')).toHaveLength(1);
+      });
+
+      it('changes the component`s loaded prop to true', (): void => {
+        expect(node).toHaveAttribute('data-loaded', 'true');
+      });
+
+      it('the onload handler gets deleted', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
+      });
+    });
+  });
+
+  describe('first mount with required props', (): void => {
+    beforeAll((): void => {
+      clearDOM();
+      // reset state
+      delete window.GoogleReCaptcha_onload;
+      // wrap our dummy component with the context and get its props
+      DummyComponentWithContext = withContext(DummyComponent);
+      // render our dummy component in a two level nested node
+      // under the provider, to test the context passing down
+      rr = render(
+        <ReCaptchaProvider>
+          <div>
+            <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+          </div>
+        </ReCaptchaProvider>
+      );
+    });
+
+    it('onload handler is defined', (): void => {
+      expect(window.GoogleReCaptcha_onload).toBeInstanceOf(Function);
+    });
+
+    describe('second mount with optional props and post onload invocation', (): void => {
+      beforeAll((): void => {
+        // wrap our dummy component with the context and get its props
+        DummyComponentWithContext = withContext(DummyComponent);
+        // new render to trigger a new mount with all optional props
+        rr = render(
+          <ReCaptchaProvider
+            siteKeyV2={EProps.siteKeyV2}
+            siteKeyV3={EProps.siteKeyV3}
+            langCode={EProps.langCode}
+            hideV3Badge={true}
+          >
+            <div>
+              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+            </div>
+          </ReCaptchaProvider>
+        );
+        // emulate the onload call by the google api
+        window.GoogleReCaptcha_onload();
+        node = getByTestId(rr.container, 'dummy-test-id');
+      });
+
+      it('script tag gets injected only once', (): void => {
+        expect(document.querySelectorAll('script')).toHaveLength(1);
+      });
+
+      it('style tag gets injected only once', (): void => {
+        expect(document.querySelectorAll('style')).toHaveLength(1);
+      });
+
+      it('changes the component`s loaded prop to true', (): void => {
+        expect(node).toHaveAttribute('data-loaded', 'true');
+      });
+
+      it('the onload handler gets deleted', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
+      });
+    });
+  });
+
+  describe('first mount with required props and onload invocation', (): void => {
+    beforeAll((): void => {
+      // make sure everything is clear for this scope
+      clearDOM();
+      // reset state
+      delete window.GoogleReCaptcha_onload;
+      // wrap our dummy component with the context and get its props
+      DummyComponentWithContext = withContext(DummyComponent);
+      // render our dummy component in a two level nested node
+      // under the provider, to test the context passing down
+      rr = render(
+        <ReCaptchaProvider>
+          <div>
+            <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+          </div>
+        </ReCaptchaProvider>
+      );
+      // emulate the onload call by the google api
+      window.GoogleReCaptcha_onload();
+    });
+
+    it('onload handler is not defined', (): void => {
+      expect(window.GoogleReCaptcha_onload).toBeUndefined();
+    });
+
+    describe('second mount with optional props', (): void => {
+      beforeAll((): void => {
+        // wrap our dummy component with the context and get its props
+        DummyComponentWithContext = withContext(DummyComponent);
+        // new render to trigger a new mount with all optional props
+        rr = render(
+          <ReCaptchaProvider
+            siteKeyV2={EProps.siteKeyV2}
+            siteKeyV3={EProps.siteKeyV3}
+            langCode={EProps.langCode}
+            hideV3Badge={true}
+          >
+            <div>
+              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+            </div>
+          </ReCaptchaProvider>
+        );
+        node = getByTestId(rr.container, 'dummy-test-id');
+      });
+
+      it('script tag gets injected only once', (): void => {
+        expect(document.querySelectorAll('script')).toHaveLength(1);
+      });
+
+      it('style tag gets injected only once', (): void => {
+        expect(document.querySelectorAll('style')).toHaveLength(1);
+      });
+
+      it('changes the component`s loaded prop to true', (): void => {
+        expect(node).toHaveAttribute('data-loaded', 'true');
+      });
+
+      it('the onload handler gets deleted', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
       });
     });
   });

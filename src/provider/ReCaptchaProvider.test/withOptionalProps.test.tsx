@@ -103,5 +103,19 @@ describe('ReCaptchaProvider', (): void => {
         expect(document.querySelectorAll('style')).toHaveLength(1);
       });
     });
+
+    describe('window.GoogleReCaptcha_onload callback', (): void => {
+      beforeEach((): void => {
+        window.GoogleReCaptcha_onload();
+      });
+
+      it('the loaded prop changes to true', (): void => {
+        expect(node).toHaveAttribute('data-loaded', 'true');
+      });
+
+      it('the onload handler gets deleted', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
+      });
+    });
   });
 });
