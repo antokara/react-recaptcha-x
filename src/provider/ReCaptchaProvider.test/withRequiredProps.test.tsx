@@ -102,6 +102,10 @@ describe('ReCaptchaProvider', (): void => {
       it('the loaded prop changes to true', (): void => {
         expect(node).toHaveAttribute('data-loaded', 'true');
       });
+
+      it('the onload handler gets deleted', (): void => {
+        expect(window.GoogleReCaptcha_onload).toBeUndefined();
+      });
     });
   });
 });
