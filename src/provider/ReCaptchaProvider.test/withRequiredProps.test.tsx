@@ -96,7 +96,9 @@ describe('ReCaptchaProvider', (): void => {
 
     describe('window.GoogleReCaptcha_onload callback', (): void => {
       beforeEach((): void => {
-        window.GoogleReCaptcha_onload();
+        if (window.GoogleReCaptcha_onload) {
+          window.GoogleReCaptcha_onload();
+        }
       });
 
       it('the loaded prop changes to true', (): void => {

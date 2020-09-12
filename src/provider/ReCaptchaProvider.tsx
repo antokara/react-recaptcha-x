@@ -5,7 +5,7 @@ import { IContext } from './IContext';
 declare global {
   // tslint:disable-next-line:interface-name (@see https://github.com/Microsoft/TypeScript/issues/19816)
   interface Window {
-    GoogleReCaptcha_onload: Function;
+    GoogleReCaptcha_onload?: Function;
   }
 }
 

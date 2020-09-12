@@ -16,7 +16,7 @@ describe('ReCaptchaProvider', (): void => {
     beforeAll((): void => {
       clearDOM();
       // reset state
-      delete window.GoogleReCaptcha_onload;
+      delete window?.GoogleReCaptcha_onload;
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -38,7 +38,9 @@ describe('ReCaptchaProvider', (): void => {
       beforeAll((): void => {
         rr.unmount();
         // emulate the onload call by the google api
-        window.GoogleReCaptcha_onload();
+        if (typeof window.GoogleReCaptcha_onload === 'function') {
+          window.GoogleReCaptcha_onload();
+        }
       });
 
       it('onload handler is undefined', (): void => {
@@ -88,7 +90,7 @@ describe('ReCaptchaProvider', (): void => {
     beforeAll((): void => {
       clearDOM();
       // reset state
-      delete window.GoogleReCaptcha_onload;
+      delete window?.GoogleReCaptcha_onload;
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -124,7 +126,9 @@ describe('ReCaptchaProvider', (): void => {
           </ReCaptchaProvider>
         );
         // emulate the onload call by the google api
-        window.GoogleReCaptcha_onload();
+        if (typeof window.GoogleReCaptcha_onload === 'function') {
+          window.GoogleReCaptcha_onload();
+        }
         node = getByTestId(rr.container, 'dummy-test-id');
       });
 
@@ -150,8 +154,8 @@ describe('ReCaptchaProvider', (): void => {
     beforeAll((): void => {
       // make sure everything is clear for this scope
       clearDOM();
-      // reset state
-      delete window.GoogleReCaptcha_onload;
+      // reset state: investigate how to uncomment this with TS v4+
+      // delete window.GoogleReCaptcha_onload;
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
@@ -164,7 +168,10 @@ describe('ReCaptchaProvider', (): void => {
         </ReCaptchaProvider>
       );
       // emulate the onload call by the google api
-      window.GoogleReCaptcha_onload();
+      // const { googleReCaptcha_onload } = window;
+      if (typeof window.GoogleReCaptcha_onload === 'function') {
+        window.GoogleReCaptcha_onload();
+      }
     });
 
     it('onload handler is not defined', (): void => {
