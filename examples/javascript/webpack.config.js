@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplatePlugin = require('html-webpack-template');
 
 module.exports = {
+  mode: 'development',
   entry: './index.jsx',
   resolve: {
     extensions: ['.js'],
@@ -75,7 +76,6 @@ module.exports = {
       appMountId: 'root',
       baseHref: '/'
     }),
-    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 };
