@@ -111,7 +111,7 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
   /**
    * invoked when the Google reCAPTCHA JS API is loaded
    * to set the loaded state
-   * @see componentDidMount
+   * see componentDidMount
    */
   private onLoadHandler(): void {
     // remove the onload handler since it got used

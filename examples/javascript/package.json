@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prettier": "npx prettier --check 'index.jsx'",
-    "start": "node --max-old-space-size=2048 node_modules/webpack-dev-server/bin/webpack-dev-server.js --config ./webpack.config.js"
+    "start": "webpack serve --config ./webpack.config.js"
   },
   "author": {
     "name": "Antonios Karagiannis",
@@ -18,29 +18,29 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
-    "babel-loader": "^8.1.0",
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.16",
+    "babel-loader": "^8.2.2",
     "babel-preset-minify": "^0.5.1",
-    "html-webpack-plugin": "^4.4.1",
+    "html-webpack-plugin": "^5.1.0",
     "html-webpack-template": "^6.2.0",
-    "prettier": "^2.1.1",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "prettier": "^2.2.1",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
     "dotenv": "^8.2.0",
-    "dotenv-webpack": "^2.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "dotenv-webpack": "^6.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "babel": {
     "presets": [
