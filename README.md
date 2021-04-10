@@ -45,7 +45,7 @@ Most reCAPTCHA wrappers do not support both v3 and v2 at the same time properly.
 
 ### requirements
 
-1. [React 16.6.0+](https://reactjs.org/)
+1. [React 16.6.0+ or 17.x](https://reactjs.org/)
 1. reCAPTCHA v2 / v3 site key(s), which you can get from [here](https://www.google.com/recaptcha)
 
 ### installation
@@ -63,7 +63,7 @@ import {
   ReCaptchaV3
 } from 'react-recaptcha-x';
 
-const v2Callback = token => {
+const v2Callback = (token) => {
   if (typeof token === 'string') {
     console.log('this is the token', token);
   } else if (typeof token === 'boolean' && !token) {

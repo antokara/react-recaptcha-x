@@ -43,12 +43,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.2.0",
-    "@semantic-release/npm": "^7.0.10",
+    "@semantic-release/npm": "^7.1.1",
     "@testing-library/dom": "^7.29.4",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -73,7 +73,7 @@
     "webpack-cli": "^4.5.0"
   },
   "peerDependencies": {
-    "react": "^16.6.0"
+    "react": "^16.6.0 || ^17.0.0"
   },
   "prettier": {
     "singleQuote": true,
