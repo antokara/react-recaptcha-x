@@ -38,18 +38,14 @@ describe('index', (): void => {
   });
 
   it('re-exports TCallbackV2 as TReCaptchaV2Callback', (): void => {
-    const callback: TReCaptchaV2Callback | TCallbackV2 = (
-      token: string | false | Error
-    ): void => {
+    const callback: TReCaptchaV2Callback | TCallbackV2 = (): void => {
       return;
     };
     expect(callback).toBeTruthy();
   });
 
   it('re-exports TCallbackV3 as TReCaptchaV3Callback', (): void => {
-    const callback: TReCaptchaV3Callback | TCallbackV3 = (
-      token: string | void
-    ): void => {
+    const callback: TReCaptchaV3Callback | TCallbackV3 = (): void => {
       return;
     };
     expect(callback).toBeTruthy();

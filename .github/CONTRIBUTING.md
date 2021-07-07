@@ -75,7 +75,7 @@ Pull Requests that fail the automated checks, will not get code reviewed until a
 1. `$npm install`
 1. create `.env` file with your reCAPTCHA key(s) using `.env.example` as a template
 1. `$npm start`
-1. open browser to `http://locahost:9000`
+1. open browser to `http://localhost:9000`
 
 ### Code Quality / Linting
 
@@ -84,16 +84,13 @@ Pull Requests that fail the automated checks, will not get code reviewed until a
 1. [Commitlint](https://commitlint.js.org/)
    1. [conventional changelog](https://github.com/conventional-changelog/commitlint#readme)
 1. [Prettier](https://prettier.io/)
-1. [TSLint](https://palantir.github.io/tslint/)
-   1. [consistent codestyle](https://github.com/ajafff/tslint-consistent-codestyle#rules)
-   1. [microsoft contrib](https://github.com/microsoft/tslint-microsoft-contrib#supported-rules)
-   1. [tslint react](https://github.com/palantir/tslint-react#rules)
+1. [ESLint](https://eslint.org/)
 
 #### Code Quality / Linting - Commands
 
 1. for Commitlint run `$npm run cl`
 1. for Prettier run `$npm run prettier`
-1. for TSLint run `$npm run lint`
+1. for ESLint run `$npm run lint`
 1. for Typescript compilation validation run `$npm run ts:validate`
 
 ### Unit Testing

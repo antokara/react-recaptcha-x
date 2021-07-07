@@ -3,9 +3,8 @@ import { Context } from './Context';
 import { IContext } from './IContext';
 
 declare global {
-  // tslint:disable-next-line:interface-name (@see https://github.com/Microsoft/TypeScript/issues/19816)
   interface Window {
-    GoogleReCaptcha_onload?: Function;
+    GoogleReCaptcha_onload?: () => void;
   }
 }
 
@@ -75,7 +74,6 @@ class ReCaptchaProvider extends React.Component<TProps, TState> {
       document.querySelector(`style[data-id="${styleDataId}"]`) === null
     ) {
       const style: HTMLStyleElement = document.createElement('style');
-      // tslint:disable-next-line:no-inner-html (this is safe, there is no user input)
       style.innerHTML = '.grecaptcha-badge{display: none;}';
       style.setAttribute('data-id', styleDataId);
       document.body.appendChild(style);
