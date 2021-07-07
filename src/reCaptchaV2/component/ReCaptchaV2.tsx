@@ -83,14 +83,10 @@ class ReCaptchaV2 extends React.Component<IProps & IConsumer, IState> {
 
   public render(): JSX.Element {
     const { ref } = this.state;
-    const {
-      theme,
-      callback,
-      size,
-      tabindex,
-      providerContext,
-      ...other
-    } = this.props;
+    /* eslint-disable @typescript-eslint/no-unused-vars */
+    const { theme, callback, size, tabindex, providerContext, ...other } =
+      this.props;
+    /* eslint-enable @typescript-eslint/no-unused-vars */
 
     return <div ref={ref} {...other} />;
   }

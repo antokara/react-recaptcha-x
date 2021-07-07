@@ -216,7 +216,7 @@ The use of this component is not required but can be combined with the v2 reCAPT
 
 ### examples prerequisites & setup
 
-1. [nodejs](https://nodejs.org/en/) 10.x.x LTS
+1. [nodejs](https://nodejs.org/en/) 16.x LTS
 1. `$npm install`
 1. `$npm run build`
 1. `$npm link` _(you might need to run with sudo, if you get permission denied)_

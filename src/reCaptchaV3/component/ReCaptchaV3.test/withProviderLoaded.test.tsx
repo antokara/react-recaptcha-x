@@ -42,8 +42,7 @@ describe('ReCaptchaV3 component', (): void => {
         execute: jest
           .fn()
           .mockImplementation(
-            (siteKey: string, options?: options): Promise<string> =>
-              Promise.resolve('test-token')
+            (): Promise<string> => Promise.resolve('test-token')
           )
       };
       providerContext = {

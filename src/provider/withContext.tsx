@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import * as React from 'react';
 import { Context } from './Context';
 import { IContext } from './IContext';
@@ -40,12 +41,13 @@ type TConsumerChildGenerator = <T extends object>(
  *  - ownProps of the Component
  *  - providerContext prop
  */
-const ConsumerChildGenerator: TConsumerChildGenerator = <T extends object>(
-  Component: React.ComponentType<T>,
-  props: T
-): TConsumerChild => (value: IContext): React.ReactElement => (
-  <Component {...props} providerContext={value} />
-);
+const ConsumerChildGenerator: TConsumerChildGenerator =
+  <T extends object>(
+    Component: React.ComponentType<T>,
+    props: T
+  ): TConsumerChild =>
+  (value: IContext): React.ReactElement =>
+    <Component {...props} providerContext={value} />;
 
 /**
  * context consumer HOC

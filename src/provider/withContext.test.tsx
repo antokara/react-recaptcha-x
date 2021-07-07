@@ -40,9 +40,8 @@ describe('withContext HOC', (): void => {
       .querySelectorAll('script')
       .forEach((n: Element): void => n.remove());
     // wrap our dummy component with the context and get its props
-    const DummyComponentWithContext: React.ComponentType<IProps> = withContext(
-      DummyComponent
-    );
+    const DummyComponentWithContext: React.ComponentType<IProps> =
+      withContext(DummyComponent);
     // render our dummy component in a two level nested node
     // under the provider, to test the context passing down
     rr = render(

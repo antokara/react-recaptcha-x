@@ -32,8 +32,8 @@ interface IState {
  * the main component of our development application
  * which is used to demo & develop our react module on-the-fly
  */
-class App extends React.PureComponent<{}, IState> {
-  public constructor(props: {}) {
+class App extends React.PureComponent<Record<string, unknown>, IState> {
+  public constructor(props: Record<string, unknown>) {
     super(props);
     this.toggleProvider = this.toggleProvider.bind(this);
     this.v2CallbackA = this.v2CallbackA.bind(this);

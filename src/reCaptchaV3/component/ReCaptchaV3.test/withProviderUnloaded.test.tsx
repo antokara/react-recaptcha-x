@@ -69,8 +69,7 @@ describe('ReCaptchaV3 component', (): void => {
             execute: jest
               .fn()
               .mockImplementation(
-                (siteKey: string, options?: options): Promise<string> =>
-                  Promise.resolve('test-token')
+                (): Promise<string> => Promise.resolve('test-token')
               )
           };
           // change loaded to true
@@ -129,13 +128,10 @@ describe('ReCaptchaV3 component', (): void => {
         beforeEach((): void => {
           // make sure the mocked callback hasn't been called before
           callback.mockClear();
-          let promiseResolver: (token: string) => void = (
-            token: string
-          ): void => {
+          let promiseResolver: (token: string) => void = (): void => {
             // dummy resolver until we assign the real one
           };
           // we must disable this rule for this specific test
-          // tslint:disable-next-line:promise-must-complete
           const executePromise: PromiseLike<string> = new Promise(
             (resolve: (token: string) => void): void => {
               promiseResolver = resolve;
@@ -148,10 +144,7 @@ describe('ReCaptchaV3 component', (): void => {
             getResponse: jest.fn(),
             execute: jest
               .fn()
-              .mockImplementation(
-                (siteKey: string, options?: options): PromiseLike<string> =>
-                  executePromise
-              )
+              .mockImplementation((): PromiseLike<string> => executePromise)
           };
           // change loaded to true
           providerContext = {

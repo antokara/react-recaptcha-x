@@ -1,8 +1,6 @@
 import { render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
-import { ESize } from 'src/reCaptchaV2/component/ESize';
-import { ETheme } from 'src/reCaptchaV2/component/ETheme';
 import { ReCaptchaV2 } from 'src/reCaptchaV2/component/ReCaptchaV2';
 import { TCallback } from 'src/reCaptchaV2/component/TCallback';
 
