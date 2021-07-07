@@ -1,3 +1,10 @@
+## [1.1.13](https://github.com/antokara/react-recaptcha-x/compare/v1.1.12...v1.1.13) (2021-07-07)
+
+
+### Bug Fixes
+
+* **npm packages:** upgrade ([634e828](https://github.com/antokara/react-recaptcha-x/commit/634e828a76555205a3a8311fda0f2a9343d644ec))
+
 ## [1.1.12](https://github.com/antokara/react-recaptcha-x/compare/v1.1.11...v1.1.12) (2021-04-10)
 
 
