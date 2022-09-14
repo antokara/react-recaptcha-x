@@ -1,4 +1,4 @@
-import { getByTestId, render, RenderResult } from '@testing-library/react';
+import { getByTestId, render, RenderResult, act } from '@testing-library/react';
 import * as React from 'react';
 import { ReCaptchaProvider } from 'src/provider/ReCaptchaProvider';
 import { withContext } from 'src/provider/withContext';
@@ -13,25 +13,27 @@ describe('ReCaptchaProvider', (): void => {
   let DummyComponentWithContext: React.ComponentType<IProps>;
 
   describe('with optional props', (): void => {
-    beforeEach((): void => {
+    beforeEach(async (): Promise<void> => {
       // make sure we clean DOM from script/style tags
       clearDOM();
       // wrap our dummy component with the context and get its props
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
       // under the provider, to test the context passing down
-      rr = render(
-        <ReCaptchaProvider
-          siteKeyV2={EProps.siteKeyV2}
-          siteKeyV3={EProps.siteKeyV3}
-          langCode={EProps.langCode}
-          hideV3Badge={true}
-        >
-          <div>
-            <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
-          </div>
-        </ReCaptchaProvider>
-      );
+      await act(async () => {
+        rr = render(
+          <ReCaptchaProvider
+            siteKeyV2={EProps.siteKeyV2}
+            siteKeyV3={EProps.siteKeyV3}
+            langCode={EProps.langCode}
+            hideV3Badge={true}
+          >
+            <div>
+              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+            </div>
+          </ReCaptchaProvider>
+        );
+      });
       node = getByTestId(rr.container, 'dummy-test-id');
     });
 
@@ -105,10 +107,12 @@ describe('ReCaptchaProvider', (): void => {
     });
 
     describe('window.GoogleReCaptcha_onload callback', (): void => {
-      beforeEach((): void => {
-        if (window.GoogleReCaptcha_onload) {
-          window.GoogleReCaptcha_onload();
-        }
+      beforeEach(async (): Promise<void> => {
+        await act(async () => {
+          if (window.GoogleReCaptcha_onload) {
+            window.GoogleReCaptcha_onload();
+          }
+        });
       });
 
       it('the loaded prop changes to true', (): void => {

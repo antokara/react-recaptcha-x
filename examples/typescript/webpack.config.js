@@ -22,7 +22,9 @@ module.exports = {
   },
   // @see https://webpack.js.org/configuration/dev-server
   devServer: {
-    contentBase: path.join(__dirname, './'),
+    static: {
+      directory: path.join(__dirname, './')
+    },
     compress: true,
     port: 9001,
     https: false,
@@ -33,7 +35,7 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
-    disableHostCheck: true
+    allowedHosts: 'all',
   },
   module: {
     rules: [

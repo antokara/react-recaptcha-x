@@ -1,4 +1,4 @@
-import { render, RenderResult } from '@testing-library/react';
+import { act, render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
 import { ReCaptchaV3 } from 'src/reCaptchaV3/component/ReCaptchaV3';
@@ -42,14 +42,16 @@ describe('ReCaptchaV3 component', (): void => {
     });
 
     describe('and required props', (): void => {
-      beforeEach((): void => {
-        rr = render(
-          <ReCaptchaV3
-            action="test-action"
-            callback={callback}
-            providerContext={providerContext}
-          />
-        );
+      beforeEach(async (): Promise<void> => {
+        await act(async () => {
+          rr = render(
+            <ReCaptchaV3
+              action="test-action"
+              callback={callback}
+              providerContext={providerContext}
+            />
+          );
+        });
         node = rr.container.firstChild;
       });
 
@@ -58,7 +60,7 @@ describe('ReCaptchaV3 component', (): void => {
       });
 
       describe('when providerContext.loaded changes to true', (): void => {
-        beforeEach((): void => {
+        beforeEach(async (): Promise<void> => {
           // make sure the mocked callback hasn't been called before
           callback.mockClear();
           // mock the google reCaptcha object
@@ -77,13 +79,15 @@ describe('ReCaptchaV3 component', (): void => {
             ...providerContext,
             loaded: true
           };
-          rr.rerender(
-            <ReCaptchaV3
-              action="test-action"
-              callback={callback}
-              providerContext={providerContext}
-            />
-          );
+          await act(async () => {
+            rr.rerender(
+              <ReCaptchaV3
+                action="test-action"
+                callback={callback}
+                providerContext={providerContext}
+              />
+            );
+          });
         });
 
         it('invokes the google reCaptcha execute once', (): void => {
@@ -111,11 +115,13 @@ describe('ReCaptchaV3 component', (): void => {
         });
 
         describe('refresh token function', (): void => {
-          beforeEach((): void => {
-            global.grecaptcha.execute.mockClear();
-            if (refreshTokenFn) {
-              refreshTokenFn();
-            }
+          beforeEach(async (): Promise<void> => {
+            await act(async () => {
+              global.grecaptcha.execute.mockClear();
+              if (refreshTokenFn) {
+                refreshTokenFn();
+              }
+            });
           });
 
           it('invokes the google reCaptcha execute once', (): void => {
@@ -125,7 +131,7 @@ describe('ReCaptchaV3 component', (): void => {
       });
 
       describe('when component gets unmounted before the grecaptcha.execute resolves', (): void => {
-        beforeEach((): void => {
+        beforeEach(async (): Promise<void> => {
           // make sure the mocked callback hasn't been called before
           callback.mockClear();
           let promiseResolver: (token: string) => void = (): void => {
@@ -151,14 +157,17 @@ describe('ReCaptchaV3 component', (): void => {
             ...providerContext,
             loaded: true
           };
-          rr.rerender(
-            <ReCaptchaV3
-              action="test-action"
-              callback={callback}
-              providerContext={providerContext}
-            />
-          );
+          await act(async () => {
+            rr.rerender(
+              <ReCaptchaV3
+                action="test-action"
+                callback={callback}
+                providerContext={providerContext}
+              />
+            );
+          });
           rr.unmount();
+
           promiseResolver('test-token');
         });
 

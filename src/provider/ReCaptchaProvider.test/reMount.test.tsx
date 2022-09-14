@@ -1,4 +1,4 @@
-import { getByTestId, render, RenderResult } from '@testing-library/react';
+import { act, getByTestId, render, RenderResult } from '@testing-library/react';
 import * as React from 'react';
 import { ReCaptchaProvider } from 'src/provider/ReCaptchaProvider';
 import { withContext } from 'src/provider/withContext';
@@ -35,12 +35,14 @@ describe('ReCaptchaProvider', (): void => {
     });
 
     describe('unmount and invoke onload handler', (): void => {
-      beforeAll((): void => {
+      beforeEach(async (): Promise<void> => {
         rr.unmount();
         // emulate the onload call by the google api
-        if (typeof window.GoogleReCaptcha_onload === 'function') {
-          window.GoogleReCaptcha_onload();
-        }
+        await act(async () => {
+          if (typeof window.GoogleReCaptcha_onload === 'function') {
+            window.GoogleReCaptcha_onload();
+          }
+        });
       });
 
       it('onload handler is undefined', (): void => {
@@ -49,22 +51,24 @@ describe('ReCaptchaProvider', (): void => {
     });
 
     describe('second mount with optional props', (): void => {
-      beforeAll((): void => {
+      beforeEach(async (): Promise<void> => {
         // wrap our dummy component with the context and get its props
         DummyComponentWithContext = withContext(DummyComponent);
         // new render to trigger a new mount with all optional props
-        rr = render(
-          <ReCaptchaProvider
-            siteKeyV2={EProps.siteKeyV2}
-            siteKeyV3={EProps.siteKeyV3}
-            langCode={EProps.langCode}
-            hideV3Badge={true}
-          >
-            <div>
-              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
-            </div>
-          </ReCaptchaProvider>
-        );
+        await act(async () => {
+          rr = render(
+            <ReCaptchaProvider
+              siteKeyV2={EProps.siteKeyV2}
+              siteKeyV3={EProps.siteKeyV3}
+              langCode={EProps.langCode}
+              hideV3Badge={true}
+            >
+              <div>
+                <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+              </div>
+            </ReCaptchaProvider>
+          );
+        });
         node = getByTestId(rr.container, 'dummy-test-id');
       });
 
@@ -87,7 +91,7 @@ describe('ReCaptchaProvider', (): void => {
   });
 
   describe('first mount with required props', (): void => {
-    beforeAll((): void => {
+    beforeEach(async (): Promise<void> => {
       clearDOM();
       // reset state
       delete window?.GoogleReCaptcha_onload;
@@ -95,13 +99,15 @@ describe('ReCaptchaProvider', (): void => {
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
       // under the provider, to test the context passing down
-      rr = render(
-        <ReCaptchaProvider>
-          <div>
-            <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
-          </div>
-        </ReCaptchaProvider>
-      );
+      await act(async () => {
+        rr = render(
+          <ReCaptchaProvider>
+            <div>
+              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+            </div>
+          </ReCaptchaProvider>
+        );
+      });
     });
 
     it('onload handler is defined', (): void => {
@@ -109,10 +115,11 @@ describe('ReCaptchaProvider', (): void => {
     });
 
     describe('second mount with optional props and post onload invocation', (): void => {
-      beforeAll((): void => {
+      beforeEach(async (): Promise<void> => {
         // wrap our dummy component with the context and get its props
         DummyComponentWithContext = withContext(DummyComponent);
         // new render to trigger a new mount with all optional props
+
         rr = render(
           <ReCaptchaProvider
             siteKeyV2={EProps.siteKeyV2}
@@ -125,10 +132,12 @@ describe('ReCaptchaProvider', (): void => {
             </div>
           </ReCaptchaProvider>
         );
-        // emulate the onload call by the google api
-        if (typeof window.GoogleReCaptcha_onload === 'function') {
-          window.GoogleReCaptcha_onload();
-        }
+        await act(async () => {
+          // emulate the onload call by the google api
+          if (typeof window.GoogleReCaptcha_onload === 'function') {
+            window.GoogleReCaptcha_onload();
+          }
+        });
         node = getByTestId(rr.container, 'dummy-test-id');
       });
 
@@ -151,7 +160,7 @@ describe('ReCaptchaProvider', (): void => {
   });
 
   describe('first mount with required props and onload invocation', (): void => {
-    beforeAll((): void => {
+    beforeEach(async (): Promise<void> => {
       // make sure everything is clear for this scope
       clearDOM();
       // reset state: investigate how to uncomment this with TS v4+
@@ -160,6 +169,7 @@ describe('ReCaptchaProvider', (): void => {
       DummyComponentWithContext = withContext(DummyComponent);
       // render our dummy component in a two level nested node
       // under the provider, to test the context passing down
+
       rr = render(
         <ReCaptchaProvider>
           <div>
@@ -167,11 +177,13 @@ describe('ReCaptchaProvider', (): void => {
           </div>
         </ReCaptchaProvider>
       );
-      // emulate the onload call by the google api
-      // const { googleReCaptcha_onload } = window;
-      if (typeof window.GoogleReCaptcha_onload === 'function') {
-        window.GoogleReCaptcha_onload();
-      }
+      await act(async () => {
+        // emulate the onload call by the google api
+        // const { googleReCaptcha_onload } = window;
+        if (typeof window.GoogleReCaptcha_onload === 'function') {
+          window.GoogleReCaptcha_onload();
+        }
+      });
     });
 
     it('onload handler is not defined', (): void => {
@@ -179,22 +191,24 @@ describe('ReCaptchaProvider', (): void => {
     });
 
     describe('second mount with optional props', (): void => {
-      beforeAll((): void => {
+      beforeEach(async (): Promise<void> => {
         // wrap our dummy component with the context and get its props
         DummyComponentWithContext = withContext(DummyComponent);
         // new render to trigger a new mount with all optional props
-        rr = render(
-          <ReCaptchaProvider
-            siteKeyV2={EProps.siteKeyV2}
-            siteKeyV3={EProps.siteKeyV3}
-            langCode={EProps.langCode}
-            hideV3Badge={true}
-          >
-            <div>
-              <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
-            </div>
-          </ReCaptchaProvider>
-        );
+        await act(async () => {
+          rr = render(
+            <ReCaptchaProvider
+              siteKeyV2={EProps.siteKeyV2}
+              siteKeyV3={EProps.siteKeyV3}
+              langCode={EProps.langCode}
+              hideV3Badge={true}
+            >
+              <div>
+                <DummyComponentWithContext dummy="dummy-prop" otherDummy={55} />
+              </div>
+            </ReCaptchaProvider>
+          );
+        });
         node = getByTestId(rr.container, 'dummy-test-id');
       });
 
