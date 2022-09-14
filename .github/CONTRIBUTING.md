@@ -66,7 +66,7 @@ Pull Requests that fail the automated checks, will not get code reviewed until a
 
 ### Development Prerequisites
 
-1. [nodejs](https://nodejs.org/en/) 10.x.x LTS
+1. [nodejs](https://nodejs.org/en/) 16.x.x LTS
 
 ### Development Setup
 

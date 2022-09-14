@@ -1,4 +1,4 @@
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
@@ -7,7 +7,9 @@ module.exports = {
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/'
   }),
-  testURL: 'http://localhost',
+  testEnvironmentOptions:{
+    url: 'http://localhost'
+  },
   coverageDirectory: '<rootDir>/reports/coverage',
   collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
   coverageThreshold: {

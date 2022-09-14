@@ -1,4 +1,4 @@
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, act } from '@testing-library/react';
 import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
 import { ReCaptchaV2 } from 'src/reCaptchaV2/component/ReCaptchaV2';
@@ -53,13 +53,15 @@ describe('ReCaptchaV2 component', (): void => {
       });
 
       describe('and required props', (): void => {
-        beforeEach((): void => {
-          rr = render(
-            <ReCaptchaV2
-              callback={callback}
-              providerContext={providerContext}
-            />
-          );
+        beforeEach(async (): Promise<void> => {
+          await act(async () => {
+            rr = render(
+              <ReCaptchaV2
+                callback={callback}
+                providerContext={providerContext}
+              />
+            );
+          });
           node = rr.container.firstChild;
         });
 
@@ -84,8 +86,10 @@ describe('ReCaptchaV2 component', (): void => {
         });
 
         describe('when grecaptcha calls "callback"', (): void => {
-          beforeEach((): void => {
-            grecaptchaCallback('test-token');
+          beforeEach(async (): Promise<void> => {
+            await act(async () => {
+              grecaptchaCallback('test-token');
+            });
           });
 
           it('invokes props.callback once', (): void => {
@@ -98,8 +102,10 @@ describe('ReCaptchaV2 component', (): void => {
         });
 
         describe('when grecaptcha calls "expired-callback"', (): void => {
-          beforeEach((): void => {
-            grecaptchaExpiredCallback();
+          beforeEach(async (): Promise<void> => {
+            await act(async () => {
+              grecaptchaExpiredCallback();
+            });
           });
 
           it('invokes props.callback once', (): void => {
@@ -112,8 +118,10 @@ describe('ReCaptchaV2 component', (): void => {
         });
 
         describe('when grecaptcha calls "error-callback"', (): void => {
-          beforeEach((): void => {
-            grecaptchaErrorCallback();
+          beforeEach(async (): Promise<void> => {
+            await act(async () => {
+              grecaptchaErrorCallback();
+            });
           });
 
           it('invokes props.callback once', (): void => {

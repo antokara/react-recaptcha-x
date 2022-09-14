@@ -1,4 +1,4 @@
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, act } from '@testing-library/react';
 import * as React from 'react';
 import { IContext } from 'src/provider/IContext';
 import { ReCaptchaV3 } from 'src/reCaptchaV3/component/ReCaptchaV3';
@@ -23,7 +23,7 @@ describe('ReCaptchaV3 component', (): void => {
   let node: ChildNode | null;
 
   describe('with a V3 site key but providerContext.loaded:true', (): void => {
-    beforeEach((): void => {
+    beforeEach(async (): Promise<void> => {
       callback = jest
         .fn()
         .mockImplementation(
@@ -35,6 +35,7 @@ describe('ReCaptchaV3 component', (): void => {
         );
       refreshTokenFn = undefined;
       // mock the google reCaptcha object
+
       global.grecaptcha = {
         render: jest.fn(),
         reset: jest.fn(),
@@ -45,18 +46,21 @@ describe('ReCaptchaV3 component', (): void => {
             (): Promise<string> => Promise.resolve('test-token')
           )
       };
+
       providerContext = {
         siteKeyV2: undefined,
         siteKeyV3: 'test',
         loaded: true
       };
-      rr = render(
-        <ReCaptchaV3
-          action="test-action"
-          callback={callback}
-          providerContext={providerContext}
-        />
-      );
+      await act(async () => {
+        rr = render(
+          <ReCaptchaV3
+            action="test-action"
+            callback={callback}
+            providerContext={providerContext}
+          />
+        );
+      });
       node = rr.container.firstChild;
     });
 
@@ -89,11 +93,14 @@ describe('ReCaptchaV3 component', (): void => {
     });
 
     describe('refresh token function', (): void => {
-      beforeEach((): void => {
-        global.grecaptcha.execute.mockClear();
-        if (refreshTokenFn) {
-          refreshTokenFn();
-        }
+      beforeEach(async (): Promise<void> => {
+        await act(async () => {
+          global.grecaptcha.execute.mockClear();
+
+          if (refreshTokenFn) {
+            refreshTokenFn();
+          }
+        });
       });
 
       it('invokes the google reCaptcha execute once', (): void => {

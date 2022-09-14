@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {
   EReCaptchaV2Size,
   EReCaptchaV2Theme,
@@ -221,4 +221,8 @@ class App extends React.PureComponent<{}, IState> {
   }
 }
 
-render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = createRoot(rootElement);
+root.render(<App />);
