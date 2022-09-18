@@ -45,7 +45,7 @@ Most reCAPTCHA wrappers do not support both v3 and v2 at the same time properly.
 
 ### requirements
 
-1. [React 16.6.0+ or 17.x](https://reactjs.org/)
+1. [React 16.6.0+, 17.x or 18.x](https://reactjs.org/)
 1. reCAPTCHA v2 / v3 site key(s), which you can get from [here](https://www.google.com/recaptcha)
 
 ### installation
